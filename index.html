@@ -1,143 +1,283 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Ty Overby : My personal website and portfolio." />
+    <head>
+        <meta charset='utf-8' />
+        <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+        <meta name="description" content="Ty Overby : My personal website and portfolio." />
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
-    <title>Ty Overby</title>
-  </head>
+        <title>Ty Overby</title>
+    </head>
 
-  <body>
+    <body>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/TyOverby">View on GitHub</a>
+        <!-- HEADER -->
+        <div id="header_wrap" class="outer">
+            <header class="inner">
 
-          <h1 id="project_title">Ty Overby</h1>
-          <h2 id="project_tagline">Resume.</h2>
+            <h1 id="project_title">Ty Overby</h1>
+            <h2 id="project_tagline">Resume</h2>
 
-        </header>
-    </div>
+            </header>
+        </div>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-      
-        <h2>Projects</h2>
-        In an effort to remain concise, only major projects are listed.  All open source projects can be 
-        found online on <a id="forkme_banner" href="https://github.com/TyOverby">GitHub</a>
-        
-        <table>
-          <tr>
-            <td>Project Name</td>
-            <td>Description</td>
-            <td>Technologies</td>
-          </tr>
-          
-          <tr>
-            <td>DCPUtilities</td>
-            <td>
-              An effort to learn an assembly language led to DCPUtilites, an emulator for the DCPU,
-              a 16-bit CPU designed by Markus (Notch) Persson.  The emulator is written in Java along
-              with a GUI and assembler.  More than just writing a complex program in Java, I've also
-              become conscious of design decisions on the processor level.
-            </td>
-            <td>
-              <ul>
-                <li>Java</li>
-                <li>Assembly</li>
-                <li>JUnit</li>
-              </ul>
-            </td>
-          </tr>
-          
-          <tr>
-            <td>Ants AI</td>
-            <td>
-              The Google AI challenge was one of the most fun experiences of my life. 
-              It was a month-long coding challenge where a board-game was simulated 
-              and played by AI written by people across the globe.  
-              The AI that I wrote was in the top 80% of entries for the majority of the contest, 
-              but a last minute change took it down to about 75%
-            </td>
-            <td>
-              <ul>
-                <li>Java</li>
-                <li>Networking</li>
-              </ul>
-            </td>
-          </tr>
-          
-          <tr>
-            <td>OpenSpace</td>
-            <td>
-              Created by along with 3 other students, OpenSpace is a 3d networked space-shooter 
-              game created in Java for a class project.  The entire engine and game were written 
-              entirely by hand, only using bindings for OpenGL and OpenAL.  Challenges included 
-              syncing game state, creating a decent graphical representation of the game, and UI.  
-              I also learned 3d modeling and texturing as needed during the project.      
-            </td>
-            <td>
-              <ul>
-                <li>Java</li>
-                <li>Networking</li>
-                <li>Graphics</li>
-                <li>Game Logic</li>
-              </ul>
-            </td>
-          </tr>
-          
-          <tr>
-            <td>Pixelmath-Shim</td>
-            <td>
-              Created for an image processing course, Pixelmath-Shim was written in a mix of 
-              Java and Python to sit in between a pre-made image processing program that was 
-              created by the professor.  It took the C-like api provided to us, and made it 
-              more pythonic.  Instead of tracking objects via an identification number, all 
-              the functions would be encapsulated, with the id recorded in each object for easy use.
-            </td>
-            <td>
-              <ul>
-                <li>Python</li>
-                <li>Java</li>
-                <li>Image Processing</li>
-              </ul>
-            </td>
-          </tr>
-          
-          <tr>
-            <td>Orbit</td>
-            <td>
-              Built as a final project for a physics class, Orbit is a solar system 
-              simulation written in javascript with HTML5 Canvas.  Getting canvas 
-              to scale across devices was a challenge that I didn't expect, so features 
-              making this easier were built into my other project Coffee-Engine.  
-              Outside of looking pretty and making a killer screensaver, it doesn't serve much purpose. 
-            </td>
-            <td>
-              <ul>
-                <li>Javascript</li>
-                <li>Html5 Canvas</li>
-              </ul>
-            </td>
-          </tr>
-        </table>
-      </section>
-    </div>
+        <!-- MAIN CONTENT -->
+        <div id="main_content_wrap" class="outer">
+            <section id="main_content" class="inner">
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
+            <h2>Overview</h2>
 
-    
+            <ul>
+                <li><b><a href="#projects">Projects</a></b></li>
+                <li><b><a href="#tech">Languages/Tech</a></b></li>
+                <li><b><a href="#education">Education</a></b></li>
+            </ul>
 
-  </body>
+            <h2 id="projects">Projects</h2>
+            In an effort to remain concise, only major projects are listed.  All open source projects can be
+            found online on github (link above). <a id="forkme_banner" href="https://github.com/TyOverby">View profile on GitHub</a>
+
+            <table>
+                <tr>
+                    <td>Project Name</td>
+                    <td>Description</td>
+                    <td style="width:150px;">Technologies</td>
+                </tr>
+
+                <tr>
+                    <td><a href="https://github.com/TyOverby/DCPUtilities"> DCPUtilities </a></td>
+                    <td>
+                        An effort to learn an assembly language led to DCPUtilites, an emulator for the DCPU,
+                        a 16-bit CPU designed by Markus (Notch) Persson.  The emulator is written in Java along
+                        with a GUI and assembler.  More than just writing a complex program in Java, I've also
+                        become conscious of design decisions on the processor level.
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Java</li>
+                            <li>Assembly</li>
+                            <li>JUnit</li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="https://github.com/TyOverby/aichallenge">Ants AI</a></td>
+                    <td>
+                        The Google AI challenge was one of the most fun experiences of my life.
+                        It was a month-long coding challenge where a board-game was simulated
+                        and played by AI written by people across the globe.
+                        The AI that I wrote was in the top 80% of entries for the majority of the contest,
+                        but a last minute change took it down to about 75%
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Java</li>
+                            <li>Networking</li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="https://github.com/TyOverby/CS143-Project">OpenSpace</a></td>
+                    <td>
+                        Created by along with 3 other students, OpenSpace is a 3d networked space-shooter
+                        game created in Java for a class project.  The entire engine and game were written
+                        entirely by hand, only using bindings for OpenGL and OpenAL.  Challenges included
+                        syncing game state, creating a decent graphical representation of the game, and UI.
+                        I also learned 3d modeling and texturing as needed during the project.
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Java</li>
+                            <li>Networking</li>
+                            <li>Graphics</li>
+                            <li>Game Logic</li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="git@github.com:TyOverby/PixelMath-Shim.git">Pixelmath-Shim</a></td>
+                    <td>
+                        Created for an image processing course, Pixelmath-Shim was written in a mix of
+                        Java and Python to sit in between a pre-made image processing program that was
+                        created by the professor.  It took the C-like api provided to us, and made it
+                        more pythonic.  Instead of tracking objects via an identification number, all
+                        the functions would be encapsulated, with the id recorded in each object for easy use.
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Python</li>
+                            <li>Java</li>
+                            <li>Image Processing</li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="git@github.com:TyOverby/orbit.git">Orbit</a></td>
+                    <td>
+                        Built as a final project for a physics class, Orbit is a solar system
+                        simulation written in javascript with HTML5 Canvas.  Getting canvas
+                        to scale across devices was a challenge that I didn't expect, so features
+                        making this easier were built into my other project Coffee-Engine.
+                        Outside of looking pretty and making a killer screensaver, it doesn't serve much purpose.
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Javascript</li>
+                            <li>Html5 Canvas</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+
+            <h2 id="tech">Technologies and Languages</h2>
+            <table>
+                <tr>
+                    <td>Name</td>
+                    <td>Description</td>
+                    <td>Skill</td>
+                </tr>
+
+                <tr>
+                    <td>Java</td>
+                    <td>
+                        Java is the language that I go to if I need to get something done, and I need to support
+                        and add functionality to it later.  Unit testing in Java is incredibly easy to do right.
+                    </td>
+                    <td>high</td>
+                </tr>
+
+                <tr>
+                    <td>Scala</td>
+                    <td>
+                        Scala is my current language of choice.  Building off of my experience in Java with the
+                        benefits of functional code allow me to work much faster than in any other language to date.
+                    </td>
+                    <td>high</td>
+                </tr>
+
+                <tr>
+                    <td>Git</td>
+                    <td>
+                        Git is my choice of version control, all of my projects use git and are backed up on Github.
+                        That said, I've also worked with Mercurial and Subversion.
+                    </td>
+                    <td>high</td>
+                </tr>
+
+                <tr>
+                    <td>Python</td>
+                    <td>
+                        Used mainly for tooling and web-related server jobs.  Recently I've used python for creating
+                        a domain specific langauge for doing vector math.
+                    </td>
+                    <td>good</td>
+                </tr>
+
+                <tr>
+                    <td>Javascript/Coffeescript</td>
+                    <td>
+                        Although front-end development isn't my favorite place to work, sometimes the benefits of hosting
+                        projects on a simple webpage fit a project perfectly.  I have begun to do most of my development
+                        in Coffeescript due to the cleaner syntax and the sensible inheritance model.
+                    </td>
+                    <td>medium</td>
+                </tr>
+
+                <tr>
+                    <td>C#</td>
+                    <td>
+                        Last programmed in years ago when C# was my first language.  I've since mostly migrated to cross-platform
+                        languages and technologies, though with Mono maturing, I might get back into it, though with Mono maturing, I might get back into it.
+                    </td>
+                    <td>medium</td>
+                </tr>
+
+                <tr>
+                    <td>Linux</td>
+                    <td>
+                        I've been working on linux for several years now, primarily for development.  Specifically good on Debian distributions.
+                    </td>
+                    <td>high</td>
+                </tr>
+
+            </table>
+
+            <h2 id="education">Education</h2>
+            <table>
+                <tr>
+                    <td colspan="2">University of Washington</td>
+                </tr>
+                <tr>
+                    <td>CSE 311: Fundamentals</td>
+                    <td>
+                        Fundamentals of logic, set theory, induction, and algebraic structures with applications to computing;
+                        finite state machines; and limits of computability.
+                    </td>
+                </tr>
+                <tr>
+                    <td>CSE 390a: Programming Tools</td>
+                    <td>
+                        Basics of Unix/Linux environment, version control, text processing, scripting, regular expressions.
+                    </td>
+                </tr>
+                <tr>
+                    <td>CSE 341: Programming Languages</td>
+                    <td>
+                        A look at the semantics and idioms of 3 programming languages: SML, Racket, and Ruby.  Taught by Dan Grossman
+                        in conjunction with the online Coursera class of the same name.
+                    </td>
+                </tr>
+                <tr>
+                    <td>CSE 351: The Hardware/Software Interface</td>
+                    <td>
+                        Examines key computational abstraction levels below modern high-level languages; number representation, assembly language,
+                        introduction to C, memory management, the operating-system process model, high-level machine architecture
+                        including the memory hierarchy, and how high-level languages are implemented.
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">Coursera/Udacity</td>
+                </tr>
+                <tr>
+                    <td>Artificial Intelligence</td>
+                    <td>
+                        Taught by Sebastian Thrun and Peter Norvig, the class introduces students to the basics of Artificial Intelligence,
+                        which includes machine learning, probabilistic reasoning, robotics, and natural language processing.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Programming Languages</td>
+                    <td>
+                        An introduction to the fundamentals of programming languages. Key concepts include how to specify and
+                        process valid strings, sentences and program structures.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Functional Programming Principals in Scala</td>
+                    <td>
+                        A hands-on course that introduces the cornerstones of functional programming using the Scala programming language.
+                        Students will also develop a solid foundation for reasoning about functional programs, by touching upon proofs of invariants and the tracing of execution symbolically.
+                    </td>
+                </tr>
+            </table>
+
+            </section>
+        </div>
+
+        <!-- FOOTER  -->
+        <div id="footer_wrap" class="outer">
+            <footer class="inner">
+            <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+            </footer>
+        </div>
+
+
+
+    </body>
 </html>
