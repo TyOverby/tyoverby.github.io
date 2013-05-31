@@ -1,0 +1,26 @@
+# doctype #
+(doctype html5) => {
+    "<!DOCTYPE html>\n\n"
+}
+
+# css #
+(css :file...) => {
+    ("<link rel='stylesheet' type='text/css' href=" :file ">\n")...
+}
+
+# dont bash scripts #
+(script :scripts...) => {
+    ("<script src=" :scripts "></script>")...
+}
+
+# basic element with args #
+(:element ((:k :v)...) :child...) => {
+    "<" :element  (" " :k "=" :v)... ">\n" :child... "\n</" :element ">\n"
+}
+
+
+# basic element #
+(:element :child...) => {
+    "<" :element ">\n" :child... "\n</" :element ">\n"
+}
+

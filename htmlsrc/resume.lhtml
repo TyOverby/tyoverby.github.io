@@ -1,0 +1,207 @@
+(doctype html5)
+
+(html
+  (head (title My Webpage)
+        (css "reset.css" "position.css" "style.css")
+        (css "http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed"))
+        (script "reload.js")
+  (body
+    (div ([id "sidebar-dummy"] [class "sidebar"]))
+    (div ([id "sidebar"] [class "sidebar"])
+        (span ([id "title"]) ty overby) (hr)
+
+        (span ([class "buttons section"]) (span ([class inner]) About me))
+        (span ([class "buttons button"]) (span ([class inner]) Overview))
+        (span ([class "buttons button"]) (span ([class inner]) Resume))
+        (span ([class "buttons section"]) (span ([class inner]) Projects))
+        (span ([class "buttons button"]) (span ([class inner]) Lisp->Any))
+        (span ([class "buttons button"]) (span ([class inner]) CanvaS))
+        (span ([class "buttons button"]) (span ([class inner]) Notepad))
+        (span ([class "buttons button"]) (span ([class inner]) Orbit)))
+
+    (div ([id "content"])
+        (h1 Resume)
+        (hr)
+
+        (h2 Contents)
+        (ul (li Projects)
+            (li Languages / Technologies)
+            (li Education))
+
+        (h2 Projects)
+
+        (p All of these projects are done on my own time completely unrelated to any school
+           work.  The projects hosted on (a ([href "https://github.com/TyOverby"])my github page)
+           date back 2 years; they are mostly unfinished, and some are in a state of disrepair.
+           The ones listed below are the projects that I am most proud of.)
+
+        (table ([style "border: 1px solid black"])
+            (tr (td Project Name) (td Description) (td Technologies))
+
+            (tr (td Lisp->Any)
+                (td While creating a lisp->Javascript compiler, I wound up externalizing
+                    all of the Javascript-specific parts, creating a compiler that, given
+                    a file of transformation rules, would transform any program of
+                    s-expressions into the target language specified by the rules.
+                    Currently I have written rules for Lisp->Javascript, sExpression->html,
+                    sExpression->LaTeX, though creating a new target takes a matter of minutes.)
+                (td (ul (li Scala) (li Lisp) (li Javascript) (li HTML))))
+
+            (tr (td CanvaS)
+                (td The summer before my freshman year of college I took a 5-credit image
+                    processing class at the University of Washington.  My favorite part was
+                    computational image generation due to the mix of creativity and programming
+                    skills required.  However, I was disapointed with the interface provided
+                    and wrote a domain specific language in Scala called CanvaS.  It focuses on
+                    image generation through a functional-programming methodology; maps and filters
+                    on pixels to create interesting pictures.)
+                (td (ul (li Scala) (li Image Processing))))
+
+            (tr (td DCPUtilities)
+                (td An effort to learn an assembly language led to DCPUtilities,
+                    an emulator for the DCPU, a 16-bit CPU designed by Markus Persson.
+                    The emulator is written in Java along with a GUI and assembler.
+                    More than just writing a complex program in Java, I've also become
+                    conscious of design decisions on the processor level.)
+                (td (ul (li Java) (li Assembly) (li Junit))))
+
+            (tr (td Ants AI)
+                (td Created to compete in the Google AI challenge, the competition
+                    taught me much about AI and performance critical code.  My AI placed
+                    in the top 80% of entries for the majority of the contest, however,
+                    a last minute change dropped it down to the mid-70s. The project was
+                    so engaging, that I am currently looking at creating an AI contest
+                    of my own.)
+                (td (ul (li Java) (li Networking))))
+
+            (tr (td OpenSpace)
+                (td Created along with three other students, OpenSpace is a 3d, networked
+                    video game in the space-shooter genre.  The entire game and engine
+                    was written by hand only using bindings for OpenGL and OpenAL to
+                    handle graphics and sound. Challenges included syncing game state,
+                    creating a decent HUD/UI, and transitioning musical scores.  I
+                    personally worked on the HUD and audio-programming, and also
+                    created the 3d models for the game.)
+                (td (ul (li Java) (li Networking) (li Graphics) (li Game Logic))))
+
+            (tr (td Pixelmath Shim)
+                (td Created during an introductory image-processing class,
+                    Pixelmath-Shim is a layer written in Java and Python that sits
+                    in between a pre-made image processing program written by the
+                    professor of the class.  It took the C-like API from the
+                    program and provided a more pythonic interface for the students
+                    to use.  Where before, programmers had to keep track of their
+                    image identification number, and use it whenever they wanted to
+                    modify an image, with Pixelmath Shim, they could instantiate an
+                    object which handled id's for them.)
+                (td (ul (li Python) (li Java) (li Image Processing))))
+
+            (tr (td Orbit)
+                (td Built as a final project for a physics class, Orbit is a solar
+                    system simulator written in Javascript with HTML5 canvas.  It was
+                    the first project to use a &#40; still unfinished &#41; Coffeescript
+                    game engine that handled resolution independence, loading resources,
+                    and a basic game loop.  Outside of possibly serving as a screensaver,
+                    it doesn't do that much.)
+                (td (ul (li Javascript) (li Coffeescript) (li HTML5) (li Canvas)))))
+
+       (h2 Languages / Technologies)
+       (p While I tend to be more of a jack-of-all-trades, the following languages
+          and technologies are what I am most familiar with.)
+       (table (tr (td Name) (td Description) (td Skill) (td years))
+              (tr (td Scala)
+                  (td Almost completely replacing Java once learned,
+                      Scala is my current go-to language.  I find that it works very
+                      well for both large programs and small scripts, and the merge
+                      of functional and object oriented design is amazing when working
+                      with collections and unit testing.)
+                  (td High) (td 1))
+
+              (tr (td Java)
+                  (td My first programming language, and the one that I am most
+                      comfortable in.  Most of my projects are written in Java
+                      as it is easy for collaboration among my friends)
+                  (td High) (td 5))
+
+              (tr (td Python)
+                  (td Mainly used for small programs or automation of tasks, Python
+                      is a great replacement for bash programs, though I rarely go
+                      much further with it.)
+                  (td Good) (td 3))
+
+              (tr (td Javascript)
+                  (td Pretty much required for any web-programming, many of my personal
+                      projects that I want to show off to my friends are written in JS.
+                      After learning Lisp, much of Javascript is now clear, and my labors
+                      through callback-hell are finally over.  Much of my experience with
+                      Javascript is compiled either through Coffeescript or my own
+                      Lisp->Javascript compiler.)
+                  (td Good) (td 2))
+
+              (tr (td Git)
+                  (td Git is my version control of choice.  While my usage only covers
+                      a small subset of Git, I am very comfortable with branching, merging,
+                      rolling back time, and other common operations.)
+                  (td Good) (td 3))
+
+
+              (tr (td Linux)
+                  (td My development environment is focused around the linux toolchain.
+                      While I can operate in almost any *nix environment, I am fond of
+                      Debian and Debian's child distros.)
+                  (td Good) (td 4)))
+
+        (h2 Education)
+
+        (p I began learning programming early in middle school, however, my education
+           took off when Udacity and Coursera launched, offering free online classes.
+           I am currently a computer science major at the University of Washington Seattle.)
+        (table (tr (td ([colspan 2]) University of Washington))
+               (tr (td CSE 311 Fundamentals of Computing.)
+                   (td Fundamentals of logic, set theory, induction, and
+                       algebraic structures with applications to computing;
+                       finite state machines; and limits of computability.))
+
+               (tr (td CSE 390a Programming Tools)
+                   (td Basics of Unix/Linux environment, version control,
+                       text processing, scripting, regular expressions.))
+
+               (tr (td CSE 341 Programming Languages)
+                   (td A look at the semantics and idioms of 3 programming
+                       languages: SML, Racket, and Ruby. Taught by Dan Grossman
+                       in conjunction with the online Coursera class of the same name.))
+
+               (tr (td CSE 351 The Hardware/Software Interface)
+                   (td Examines key computational abstraction levels below modern
+                       high-level languages; number representation, assembly language,
+                       introduction to C, memory management, the operating-system
+                       process model, high-level machine architecture including the
+                       memory hierarchy, and how high-level languages are implemented.))
+
+               (tr (td CSE 332 Data Abstractions)
+                   (td Covers abstract data types and structures including dictionaries,
+                       balanced trees, hash tables, priority queues, and graphs;
+                       sorting; asymptotic analysis; fundamental graph algorithms including
+                       graph search, shortest path, and minimum spanning trees; concurrency and
+                       synchronization; and parallelism.))
+
+               (tr (td ([colspan 2]) Coursera/Udacity))
+
+               (tr (td Artificial Intelligence)
+                   (td Taught by Sebastian Thrun and Peter Norvig, the class
+                       introduces students to the basics of Artificial Intelligence,
+                       which includes machine learning, probabilistic reasoning,
+                       robotics, and natural language processing.))
+
+               (tr (td Programming Languages)
+                   (td An introduction to the fundamentals of programming languages.
+                       Key concepts include how to specify and process valid strings,
+                       sentences and program structures.))
+
+               (tr (td Functional Programming in Scala)
+                   (td A hands-on course that introduces the cornerstones of
+                       functional programming using the Scala programming language.
+                       Students will also develop a solid foundation for reasoning
+                       about functional programs, by touching upon proofs of invariants
+                       and the tracing of execution symbolically.)))
+)))

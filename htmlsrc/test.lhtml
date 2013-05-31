@@ -1,0 +1,28 @@
+(doctype html5)
+
+(html
+  (head (title My Webpage)
+        (css "reset.css" "position.css" "style.css")
+        (css "http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed"))
+        (script "reload.js")
+  (body
+    (div ([id "sidebar"])
+        (span ([id "title"]) ty overby) (hr)
+
+        (span ([class "buttons section"]) (span ([class inner]) About me))
+        (span ([class "buttons button"]) (span ([class inner]) Overview))
+        (span ([class "buttons button"]) (span ([class inner]) Resume))
+        (span ([class "buttons section"]) (span ([class inner]) Projects))
+        (span ([class "buttons button"]) (span ([class inner]) Lisp->Any))
+        (span ([class "buttons button"]) (span ([class inner]) CanvaS))
+        (span ([class "buttons button"]) (span ([class inner]) Notepad))
+        (span ([class "buttons button"]) (span ([class inner]) Orbit))
+        )
+
+    (div ([id "content"])
+        (h1 Title)
+        (hr)
+
+        (p This is some text)
+
+)))
