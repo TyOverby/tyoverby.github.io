@@ -1,0 +1,78 @@
+body {
+    background: #eeeeee;
+    font-family: 'Lucida Grande', 'Calibri', Helvetica, Arial, sans-serif;
+    color: rgb(55,55,55);
+}
+
+#sidebar {
+    background: #3a3f42;
+    border-right: 10px solid #2d3134;
+
+    font-family: 'Ubuntu', sans-serif;
+    color: #bcbcbc;
+    /*text-shadow: 0px -1px 1px rgba(0,0,0,0.8),
+                 0px 1px 1px rgba(255,255,255,0.8);
+                 */
+    text-shadow: 0px 0px 2px rgb(0,0,0);
+}
+
+#title {
+    font-size: 30px;
+}
+
+#title:hover{
+    background: #4d5154;
+    cursor:pointer;
+}
+
+.section{
+    color: #ccc;
+    font-size: 15px;
+}
+.button {
+    color: #b6b6b6;
+    font-size: 13px;
+}
+
+.button:hover{
+    background: #4d5154;
+    cursor: pointer;
+}
+
+#content {
+    background: white;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #2d3134;
+    border-bottom:1px solid #43494e;
+    height: 0px;
+}
+
+h1 {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    font-size: 20px;
+    color: rgb(75,75,100);
+    margin-bottom: 10px;
+    margin-top: 30px;
+    margin-right: 30px;
+
+    padding-bottom: 3px;
+    border-bottom: 1px dashed rgba(0,0,0,0.5);
+}
+
+table, tr, td {
+    border: 1px solid rgb(55,55,55);
+    padding: 5px;
+}
+
+p{
+    margin-bottom: 5px;
+}
