@@ -1,0 +1,59 @@
+html, body {
+    width: 100%;
+}
+
+html, body, ul,
+header, nav, hr, img {
+    margin: 0;
+    padding: 0;
+}
+
+section#wrapper {
+    max-width: 800px;
+    min-width: 600px;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+
+    padding: 40px;
+}
+
+nav {
+    display:block;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+nav > ul > li {
+    display: inline;
+    margin-right: 10px;
+}
+
+article {
+}
+
+article > p {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.stretch {
+    margin-left: -40px;
+    margin-right: -40px;
+
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+img.stretch {
+    padding: 0;
+}
+
+.over-stretch {
+    margin-left: -46px;
+    margin-right: -46px;
+
+    padding-left: 46px;
+    padding-right: 46px;
+}
