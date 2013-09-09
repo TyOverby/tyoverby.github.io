@@ -1,25 +1,31 @@
 body {
-    font-family: 'Lucida Grande', sans-serif;
+
+    font-family: 'Lucida Grande', Calibri, Helvetica, Arial, sans-serif;
     background: #e6e6e6;
+    font-size: 16px;
+    color: rgb(55,55,55);
 }
 
 #wrapper {
-    border: 1px solid #ddd;
-    border-radius: 2px;
+    border-left: 1px solid rgba(0,0,0,0.3);
+    border-right: 1px solid rgba(0,0,0,0.3);
+    border-bottom: 1px solid rgba(0,0,0,0.3);
     background: white;
-    box-shadow: rgba(100,100,100,0.3) 0px 2px 6px 0px;
 }
 
 header {
-    font-size: 24px;
-    font-weight: bold;
-    color: #0054a7;
     padding-bottom: 10px;
+}
+
+header h1 {
+    color: #73a4d9;
+    font-family: Oswald, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 2.5em;
 }
 
 #header-desc {
     color: rgb(200,200,200);
-    font-weight: 20px;
 }
 
 nav {
@@ -41,3 +47,53 @@ article h1 {
     padding: 3px;
     box-shadow: 0px 3px 0px rgba(0,0,0,0.5);
 }
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+thead {
+    font-weight: bold;
+}
+
+td {
+    border: 1px solid rgb(50,50,50);
+    padding: 2px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+article h1,
+article h2,
+article h3 {
+    font-family: Oswald, 'Ubuntu Condensed', sans-serif;
+    font-weight: 400;
+    color: rgb(70,70,70);
+    border-bottom: 1px dashed rgb(150,150,150);
+}
+
+h1 {
+    font-size: 25px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

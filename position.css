@@ -14,9 +14,25 @@ section#wrapper {
 
     margin-left: auto;
     margin-right: auto;
-    margin-top: 40px;
 
-    padding: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 40px;
+}
+
+header{
+    margin-left: -40px;
+}
+header h1 {
+    margin: 0;
+    padding: 0;
+}
+header td,
+header table,
+header tr{
+    border: none;
+    margin: 0;
+    padding: 0;
 }
 
 nav {

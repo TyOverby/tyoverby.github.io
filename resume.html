@@ -1,28 +1,380 @@
 
+
 <!DOCTYPE html>
 <html>
     <head>
-        <title> Ty Overby </title>
+        <title> Resume - Ty Overby </title>
         <link rel="stylesheet" href="./position.css">
         <link rel="stylesheet" href="./style.css">
+        <link rel="stylesheet" media="print" href="./print.css">
+        <link rel="stylesheet" type="text/css"
+         href="http://fonts.googleapis.com/css?family=Oswald:700">
+
+        <script src="./codemirror.js"></script>
+        <link rel="stylesheet" href="./codemirror.css">
+        <link rel="stylesheet" href="./ambiance.css">
+        <style type="text/css">
+            .CodeMirror {
+                font-size: 13px;
+                margin-left: -40px;
+                margin-right: -40px;
+                margin-top: 5px;
+                margin-bottom: 5px;
+            }
+            .CodeMirror-gutters {
+                width: 35px;
+            }
+        </style>
     </head>
 
     <body>
         <section id="wrapper">
-        <header> Ty Overby <br/> <span id="header-desc"> Sometimes I write computer programs </span> </header>
-            <nav class="stretch">
-                <ul>
-                    <li> About Me </li>
-                    <li> Resume </li>
-                    <li> Projects </li>
-                    <li> Gists </li>
-                </ul>
-            </nav>
-
+            <header>
+                <table>
+                    <tr>
+                        <td><img src="./identicon.png" /></td>
+                        <td><h1>Resume<h1></td>
+                    </tr>
+                </table>
+            </header>
             <article>
+<style>
+    .noborder,
+    .noborder tr,
+    .noborder td {
+        border:none;
+    }
+</style>
+
+<table class="noborder" style="width:100%;">
+    <tr>
+        <td>Name:</td>
+        <td>Phone:</td>
+        <td>Email:</td>
+        <td>Website:</td>
+        <td>Resume:</td>
+    </tr>
+    <tr>
+        <td>Ty Overby</td>
+        <td>(253)-514-9370</td>
+        <td>ty@pre-alpha.com</td>
+        <td>tyoverby.com</td>
+        <td>tyoverby.com/resume</td>
+    </tr>
+</table>
+<aside>
+    <h2> Overiew </h2>
+
+    <ul>
+        <li> Work Experience </li>
+        <li> Projects </li>
+        <li> Languages / Technologies </li>
+        <li> Education </li>
+    <ul>
+</aside>
+<h2> Work Experience </h2>
+
+<table>
+    <thead>
+        <tr>
+            <td> Company </td>
+            <td> Title </td>
+            <td> Time Span </td>
+            <td> Description </td>
+            <td> Tech </td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td> Google </td>
+            <td> Engineering Intern </td>
+            <td> June&nbsp;2013 to September&nbsp;2013 </td>
+            <td>
+Intern on the Google Chrome Mediastack team, the team that works on all
+aspects of audio/video inside Chrome. I extended their logging infrastructure on
+the backend and made a web-based UI to visualize it.
+            </td>
+            <td>
+                <ul>
+                    <li>C++</li>
+                    <li>Javascript</li>
+                </ul>
+        </tr>
+    </tbody>
+</table>
+<h2>Projects</h2>
+
+<p>
+    All of these projects are done on my own time completely unrelated to
+    any school work. The projects hosted on <a href=
+    "https://github.com/TyOverby">my github page</a> date back 2 years; they
+    are mostly unfinished, and some are in a state of disrepair. The ones
+    listed below are the projects that I am most proud of.
+</p>
+
+<table style="border: 1px solid black">
+    <thead>
+        <tr>
+            <td>Project</td>
+            <td>Description</td>
+            <td>Tech</td>
+        </tr>
+    </thead>
+
+    <tr>
+        <td>Write AI</td>
+        <td>An online site + API that allows other programmers to write
+        artificial intelligence to play against other artificial intelligence
+        online. The project is heavily inspired by the Google AI competition
+        that I competed in.</td>
+
+        <td>
+            <ul>
+                <li>Javascript</li>
+                <li>Node.js</li>
+                <li>Websockets</li>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Lisp-&gt;Any</td>
+
+        <td>An extensible compiler that takes a program made up of s-expressions
+        and a file of transformation rules and produces an output file of those
+        rules applied to the program. It has been used successfully to write
+        lisp-to-javascript, sExpressions-to-html, and sExpressions-to-LaTeX.</td>
+
+        <td>
+            <ul>
+                <li>Scala</li>
+                <li>Lisp</li>
+                <li>Javascript</li>
+            </ul>
+        </td>
+    </tr>
+
+    <tr>
+        <td>CanvaS</td>
+
+        <td>A domain specific language for creating and manipulating images.
+        Written and consumed in Scala.</td>
+
+        <td>
+            <ul>
+                <li>Scala</li>
+                <li>Image Processing</li>
+            </ul>
+        </td>
+    </tr>
+
+    <tr>
+        <td>DCPUtilities</td>
+
+        <td>An emulator for the DCPU, a 16 -bit CPU designed by Markus Persson.
+        Written in Java and comes with a GUI and assembler. It made me conscious of
+        low-level optimizations.</td>
+
+        <td>
+            <ul>
+                <li>Java</li>
+                <li>Assembly</li>
+                <li>Junit</li>
+            </ul>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Ants AI</td>
+
+        <td>An game-playing artificial intelligence made to compete in the Google AI
+        Challenge.</td>
+
+        <td>
+            <ul>
+                <li>Java</li>
+                <li>Networking</li>
+            </ul>
+        </td>
+    </tr>
+</table>
+<h2>Languages / Technologies</h2>
+
+<p>While I tend to be more of a jack-of-all-trades, the following languages
+and technologies are what I am most familiar with.</p>
+
+<table>
+    <thead>
+        <tr>
+            <td>Name</td>
+            <td>Description</td>
+            <td>Skill</td>
+            <td>years</td>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>Scala</td>
+            <td>Language of choice for any desktop and server programs.
+            The combination of functional/oop concepts make abstractions easy
+            for me to implement and use.</td>
+            <td>High</td>
+            <td>1</td>
+        </tr>
+
+        <tr>
+            <td>Javascript</td>
+            <td>Used on almost all my web-facing projects; I'm a proponent of
+            moving as much logic to the client as possible.</td>
+            <td>High</td>
+            <td>3</td>
+        </tr>
+
+        <tr>
+            <td>Java</td>
+            <td>My first programming language, and the one that I have most
+            experiance in. Because of Scala, the only time I program in Java
+            any more is for homework assignments.</td>
+            <td>High</td>
+            <td>5</td>
+        </tr>
+
+        <tr>
+            <td>Python</td>
+            <td>Mainly used for small programs or automation of tasks, Python
+            is a great replacement for bash programs, though I rarely go much
+            further with it.</td>
+            <td>Good</td>
+            <td>3</td>
+        </tr>
+
+        <tr>
+            <td>Git</td>
+            <td>Git is used for anything from my homework to my more serious
+            projects.</td>
+            <td>Good</td>
+            <td>3</td>
+        </tr>
+
+        <tr>
+            <td>Linux</td>
+            <td>My development environment is focused around the 1
+            toolchain. While I can operate in almost any *nix environment, I am
+            fond of Debian and Debian's child distros.</td>
+            <td>Good</td>
+            <td>4</td>
+        </tr>
+    </tbody>
+</table>
+<h2>Education</h2>
+
+<p>I began learning programming early in middle school, however, my
+education took off when Udacity and Coursera launched, offering free online
+classes. I am currently a computer science major at the University of
+Washington Seattle.</p>
+
+<table>
+    <tr>
+        <td colspan="2">University of Washington</td>
+    </tr>
+
+    <tr>
+        <td>CSE 311 Fundamentals of Computing.</td>
+
+        <td>Fundamentals of logic, set theory, induction, and algebraic
+        structures with applications to computing; finite state machines;
+        and limits of computability.</td>
+    </tr>
+
+    <tr>
+        <td>CSE 390 a Programming Tools</td>
+
+        <td>Basics of Unix/Linux environment, version control, text
+        processing, scripting, regular expressions.</td>
+    </tr>
+
+    <tr>
+        <td>CSE 341 Programming Languages</td>
+
+        <td>A look at the semantics and idioms of 3 programming languages:
+        SML, Racket, and Ruby. Taught by Dan Grossman in conjunction with
+        the online Coursera class of the same name.</td>
+    </tr>
+
+    <tr>
+        <td>CSE 351 The Hardware/Software Interface</td>
+
+        <td>Examines key computational abstraction levels below modern
+        high-level languages; number representation, assembly language,
+        introduction to C, memory management, the operating-system process
+        model, high-level machine architecture including the memory
+        hierarchy, and how high-level languages are implemented.</td>
+    </tr>
+
+    <tr>
+        <td>CSE 332 Data Abstractions</td>
+
+        <td>Covers abstract data types and structures including
+        dictionaries, balanced trees, hash tables, priority queues, and
+        graphs; sorting; asymptotic analysis; fundamental graph algorithms
+        including graph search, shortest path, and minimum spanning trees;
+        concurrency and synchronization; and parallelism.</td>
+    </tr>
+
+    <tr>
+        <td colspan="2">Coursera/Udacity</td>
+    </tr>
+
+    <tr>
+        <td>Artificial Intelligence</td>
+
+        <td>Taught by Sebastian Thrun and Peter Norvig, the class
+        introduces students to the basics of Artificial Intelligence, which
+        includes machine learning, probabilistic reasoning, robotics, and
+        natural language processing.</td>
+    </tr>
+
+    <tr>
+        <td>Programming Languages</td>
+
+        <td>An introduction to the fundamentals of programming languages.
+        Key concepts include how to specify and process valid strings,
+        sentences and program structures.</td>
+    </tr>
+
+    <tr>
+        <td>Functional Programming in Scala</td>
+
+        <td>A hands-on course that introduces the cornerstones of
+        functional programming using the Scala programming language.
+        Students will also develop a solid foundation for reasoning about
+        functional programs, by touching upon proofs of invariants and the
+        tracing of execution symbolically.</td>
+    </tr>
+</table>
 
 
             </article>
         </section>
+
+<script>
+
+
+var codeSections = document.getElementsByClassName('code');
+codeSections = Array.prototype.slice.call(codeSections);
+
+for(var index in codeSections) {
+    var element = codeSections[index];
+    var mirror = CodeMirror.fromTextArea(element, {
+        mode: 'javascript',
+        theme: 'ambiance',
+        readOnly: true,
+        lineNumbers: true,
+        matchBrackets: true
+    });
+}
+
+
+</script>
     </body>
 </html>

@@ -1,5 +1,25 @@
 
             </article>
         </section>
+
+<script>
+
+
+var codeSections = document.getElementsByClassName('code');
+codeSections = Array.prototype.slice.call(codeSections);
+
+for(var index in codeSections) {
+    var element = codeSections[index];
+    var mirror = CodeMirror.fromTextArea(element, {
+        mode: 'javascript',
+        theme: 'ambiance',
+        readOnly: true,
+        lineNumbers: true,
+        matchBrackets: true
+    });
+}
+
+
+</script>
     </body>
 </html>

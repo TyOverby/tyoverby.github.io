@@ -1,8 +1,9 @@
 
+
 <!DOCTYPE html>
 <html>
     <head>
-        <title> TITLE  - Ty Overby </title>
+        <title> Code - Ty Overby </title>
         <link rel="stylesheet" href="./position.css">
         <link rel="stylesheet" href="./style.css">
         <link rel="stylesheet" media="print" href="./print.css">
@@ -32,8 +33,39 @@
                 <table>
                     <tr>
                         <td><img src="./identicon.png" /></td>
-                        <td><h1>TITLE<h1></td>
+                        <td><h1>Code<h1></td>
                     </tr>
                 </table>
             </header>
             <article>
+
+Hi!
+<textarea class="code">
+console.log('hello world');
+</textarea>
+
+
+            </article>
+        </section>
+
+<script>
+
+
+var codeSections = document.getElementsByClassName('code');
+codeSections = Array.prototype.slice.call(codeSections);
+
+for(var index in codeSections) {
+    var element = codeSections[index];
+    var mirror = CodeMirror.fromTextArea(element, {
+        mode: 'javascript',
+        theme: 'ambiance',
+        readOnly: true,
+        lineNumbers: true,
+        matchBrackets: true
+    });
+}
+
+
+</script>
+    </body>
+</html>
