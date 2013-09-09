@@ -1,0 +1,95 @@
+
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Ty Overby - Ty Overby </title>
+        <link rel="stylesheet" href="./position.css">
+        <link rel="stylesheet" href="./style.css">
+        <link rel="stylesheet" media="print" href="./print.css">
+        <link rel="stylesheet" type="text/css"
+         href="http://fonts.googleapis.com/css?family=Oswald:700">
+
+        <script src="./codemirror.js"></script>
+        <link rel="stylesheet" href="./codemirror.css">
+        <link rel="stylesheet" href="./ambiance.css">
+        <style type="text/css">
+            .CodeMirror {
+                font-size: 13px;
+                margin-left: -40px;
+                margin-right: -40px;
+                margin-top: 5px;
+                margin-bottom: 5px;
+            }
+            .CodeMirror-gutters {
+                width: 35px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <section id="wrapper">
+            <header>
+                <table>
+                    <tr>
+                        <td><img src="./identicon.png" /></td>
+                        <td><h1>Ty Overby<h1></td>
+                    </tr>
+                </table>
+            </header>
+            <article>
+
+
+<textarea class="code">
+{
+  'name': 'Ty Overby',
+  'phone': '(253) 514-9370'
+  'email': 'ty@pre-alpha.com',
+  'homepage': 'tyoverby.com',
+  'resume': 'tyoverby.com/resume',
+  'education': [
+    {
+      'institution': 'University of Washington',
+      'study': 'Computer Science',
+      'degree': 'Bachelors',
+      'start_date': 'Mon Aug 27 2012',
+      'end_date': undefined
+    }
+  ],
+  'past_work': [
+    {
+      'company': 'Google',
+      'title': 'Software Developer Intern',
+      'start_date': 'Mon Jun 17 2013',
+      'end_date': 'Fri Sep 15 2013'
+    }
+  ]
+}
+</textarea>
+
+
+            </article>
+        </section>
+
+<script>
+
+
+var codeSections = document.getElementsByClassName('code');
+codeSections = Array.prototype.slice.call(codeSections);
+
+for(var index in codeSections) {
+    var element = codeSections[index];
+    var mirror = CodeMirror.fromTextArea(element, {
+        mode: 'javascript',
+        theme: 'ambiance',
+        readOnly: true,
+        lineNumbers: true,
+        matchBrackets: true
+    });
+}
+
+
+</script>
+    </body>
+</html>
