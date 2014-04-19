@@ -1,6 +1,7 @@
 body {
     font-size: 1.2em;
     font-family: source-sans-pro, 'Source Sans Pro', 'Proxima Nova', 'Helvetica Neue', sans-serif;
+    text-align: justify;
 }
 
 h1,h2,h3,h4,h5 {
