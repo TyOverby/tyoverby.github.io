@@ -1,0 +1,7 @@
+{
+    "name": "Ty's Blog",
+    "subName": "mumble",
+    "author": "Ty Overby",
+    "_outDir_": "./out/",
+    "_postsDir_": "./posts/"
+}

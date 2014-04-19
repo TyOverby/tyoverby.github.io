@@ -1,0 +1,8 @@
+doctype html
+html(lang="en")
+    head
+        title= post.title
+        link(rel="stylesheet", type="text/css", href="./style.css")
+    body
+        h1= post.title
+        article!= content
