@@ -2,7 +2,17 @@ doctype html
 html(lang="en")
     head
         title= post.title
+        link(href='http://fonts.googleapis.com/css?family=Cardo:700' rel='stylesheet' type='text/css')
+        link(href='http://fonts.googleapis.com/css?family=Source+Code+Pro:500' rel='stylesheet' type='text/css')
+
         link(rel="stylesheet", type="text/css", href="./style.css")
+        link(rel="stylesheet", type="text/css", href="./default.css")
     body
-        h1= post.title
-        article!= content
+        #wrapper
+            header
+                h1= post.title
+                h2= post.subtitle
+                #byline
+                    span By
+                    span= blog.author
+            article!= content
