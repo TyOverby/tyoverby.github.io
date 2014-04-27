@@ -1,8 +1,7 @@
 ---
-{
-    "title": "Inscribe",
-    "subtitle": "A static blog generator without features"
-}
+title: Inscribe
+subtitle: A static blog generator without features
+date: 2014-04-26 PST
 ---
 
 This is the content of the first post.
