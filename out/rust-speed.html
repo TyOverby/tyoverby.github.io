@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>A Rust Microbenchmark</title>
+    <link href="http://fonts.googleapis.com/css?family=Cardo:700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="stylesheet" type="text/css" href="./atelier-lakeside.light.css">
+  </head>
+  <body>
+    <div id="wrapper">
+      <header>
+        <h1>A Rust Microbenchmark</h1>
+        <h2>Rust eating C food</h2>
+        <div id="byline"><span>By</span><span>Ty Overby</span></div>
+      </header>
+      <article><p>As a totally contrived example, I will be computing the expression</p>
+<p>
+    $ \sum_{i=0}^{1,000,000,000} \begin{cases} i/2 + 2 &amp; \text{if } i \% 2 = 0 \\ 0 &amp; \text{otherwise} \end{cases}$
+</p>
+
+<p>in both C and Rust to see how close in performance Rust can get to C while still being written in
+an idiomatic pure-functional style.</p>
+<h1 id="rust">Rust</h1>
+<pre><code class="lang-rust"><span class="hljs-keyword">use</span> std::iter::range;
+
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span>(</span>) {
+    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> iterator =
+      range(<span class="hljs-number">0i32</span>, <span class="hljs-number">1_000_000_000i32</span>)
+        .filter(|x| *x % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>)
+        .map(|x| x / <span class="hljs-number">2</span>)
+        .map(|x| x + <span class="hljs-number">2</span>);
+    <span class="hljs-keyword">let</span> ans = iterator.fold(<span class="hljs-number">0</span>, |a, b| a + b);
+    println!(<span class="hljs-string">"{}"</span>, ans);
+}
+</code></pre>
+<h1 id="c">C</h1>
+<pre><code class="lang-c"><span class="hljs-preprocessor">#include &lt;stdio.h&gt;</span>
+
+<span class="hljs-keyword">void</span> main(<span class="hljs-keyword">void</span>) {
+    <span class="hljs-keyword">int</span> counter = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">1000000000</span>; i++) {
+        <span class="hljs-keyword">if</span> (i % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) {
+            counter += (i / <span class="hljs-number">2</span>) + <span class="hljs-number">2</span>;
+        }
+    }
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, counter);
+}
+</code></pre>
+<h1 id="benchmark-analysis">Benchmark / Analysis</h1>
+<p>Both of these implementations are flawed in various ways:</p>
+<ol>
+<li>Using 32-bit integers means that the computation overflows very quickly</li>
+<li>Finding the even numbers doesn&#39;t require a filter or if statement when you
+could only look at every other number to begin with.</li>
+<li>The rust implementation should do both map steps at once.</li>
+</ol>
+<p>These issues were kept despite their flaws:</p>
+<ol>
+<li>To avoid slower number operations;</li>
+<li>To test how well the compilers handle branching at the CPU level; and</li>
+<li>To see if Rust is able to optimize away the additional map.</li>
+</ol>
+<p>I was incredibly surprised to see that on my machine, Rust was able to
+outperform C reliably.</p>
+<h2 id="rust">Rust</h2>
+<pre><code>$ rustc iter.rs  --opt-level 3
+$ time ./iter
+-1583310976
+
+real    0m0.884s
+user    0m0.872s
+sys     0m0.004s
+</code></pre><h2 id="c">C</h2>
+<pre><code>$ gcc test.c -std=c99 -O3
+$ time ./a.out
+-1583310976
+
+real    0m1.398s
+user    0m1.388s
+sys     0m0.004s
+</code></pre><p>I&#39;m sure that there are ways to get the C version faster, but the only important takeaway from this
+5 second experiment is that the Rust compiler does a damn good job of providing abstractions
+that hit really close to the metal.</p>
+</article>
+    </div>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+  </body>
+</html>
