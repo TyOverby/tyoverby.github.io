@@ -82,9 +82,11 @@ of properties for the post.
 This is what it looks like:
 ```markdown
 ---
+
 title: Some Post Title
 subtitle: A really bad subtitle
 date: 2014-04-26 PST
+
 ---
 
 # Markdown Header
