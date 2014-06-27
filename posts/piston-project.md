@@ -4,6 +4,9 @@ title: What is the Piston Project
 
 ---
 
+# This is a rough draft.
+# Do not distribute
+
 The Piston Project is a collection of game programming libraries that make it
 easy to develop games in the Rust programming language.  These libraries are
 made with the intent of being combined and extended very easily.
