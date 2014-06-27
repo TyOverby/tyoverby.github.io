@@ -63,7 +63,8 @@ tutorial.
 ## Rust-Graphics
 
 _Rust-Graphics_ is a 2d graphics API that can draw to any graphical backend.
-Right now, the project only supports OpenGL, but in theory, any graphical
+Right now, the project only provides an implementation for OpenGL, but in
+theory, any graphical
 backend that implements the Rust-Graphics backend interface could be used
 without any changes to your drawing code.
 
