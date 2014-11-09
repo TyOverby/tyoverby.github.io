@@ -2,4 +2,4 @@ destination: ./_site
 highlighter: pygments
 lsi: false
 safe: true
-
+markdown: redcarpet

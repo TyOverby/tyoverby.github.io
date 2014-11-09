@@ -2,22 +2,31 @@
 <html>
     <head>
         <title> What is the Piston Project </title>
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+        <link rel="stylesheet" type="text/css" href="/css/code.css">
+    <link href="http://fonts.googleapis.com/css?family=Cardo:700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
     </head>
     <body>
         <div id="wrapper">
-            <h1> What is the Piston Project </h1>
+            <header>
+    <h1> What is the Piston Project </h1>
+    <h2>  </h2>
+    <div id="byline"> <span> By </span> <span>  </span> </div>
+</header>
 
 <div id="post">
-    <h1 id="this-is-a-rough-draft">This is a rough draft.</h1>
-<p># Do not distribute</p>
+    <h1>This is a rough draft.</h1>
+
+<h1>Do not distribute</h1>
 
 <p>The Piston Project is a collection of game programming libraries that make it
 easy to develop games in the Rust programming language.  These libraries are
 made with the intent of being combined and extended very easily.</p>
 
-<p>Let’s take a look at a few of the libraries in the Piston Project.</p>
+<p>Let&#39;s take a look at a few of the libraries in the Piston Project.</p>
 
-<h2 id="piston">Piston</h2>
+<h2>Piston</h2>
 
 <p>As any native game developer knows, getting a window open and a triangle on
 the screen can be hell.  The titular project <em>Piston</em> helps with the first
@@ -30,40 +39,38 @@ implements the <em>Piston</em> API.</p>
 keyboard and mouse events, making interacting with the window just as easy
 as opening it.</p>
 
-<p>Let’s take a look at the code that it takes to get a window up on the screen.</p>
+<p>Let&#39;s take a look at the code that it takes to get a window up on the screen.</p>
+<div class="highlight"><pre><code class="language-rust" data-lang="rust"><span class="k">extern</span> <span class="n">crate</span> <span class="n">piston</span><span class="p">;</span>
+<span class="k">extern</span> <span class="n">crate</span> <span class="n">sdl2_game_window</span><span class="p">;</span>
 
-<p>```rust
-extern crate piston;
-extern crate sdl2_game_window;</p>
+<span class="c1">// This would contain our game state</span>
+<span class="k">struct</span> <span class="n">App</span><span class="p">;</span>
 
-<p>// This would contain our game state
-struct App;</p>
+<span class="c1">// This would contain our game behavior</span>
+<span class="k">impl</span> <span class="n">Game</span> <span class="k">for</span> <span class="n">App</span> <span class="p">{}</span>
 
-<p>// This would contain our game behavior
-impl Game for App {}</p>
+<span class="k">fn</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="k">mut</span> <span class="n">window</span> <span class="o">=</span> <span class="n">GameWindowSDL2</span><span class="o">::</span><span class="n">new</span><span class="p">(</span>
+        <span class="n">GameWindowSettings</span> <span class="p">{</span>
+            <span class="n">title</span><span class="o">:</span> <span class="s">&quot;test&quot;</span><span class="p">.</span><span class="n">to_string</span><span class="p">(),</span>
+            <span class="n">size</span><span class="o">:</span> <span class="p">[</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">],</span>
+            <span class="n">fullscreen</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="n">exit_on_esc</span><span class="o">:</span> <span class="k">true</span>
+        <span class="p">}</span>
+    <span class="p">);</span>
 
-<p>fn main() {
-    let mut window = GameWindowSDL2::new(
-        GameWindowSettings {
-            title: “test”.to_string(),
-            size: [800, 400],
-            fullscreen: false,
-            exit_on_esc: true
-        }
-    );</p>
-
-<pre><code>let game_iter_settings = GameIteratorSettings {
-    updates_per_second: 120,
-    max_frames_per_second: 60
-};
-App.run(&amp;mut window, &amp;game_iter_settings); } ```
-</code></pre>
-
-<p>You’ll notice that the SDL2 backend was used for this example. How and why
+    <span class="kd">let</span> <span class="n">game_iter_settings</span> <span class="o">=</span> <span class="n">GameIteratorSettings</span> <span class="p">{</span>
+        <span class="n">updates_per_second</span><span class="o">:</span> <span class="mi">120</span><span class="p">,</span>
+        <span class="n">max_frames_per_second</span><span class="o">:</span> <span class="mi">60</span>
+    <span class="p">};</span>
+    <span class="n">App</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="n">window</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">game_iter_settings</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>You&#39;ll notice that the SDL2 backend was used for this example. How and why
 is a bit out of scope for this introduction, but will be covered by the
 tutorial.</p>
 
-<h2 id="rust-graphics">Rust-Graphics</h2>
+<h2>Rust-Graphics</h2>
 
 <p><em>Rust-Graphics</em> is a 2d graphics API that can draw to any graphical backend.
 Right now, the project only provides an implementation for OpenGL, but in
@@ -75,32 +82,29 @@ without any changes to your drawing code.</p>
 building more complicated structures out of simpler ones without performing
 any mutation.</p>
 
-<p>A code snippit is worth a thousand words, so here’s <em>Rust-Graphics</em> in action:</p>
-
-<p><code>rust
-// Make a drawing context
-let c = &amp;Context::abs(window_width, window_height);
-// Clear the screen with white
-c.rgb(1.0, 1.0, 1.0).draw(backend);
-// Draw a red rectangle in the upper left corner of the screen
-c.rect(0.0, 0.0,  50.0, 50.0).rgb(1.0, 0.0, 0.0).draw(backend);
-</code></p>
-
+<p>A code snippit is worth a thousand words, so here&#39;s <em>Rust-Graphics</em> in action:</p>
+<div class="highlight"><pre><code class="language-rust" data-lang="rust"><span class="c1">// Make a drawing context</span>
+<span class="kd">let</span> <span class="n">c</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">Context</span><span class="o">::</span><span class="n">abs</span><span class="p">(</span><span class="n">window_width</span><span class="p">,</span> <span class="n">window_height</span><span class="p">);</span>
+<span class="c1">// Clear the screen with white</span>
+<span class="n">c</span><span class="p">.</span><span class="n">rgb</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">).</span><span class="n">draw</span><span class="p">(</span><span class="n">backend</span><span class="p">);</span>
+<span class="c1">// Draw a red rectangle in the upper left corner of the screen</span>
+<span class="n">c</span><span class="p">.</span><span class="n">rect</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span>  <span class="mf">50.0</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">).</span><span class="n">rgb</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">).</span><span class="n">draw</span><span class="p">(</span><span class="n">backend</span><span class="p">);</span>
+</code></pre></div>
 <p>In the api example, <code>backend</code> is a <em>Rust-Graphics</em> graphical backend that
 in practice will probably be an OpenGL context.</p>
 
-<h2 id="rust-image">Rust-Image</h2>
+<h2>Rust-Image</h2>
 
 <p>Odds are that your game will have some images as assets to be drawn to the
 screen.  Fortunately, <em>Rust-Image</em> has you covered, with decoders and encoders
-for <code>png</code>, <code>jpeg</code>, <code>gif</code>, and <code>webp</code>.  Example code for this library isn’t
+for <code>png</code>, <code>jpeg</code>, <code>gif</code>, and <code>webp</code>.  Example code for this library isn&#39;t
 particularly interesting: it does exactly what you expect exactly how you would
 expect.</p>
 
-<h1 id="inter-package-dependencies">Inter-Package Dependencies</h1>
+<h1>Inter-Package Dependencies</h1>
 
 <p>You might have noticed that for both <em>Piston</em> and <em>Rust-Graphics</em> there was
-a lot of talk about being independent from “backends”.  This is because both
+a lot of talk about being independent from &quot;backends&quot;.  This is because both
 projects use interfaces heavily in order to eliminate hard dependencies.</p>
 
 <p>For example, <em>Piston</em> has a <code>GameWindow</code> trait with <em>no implementations</em>.
@@ -113,26 +117,20 @@ that the Piston Developers have already written for that backend.</p>
 <p>A dependency tree for a simple project might look like this.</p>
 
 <ul>
-  <li>My Game
-    <ul>
-      <li>piston</li>
-      <li>graphics</li>
-      <li>sdl2_game_window
-        <ul>
-          <li>sdl2</li>
-          <li>piston</li>
-          <li>gl</li>
-        </ul>
-      </li>
-      <li>opengl_graphics
-        <ul>
-          <li>gl</li>
-          <li>graphics</li>
-          <li>image</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
+<li>My Game
+
+<ul>
+<li>piston</li>
+<li>graphics</li>
+<li>sdl2<em>game</em>window</li>
+<li>sdl2</li>
+<li>piston</li>
+<li>gl</li>
+<li>opengl_graphics</li>
+<li>gl</li>
+<li>graphics</li>
+<li>image</li>
+</ul></li>
 </ul>
 
 <p>In that project, the developer wanted to use the packages <code>piston</code> and
@@ -147,4 +145,6 @@ the well idiomatically designed <em>Piston</em> and <em>rust-graphics</em> libra
 
         </div>
     </body>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
 </html>

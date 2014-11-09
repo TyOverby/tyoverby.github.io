@@ -2,6 +2,7 @@
 layout: post
 title: A Rusty Microbenchmark
 subtitle: Rust eating C food
+author: Ty Overby
 ---
 
 As a totally contrived example, I will be computing the expression
@@ -14,6 +15,7 @@ in both C and Rust to see how close in performance Rust can get to C while still
 an idiomatic pure-functional style.
 
 # Rust
+
 ```rust
 use std::iter::range;
 
@@ -61,6 +63,7 @@ I was incredibly surprised to see that on my machine, Rust was able to
 outperform C reliably.
 
 ## Rust
+
 ```
 $ rustc iter.rs  --opt-level 3
 $ time ./iter
@@ -70,7 +73,9 @@ real    0m0.884s
 user    0m0.872s
 sys     0m0.004s
 ```
+
 ## C
+
 ```
 $ gcc test.c -std=c99 -O3
 $ time ./a.out
@@ -81,7 +86,7 @@ user    0m1.388s
 sys     0m0.004s
 ```
 
-I'm sure that there are ways to get the C version faster, but the only important takeaway from this
-5 second experiment is that the Rust compiler does a damn good job of providing abstractions
-that hit really close to the metal.
+I'm sure that there are ways to get the C version faster, but the only
+important takeaway from this 5 second experiment is that the Rust compiler does
+a damn good job of providing abstractions that hit really close to the metal.
 
