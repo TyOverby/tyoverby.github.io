@@ -1,0 +1,62 @@
+<p>The Rust and Go programming languages are relatively new programming languages with an emphasis on writing and maintaining very large codebases. Go was designed to be used internally at Google in their internal services and one of the main driving forces behind rust is Servo: a web-browser written from the ground up focusing on layout parallelism and safety.</p>
+<p>What I think is really interesting about both is that they decided against using Exceptions as the main method of error handling; (D and Nim are other newish compiled languages that stick with Exceptions). Both Rust and Go treat their error values like any other object or value in the program, however the way that choose to implement it differs greatly.</p>
+<h2 id="errors-in-go">Errors in Go</h2>
+<p>In Go, functions can return multiple values. It looks like this:</p>
+<div class="sourceCode"><pre class="sourceCode go"><code class="sourceCode go"><span class="kw">func</span> firstFibs() (<span class="dt">uint32</span>, <span class="dt">uint32</span>) {
+    <span class="kw">return</span> <span class="dv">0</span>, <span class="dv">1</span>
+}</code></pre></div>
+<p>When a function can fail, it is good practice to return a value AND an error.</p>
+<div class="sourceCode"><pre class="sourceCode go"><code class="sourceCode go"><span class="kw">func</span> canFail() (<span class="dt">uint32</span>, <span class="dt">error</span>) {
+...
+}</code></pre></div>
+<p>Here's the catch; in the case that the function completed without failing, the second return value (<code>error</code>) is <code>nil</code>. If there was a failure, <code>error</code> will be non-<code>nil</code> and will contain a description of the error that occurred.</p>
+<p>When calling a function that can fail, handling the error is necessary.</p>
+<p>Here is an example of a function that calls our previously defined failure function. It simply propogates errors by returning them if any contained function call failed.</p>
+<div class="sourceCode"><pre class="sourceCode go"><code class="sourceCode go"><span class="kw">func</span> doesThings() (<span class="dt">uint32</span>, <span class="dt">error</span>)
+    res1, err1 = canFail()
+
+    <span class="kw">if</span> err1 != <span class="ot">nil</span> {
+        <span class="kw">return</span> <span class="dt">error</span>
+    }
+
+    res2, err2 = canFail()
+
+    <span class="kw">if</span> err2 != <span class="ot">nil</span> {
+        <span class="kw">return</span> <span class="dt">error</span>
+    }
+
+    <span class="kw">return</span> res1 + res2, <span class="ot">nil</span>
+}</code></pre></div>
+<p>Instead of propogating these errors by returning them, we could have handled the error by inspecting it just like any other Go value.</p>
+<h2 id="errors-in-rust">Errors in Rust</h2>
+<p>In Rust, errors are returned by-value too, but because Rust has sum-types, the result value and the error are combined into one type called Result. Here's what the <code>Result</code> enum looks like:</p>
+<div class="sourceCode"><pre class="sourceCode rust"><code class="sourceCode rust"><span class="kw">enum</span> <span class="dt">Result</span>&lt;T, E&gt; {
+    <span class="cn">Ok</span>(T),
+    <span class="cn">Err</span>(E)
+}</code></pre></div>
+<p>Then, a function that can return either a value or an error would have a type signature like this one:</p>
+<div class="sourceCode"><pre class="sourceCode rust"><code class="sourceCode rust"><span class="co">// IoError is an error type commonly used in IO operations where everything can fail.</span>
+<span class="kw">fn</span> can_fail() -&gt; <span class="dt">Result</span>&lt;<span class="dt">u32</span>, IoError&gt;;</code></pre></div>
+<p>When calling these functions, we still run into the same issue that we had in the Go code. Namely that we need to handle those errors and use the values inside. Here's how it looks.</p>
+<div class="sourceCode"><pre class="sourceCode rust"><code class="sourceCode rust"><span class="kw">fn</span> does_things() -&gt; <span class="dt">Result</span>&lt;<span class="dt">u32</span>, IoError&gt; {
+    <span class="kw">let</span> res1 = <span class="kw">match</span> can_fail() {
+        <span class="cn">Ok</span>(v) =&gt; v,
+        <span class="cn">Err</span>(e) =&gt; <span class="kw">return</span> <span class="cn">Err</span>(e)
+    };
+
+    <span class="kw">let</span> res2 = <span class="kw">match</span> can_fail() {
+        <span class="cn">Ok</span>(v) =&gt; v,
+        <span class="cn">Err</span>(e) =&gt; <span class="kw">return</span> <span class="cn">Err</span>(e)
+    };
+
+    <span class="kw">return</span> <span class="cn">Ok</span>(res1 + res2);
+}</code></pre></div>
+<p>Although we went from having multiple return values in Go (only one of which is valid), to having a single return value (with only one valid variant), the code looks roughly the same.</p>
+<p>However, a more ideomatic way of writing this rust code would be to use the <code>try!</code> macro. This macro inserts the match and early return for us and can really clean up the code.</p>
+<div class="sourceCode"><pre class="sourceCode rust"><code class="sourceCode rust"><span class="kw">fn</span> does_things() -&gt; <span class="dt">Result</span>&lt;<span class="dt">u32</span>, IoError&gt; {
+    <span class="kw">let</span> res1 = <span class="pp">try!</span>(canFail())
+    <span class="kw">let</span> res2 = <span class="pp">try!</span>(canFail())
+    <span class="kw">return</span> <span class="cn">Ok</span>(res1 + res2);
+}</code></pre></div>
+<p>When a programmer needs to handle errors in a way that isn't simply returning a result, he would have to inspect the result like in the first example, but if transforming one error value to another is enough, the <code>try!</code> macro can do that too.</p>
+<p>For more information on error handling in rust, read the chapter from the <a href="https://doc.rust-lang.org/book/error-handling.html">Rust Book</a>.</p>

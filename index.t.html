@@ -1,0 +1,12 @@
+#define TITLE hello world!
+#include "./common-header.t.html"
+#undef TITLE
+
+#define POST(FILE, TITLE) <li><a href=FILE> TITLE </a></li>
+
+<ul>
+    POST(posts/rust-vs-go.html, Rust vs Go (Error Handling))
+    POST(posts/rust-speed.html, Rust Speed)
+</ul>
+
+#include "./common-footer.t.html"
