@@ -24,6 +24,3 @@ clean:
 	rm tmp/*
 	rm posts/rust-speed.html
 	rm posts/rust-vs-go.html
-
-publish:
-	rm posts/*.md.html
