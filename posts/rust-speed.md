@@ -7,9 +7,7 @@ author: Ty Overby
 
 As a totally contrived example, I will be computing the expression
 
-<p>
-    $ \sum_{i=0}^{1,000,000,000} \begin{cases} i/2 + 2 & \text{if } i \% 2 = 0 \\\\ 0 & \text{otherwise} \end{cases}$
-</p>
+$\sum_{i=0}^{1,000,000,000} \begin{cases} i/2 + 2 & \text{if } i \% 2 = 0 \\\\ 0 & \text{otherwise} \end{cases}$
 
 in both C and Rust to see how close in performance Rust can get to C while still being written in
 an idiomatic pure-functional style.
