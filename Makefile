@@ -1,6 +1,6 @@
 TEMPLATE=cpp -w -undef -nostdinc -E -P
 MARKDOWN=pandoc -f markdown -t html --katex
-SHARED=common-header.t.html common-footer.t.html style.css katex.min.js katex.min.css
+SHARED=common-header.t.html common-footer.t.html css/style.css js/katex.min.js css/katex.min.css
 
 all: index.html posts/rust-speed.html posts/rust-vs-go.html
 
