@@ -10,6 +10,9 @@ tmp:
 tmp/rust-speed.md.html: posts/rust-speed.md tmp
 	$(MARKDOWN) $< > $@
 
+tmp/index.md.html: index.md tmp
+	$(MARKDOWN) $< > $@
+
 posts/rust-speed.html: tmp/rust-speed.md.html $(SHARED)
 	$(TEMPLATE) "-D TITLE=Rust Speed" "-D POST=\"./tmp/rust-speed.md.html\"" post.t.html > posts/rust-speed.html
 
@@ -19,7 +22,7 @@ tmp/rust-vs-go.md.html: posts/rust-vs-go.md tmp
 posts/rust-vs-go.html: tmp/rust-vs-go.md.html $(SHARED)
 	$(TEMPLATE) "-D TITLE=Rust vs Go" "-D POST=\"./tmp/rust-vs-go.md.html\"" post.t.html > posts/rust-vs-go.html
 
-index.html: index.t.html $(SHARED)
+index.html: tmp/index.md.html index.t.html $(SHARED)
 	$(TEMPLATE) index.t.html > index.html
 
 clean:

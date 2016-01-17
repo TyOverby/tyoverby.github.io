@@ -1,5 +1,10 @@
 html, body {
     margin: 0;
+
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2em;
+    line-height: 1.6em;
+    text-underline-position: under;
 }
 
 body {
@@ -11,6 +16,16 @@ body {
     body {
         width: calc(100% - 60px);
     }
+}
+
+a, a:visited {
+    color: #69C;
+    text-decoration:none;
+}
+
+ul {
+    list-style: circle inside;
+    padding: 0;
 }
 
 h1, h2, h3 {
@@ -31,9 +46,6 @@ h3 {
 }
 
 p {
-    font-size: 1.2em;
-    line-height: 1.6em;
-    font-family: 'Open Sans', sans-serif;
     margin-top: 5px;
 }
 

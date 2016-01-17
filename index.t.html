@@ -1,8 +1,10 @@
-#define TITLE hello world!
+#define TITLE Ty Overby
 #include "./common-header.t.html"
 #undef TITLE
 
 #define POST(FILE, TITLE) <li><a href=FILE> TITLE </a></li>
+
+#include "./tmp/index.md.html"
 
 <ul>
     POST("posts/rust-vs-go.html", Rust vs Go (Error Handling))
