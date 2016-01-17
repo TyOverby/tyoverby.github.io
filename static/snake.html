@@ -259,6 +259,7 @@ function basicGame(canvasID){
     var points = 0;
     var cent = [];
     direction = new GameMath.Vector2f(0,-1);
+    newDirection = direction;
     this.startup = function(){
         for(var i = 0;i<3;i++){
             foods[i] =(new GameMath.Vector2f(GameMath.Random.randInt(0,gridCount-1),GameMath.Random.randInt(0,gridCount-1)));
@@ -270,6 +271,12 @@ function basicGame(canvasID){
     /////// UPDATE ///////
     //////////////////////
     this.update = function(){
+        if(direction.y != newDirection.y){
+            if(direction.x != newDirection.x){
+                direction = newDirection.clone();
+            }
+        }
+
         var nCent = [];
         nCent[0] = cent[0];
         for(var i=1;i<cent.length;i++){
@@ -360,7 +367,6 @@ function basicGame(canvasID){
 }
 inputHandler = function(e){
     var key = event.keyCode;
-    var newDirection;
     if(key==87||key==38){        //Up
         newDirection=new GameMath.Vector2f(0,-1);
     } else if(key==83||key==40){ // Down
@@ -370,11 +376,7 @@ inputHandler = function(e){
     } else if(key==65||key==37){ // Left
         newDirection = new GameMath.Vector2f(-1,0);
     }
-    if(direction.y != newDirection.y){
-        if(direction.x != newDirection.x){
-            direction = newDirection.clone();
-        }
-    }
+
 };
 function getColor(index,array){
     var hue = index/array.length*360;
