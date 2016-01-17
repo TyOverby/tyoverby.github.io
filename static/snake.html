@@ -223,7 +223,7 @@ function Engine(game,fps){
         if(!hasRan){
             game.startup();
         }
-        intervalId = setInterval(this.update,1);
+        intervalId = setInterval(this.update, 1);
         hasRan = true;
     }
     this.stop = function(message){
@@ -249,7 +249,8 @@ function Engine(game,fps){
  *  ../js/game/game.js
  */
 function basicGame(canvasID){
-    var scorePane = new Pane("score");
+    var scorePanel = document.getElementById("score");
+    score = 0;
     pane = new Pane(canvasID);
     var gridCount = 50;
     var sizeFactor = pane.getWidth()/gridCount;
@@ -360,6 +361,7 @@ function basicGame(canvasID){
                 }
             }
         }
+        scorePanel.innerText = score;
     }
     this.isRunning = function(){
         return true;
@@ -394,8 +396,8 @@ function stop(){
     </head>
 
     <body style="background-color:black;" onkeydown="inputHandler(event);">
-        <canvas id="score" width="500" height="100"></canvas>
-            <br />
+        <h1 style="color:white;">Score: <span id="score">0</span> </h1>
+        <br />
         <canvas id="canvas" width="500" height="500" ></canvas>
     </body>
     <br />
