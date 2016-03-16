@@ -1,0 +1,102 @@
+html, body {
+    margin: 0;
+
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.1em;
+    line-height: 1.6em;
+    text-underline-position: under;
+}
+
+body {
+    padding: 30px;
+    width: 1000px;
+}
+
+@media only screen and (max-width: 800px) {
+    body {
+        width: calc(100% - 60px);
+    }
+}
+
+a, a:visited {
+    color: #69C;
+    text-decoration:none;
+}
+
+ul {
+    list-style: circle inside;
+    padding: 0;
+}
+
+h1, h2, h3 {
+    font-family: 'Bitter', sans-serif;
+    margin-bottom: 5px;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+h2 {
+    font-size: 2.5em;
+}
+
+h3 {
+    font-size: 2em;
+}
+
+p {
+    margin-top: 5px;
+}
+
+pre.sourceCode {
+    font-size: 1em;
+    line-height: 1.6em;
+
+    width: calc(100% + 30px);
+    position: relative;
+    left: -30px;
+    padding-left: 30px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background: #2d2d2d;
+
+    border-top: 2px solid #1B1B1B;
+    border-bottom: 2px solid #404040;
+}
+
+.pixelated {
+  image-rendering:optimizeSpeed;             /* Legal fallback */
+  image-rendering:-moz-crisp-edges;          /* Firefox        */
+  image-rendering:-o-crisp-edges;            /* Opera          */
+  image-rendering:-webkit-optimize-contrast; /* Safari         */
+  image-rendering:optimize-contrast;         /* CSS3 Proposed  */
+  image-rendering:crisp-edges;               /* CSS4 Proposed  */
+  image-rendering:pixelated;                 /* CSS4 Proposed  */
+  -ms-interpolation-mode:nearest-neighbor;   /* IE8+           */
+}
+
+.sourceCode { color: #CCC }
+/* Keyword */
+.sourceCode .kw { color: #6CC; }
+/* DataTypeTok */
+.sourceCode .dt { color: #69C; }
+/* DecValTok (decimal value), BaseNTok, FloatTok */
+.sourceCode .dv, .sourceCode .bn, .sourceCode .fl { color: #C9C; }
+/* CharTok */
+.sourceCode .ch { color: #C9C; }
+/* StringTok */
+.sourceCode .st { color: #C9C; }
+/* CommentTok */
+.sourceCode .co { color: #9c9; }
+/* OtherTok */
+.sourceCode .ot { color: #CCC; }
+/* AlertTok */
+.sourceCode .al { color: #CB4B16; font-weight: bold; }
+/* FunctionTok */
+.sourceCode .fu { color: #CCC; }
+/* RegionMarkerTok */
+.sourceCode .re { }
+/* ErrorTok */
+.sourceCode .er { color: #f2777a; font-weight: bold; }
+
