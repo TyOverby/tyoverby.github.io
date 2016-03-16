@@ -47,12 +47,14 @@ void main(void) {
 # Benchmark / Analysis
 
 Both of these implementations are flawed in various ways:
+
 1. Using 32-bit integers means that the computation overflows very quickly
 2. Finding the even numbers doesn't require a filter or if statement when you
    could only look at every other number to begin with.
 3. The rust implementation should do both map steps at once.
 
 These issues were kept despite their flaws:
+
 1. To avoid slower number operations;
 2. To test how well the compilers handle branching at the CPU level; and
 3. To see if Rust is able to optimize away the additional map.
