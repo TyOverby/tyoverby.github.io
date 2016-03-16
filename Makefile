@@ -14,7 +14,7 @@ tmp/index.md.html: index.md tmp
 	$(MARKDOWN) $< > $@
 
 posts/rust-speed.html: tmp/rust-speed.md.html $(SHARED)
-	$(TEMPLATE) "-D TITLE=Rust Speed" "-D POST=\"./tmp/rust-speed.md.html\"" post.t.html > posts/rust-speed.html
+	$(TEMPLATE) "-D KATEX" "-D TITLE=Rust Speed" "-D POST=\"./tmp/rust-speed.md.html\"" post.t.html > posts/rust-speed.html
 
 tmp/rust-vs-go.md.html: posts/rust-vs-go.md tmp
 	$(MARKDOWN) $< > $@
