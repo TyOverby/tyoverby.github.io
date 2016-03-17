@@ -164,7 +164,7 @@ group:"textord",replace:"\u03a5"},"\\Phi":{font:"main",group:"textord",replace:"
 <p>As a totally contrived example, I will be computing the expression</p>
 <p><span class="math inline">\sum_{i=0}^{1,000,000,000} \begin{cases} i/2 + 2 &amp; \text{if } i \% 2 = 0 \\\\ 0 &amp; \text{otherwise} \end{cases}</span></p>
 <p>in both C and Rust to see how close in performance Rust can get to C while still being written in an idiomatic pure-functional style.</p>
-<h1 id="rust">Rust</h1>
+<h2 id="rust">Rust</h2>
 <div class="sourceCode"><pre class="sourceCode rust"><code class="sourceCode rust"><span class="kw">use</span> std::iter::range;
 
 <span class="kw">fn</span> main() {
@@ -176,7 +176,7 @@ group:"textord",replace:"\u03a5"},"\\Phi":{font:"main",group:"textord",replace:"
     <span class="kw">let</span> ans = iterator.fold(<span class="dv">0</span>, |a, b| a + b);
     <span class="pp">println!</span>(<span class="st">&quot;{}&quot;</span>, ans);
 }</code></pre></div>
-<h1 id="c">C</h1>
+<h2 id="c">C</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
 
 <span class="dt">void</span> main(<span class="dt">void</span>) {
@@ -188,7 +188,7 @@ group:"textord",replace:"\u03a5"},"\\Phi":{font:"main",group:"textord",replace:"
     }
     printf(<span class="st">&quot;%d</span><span class="ch">\n</span><span class="st">&quot;</span>, counter);
 }</code></pre></div>
-<h1 id="benchmark-analysis">Benchmark / Analysis</h1>
+<h2 id="benchmark-analysis">Benchmark / Analysis</h2>
 <p>Both of these implementations are flawed in various ways:</p>
 <ol style="list-style-type: decimal">
 <li>Using 32-bit integers means that the computation overflows very quickly</li>

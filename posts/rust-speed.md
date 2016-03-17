@@ -12,7 +12,7 @@ $\sum_{i=0}^{1,000,000,000} \begin{cases} i/2 + 2 & \text{if } i \% 2 = 0 \\\\ 0
 in both C and Rust to see how close in performance Rust can get to C while still being written in
 an idiomatic pure-functional style.
 
-# Rust
+## Rust
 
 ```rust
 use std::iter::range;
@@ -28,7 +28,7 @@ fn main() {
 }
 ```
 
-# C
+## C
 
 ```c
 #include <stdio.h>
@@ -44,7 +44,7 @@ void main(void) {
 }
 ```
 
-# Benchmark / Analysis
+## Benchmark / Analysis
 
 Both of these implementations are flawed in various ways:
 
