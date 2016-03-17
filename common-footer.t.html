@@ -1,5 +1,6 @@
 
 
+#ifdef KATEX
     <script>
 var maths = document.querySelectorAll(".math");
 for (var i = 0; i < maths.length; i++) {
@@ -8,5 +9,7 @@ for (var i = 0; i < maths.length; i++) {
     katex.render(text, maths[i]);
 }
     </script>
+#endif
+    </div>
     </body>
 </html>

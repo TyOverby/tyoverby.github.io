@@ -21,13 +21,37 @@ html, body {
 }
 
 body {
-    padding: 30px;
-    width: 1000px;
+    background: url('/images/out6.png');
+    background-position: left;
+    background-size: 100vw 200vh;
+    background-attachment: fixed;
 }
 
-@media only screen and (max-width: 800px) {
-    body {
-        width: calc(100% - 60px);
+.header {
+    color: white;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    font-size: 70px;
+    height: 100px;
+    vertical-align: middle;
+    line-height: 100px;
+    font-family: bitter, sans-serif;
+    padding-left: 30px;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.content {
+    padding: 30px;
+    width: 800px;
+    background: white;
+    margin-top: 100px;
+}
+
+@media only screen and (max-width: 860px) {
+    .content {
+        width: calc(100vw - 60px);
     }
 }
 
@@ -44,6 +68,7 @@ ul {
 h1, h2, h3 {
     font-family: 'Bitter', sans-serif;
     margin-bottom: 5px;
+    color: #252645;
 }
 
 h1 {
@@ -72,10 +97,11 @@ pre.sourceCode {
     padding-left: 30px;
     padding-top: 15px;
     padding-bottom: 15px;
-    background: #2d2d2d;
+    background: #372945;
 
     border-top: 2px solid #1B1B1B;
     border-bottom: 2px solid #404040;
+    overflow: scroll;
 }
 
 .pixelated {
@@ -131,7 +157,9 @@ group:"textord",replace:"\u03a5"},"\\Phi":{font:"main",group:"textord",replace:"
 
     </script>
 
-    <body>
+    <body class="pixelated">
+        <div class="header"> Rust Speed </div>
+        <div class="content">
 
 <p>As a totally contrived example, I will be computing the expression</p>
 <p><span class="math inline">\sum_{i=0}^{1,000,000,000} \begin{cases} i/2 + 2 &amp; \text{if } i \% 2 = 0 \\\\ 0 &amp; \text{otherwise} \end{cases}</span></p>
@@ -194,6 +222,7 @@ sys     0m0.004s</code></pre>
 
 
 
+
     <script>
 var maths = document.querySelectorAll(".math");
 for (var i = 0; i < maths.length; i++) {
@@ -202,6 +231,8 @@ for (var i = 0; i < maths.length; i++) {
     katex.render(text, maths[i]);
 }
     </script>
+
+    </div>
     </body>
 </html>
 

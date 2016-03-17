@@ -20,7 +20,7 @@ tmp/rust-vs-go.md.html: posts/rust-vs-go.md tmp
 	$(MARKDOWN) $< > $@
 
 posts/rust-vs-go.html: tmp/rust-vs-go.md.html $(SHARED)
-	$(TEMPLATE) "-D TITLE=Rust vs Go" "-D POST=\"./tmp/rust-vs-go.md.html\"" post.t.html > posts/rust-vs-go.html
+	$(TEMPLATE) "-D TITLE=Rust vs Go" "-D IMAGE=\"out.png\"" "-D POST=\"./tmp/rust-vs-go.md.html\"" post.t.html > posts/rust-vs-go.html
 
 index.html: tmp/index.md.html index.t.html $(SHARED)
 	$(TEMPLATE) index.t.html > index.html

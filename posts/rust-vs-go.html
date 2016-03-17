@@ -21,13 +21,37 @@ html, body {
 }
 
 body {
-    padding: 30px;
-    width: 1000px;
+    background: url('/images/out6.png');
+    background-position: left;
+    background-size: 100vw 200vh;
+    background-attachment: fixed;
 }
 
-@media only screen and (max-width: 800px) {
-    body {
-        width: calc(100% - 60px);
+.header {
+    color: white;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    font-size: 70px;
+    height: 100px;
+    vertical-align: middle;
+    line-height: 100px;
+    font-family: bitter, sans-serif;
+    padding-left: 30px;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.content {
+    padding: 30px;
+    width: 800px;
+    background: white;
+    margin-top: 100px;
+}
+
+@media only screen and (max-width: 860px) {
+    .content {
+        width: calc(100vw - 60px);
     }
 }
 
@@ -44,6 +68,7 @@ ul {
 h1, h2, h3 {
     font-family: 'Bitter', sans-serif;
     margin-bottom: 5px;
+    color: #252645;
 }
 
 h1 {
@@ -72,10 +97,11 @@ pre.sourceCode {
     padding-left: 30px;
     padding-top: 15px;
     padding-bottom: 15px;
-    background: #2d2d2d;
+    background: #372945;
 
     border-top: 2px solid #1B1B1B;
     border-bottom: 2px solid #404040;
+    overflow: scroll;
 }
 
 .pixelated {
@@ -123,7 +149,9 @@ pre.sourceCode {
 
 
 
-    <body>
+    <body class="pixelated">
+        <div class="header"> Rust vs Go </div>
+        <div class="content">
 
 <p>The Rust and Go programming languages are relatively new programming languages with an emphasis on writing and maintaining very large codebases. Go was designed to be used internally at Google in their internal services and one of the main driving forces behind rust is Servo: a web-browser written from the ground up focusing on layout parallelism and safety.</p>
 <p>What I think is really interesting about both is that they decided against using Exceptions as the main method of error handling; (D and Nim are other newish compiled languages that stick with Exceptions). Both Rust and Go treat their error values like any other object or value in the program, however the way that choose to implement it differs greatly.</p>
@@ -190,14 +218,8 @@ pre.sourceCode {
 
 
 
-    <script>
-var maths = document.querySelectorAll(".math");
-for (var i = 0; i < maths.length; i++) {
-    var text = maths[i].innerText;
-    maths[i].innerText = "";
-    katex.render(text, maths[i]);
-}
-    </script>
+
+    </div>
     </body>
 </html>
 

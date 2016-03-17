@@ -22,13 +22,37 @@ html, body {
 }
 
 body {
-    padding: 30px;
-    width: 1000px;
+    background: url('/images/out6.png');
+    background-position: left;
+    background-size: 100vw 200vh;
+    background-attachment: fixed;
 }
 
-@media only screen and (max-width: 800px) {
-    body {
-        width: calc(100% - 60px);
+.header {
+    color: white;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    font-size: 70px;
+    height: 100px;
+    vertical-align: middle;
+    line-height: 100px;
+    font-family: bitter, sans-serif;
+    padding-left: 30px;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.content {
+    padding: 30px;
+    width: 800px;
+    background: white;
+    margin-top: 100px;
+}
+
+@media only screen and (max-width: 860px) {
+    .content {
+        width: calc(100vw - 60px);
     }
 }
 
@@ -45,6 +69,7 @@ ul {
 h1, h2, h3 {
     font-family: 'Bitter', sans-serif;
     margin-bottom: 5px;
+    color: #252645;
 }
 
 h1 {
@@ -73,10 +98,11 @@ pre.sourceCode {
     padding-left: 30px;
     padding-top: 15px;
     padding-bottom: 15px;
-    background: #2d2d2d;
+    background: #372945;
 
     border-top: 2px solid #1B1B1B;
     border-bottom: 2px solid #404040;
+    overflow: scroll;
 }
 
 .pixelated {
@@ -124,7 +150,9 @@ pre.sourceCode {
 
 
 
-    <body>
+    <body class="pixelated">
+        <div class="header"> Ty Overby </div>
+        <div class="content">
 
 
 
@@ -132,15 +160,15 @@ pre.sourceCode {
 
 
 <p>Hi, I'm Ty!</p>
-<p>I'm a dev at Microsoft working on the <a href="https://github.com/dotnet/roslyn">C# and VB compilers</a>.</p>
+<p>I'm a dev at Microsoft working on the <a href="https://github.com/dotnet/roslyn">Roslyn compiler service</a>.</p>
 <p>In my free time I like <a href="https://xxory.tumblr.com/">leatherworking</a> and working on <a href="https://github.com/TyOverby">hobby programming</a> projects.</p>
 <p>Some of the things that I'm working on right now include:</p>
 <ul>
-<li><a href="https://github.com/TyOverby/bincode">A <em>fast</em> binary encoder/decoder pair</a></li>
+<li><a href="https://github.com/TyOverby/bincode">A <em>fast</em> binary serialization scheme</a></li>
 <li><a href="https://github.com/TyOverby/ares-2">A scripting language built for embedding</a></li>
-<li><a href="https://github.com/TyOverby/implicit">A CAD program for implicit surfaces</a></li>
+<li><a href="https://github.com/TyOverby/implicit">A CAD program that uses implicit surfaces</a></li>
 </ul>
-<p>This static-content blog is built using a Makefile, and that doesn't bother me at all. Speaking of blogs, here are some posts that I've written:</p>
+<p>This static-content blog is built using the C preprocessor and a Makefile, and that doesn't bother me at all. Oh right; this is a blog. Here are some posts that I've written:</p>
 
 
 <ul>
@@ -151,14 +179,8 @@ pre.sourceCode {
 
 
 
-    <script>
-var maths = document.querySelectorAll(".math");
-for (var i = 0; i < maths.length; i++) {
-    var text = maths[i].innerText;
-    maths[i].innerText = "";
-    katex.render(text, maths[i]);
-}
-    </script>
+
+    </div>
     </body>
 </html>
 
