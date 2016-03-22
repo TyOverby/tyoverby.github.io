@@ -20,33 +20,27 @@ html, body {
     text-underline-position: under;
 }
 
-body {
-    background: url('/images/out6.png');
-    background-position: left;
-    background-size: 100vw 200vh;
-    background-attachment: fixed;
-}
-
 .header {
-    color: white;
-    position: absolute;
-    left: 0;
-    top: 0;
-
+    color: #1F102D;
     font-size: 70px;
     height: 100px;
-    vertical-align: middle;
     line-height: 100px;
     font-family: bitter, sans-serif;
-    padding-left: 30px;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    text-shadow: 0px 3px white, 0px -3px black;
+}
+
+body {
+    background-color: #1F102D;
 }
 
 .content {
     padding: 30px;
     width: 800px;
-    background: white;
-    margin-top: 100px;
+    background: rgb(245, 245, 245);
+    color: #1F102D;
+
+    margin-left: auto;
+    margin-right: auto;
 }
 
 @media only screen and (max-width: 860px) {
@@ -104,17 +98,6 @@ pre.sourceCode {
     overflow: scroll;
 }
 
-.pixelated {
-  image-rendering:optimizeSpeed;             
-  image-rendering:-moz-crisp-edges;          
-  image-rendering:-o-crisp-edges;            
-  image-rendering:-webkit-optimize-contrast; 
-  image-rendering:optimize-contrast;         
-  image-rendering:crisp-edges;               
-  image-rendering:pixelated;                 
-  -ms-interpolation-mode:nearest-neighbor;   
-}
-
 .sourceCode { color: #CCC }
 
 .sourceCode .kw { color: #6CC; }
@@ -158,8 +141,8 @@ group:"textord",replace:"\u03a5"},"\\Phi":{font:"main",group:"textord",replace:"
     </script>
 
     <body class="pixelated">
-        <div class="header"> Rust Speed </div>
         <div class="content">
+        <div class="header"> Rust Speed </div>
 
 <p>As a totally contrived example, I will be computing the expression</p>
 <p><span class="math inline">\sum_{i=0}^{1,000,000,000} \begin{cases} i/2 + 2 &amp; \text{if } i \% 2 = 0 \\\\ 0 &amp; \text{otherwise} \end{cases}</span></p>

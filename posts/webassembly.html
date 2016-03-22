@@ -1,0 +1,174 @@
+
+
+
+
+<!doctype html>
+<html>
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Web Assembly </title>
+    </head>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400|Domine:700|Bitter:700" rel="stylesheet" type="text/css">
+    <style>
+
+html, body {
+    margin: 0;
+
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.1em;
+    line-height: 1.6em;
+    text-underline-position: under;
+}
+
+.header {
+    color: #1F102D;
+    font-size: 70px;
+    height: 100px;
+    line-height: 100px;
+    font-family: bitter, sans-serif;
+    text-shadow: 0px 3px white, 0px -3px black;
+}
+
+body {
+    background-color: #1F102D;
+}
+
+.content {
+    padding: 30px;
+    width: 800px;
+    background: rgb(245, 245, 245);
+    color: #1F102D;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media only screen and (max-width: 860px) {
+    .content {
+        width: calc(100vw - 60px);
+    }
+}
+
+a, a:visited {
+    color: #69C;
+    text-decoration:none;
+}
+
+ul {
+    list-style: circle inside;
+    padding: 0;
+}
+
+h1, h2, h3 {
+    font-family: 'Bitter', sans-serif;
+    margin-bottom: 5px;
+    color: #252645;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+h2 {
+    font-size: 2.5em;
+}
+
+h3 {
+    font-size: 2em;
+}
+
+p {
+    margin-top: 5px;
+}
+
+pre.sourceCode {
+    font-size: 1em;
+    line-height: 1.6em;
+
+    width: calc(100% + 30px);
+    position: relative;
+    left: -30px;
+    padding-left: 30px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background: #372945;
+
+    border-top: 2px solid #1B1B1B;
+    border-bottom: 2px solid #404040;
+    overflow: scroll;
+}
+
+.sourceCode { color: #CCC }
+
+.sourceCode .kw { color: #6CC; }
+
+.sourceCode .dt { color: #69C; }
+
+.sourceCode .dv, .sourceCode .bn, .sourceCode .fl { color: #C9C; }
+
+.sourceCode .ch { color: #C9C; }
+
+.sourceCode .st { color: #C9C; }
+
+.sourceCode .co { color: #9c9; }
+
+.sourceCode .ot { color: #CCC; }
+
+.sourceCode .al { color: #CB4B16; font-weight: bold; }
+
+.sourceCode .fu { color: #CCC; }
+
+.sourceCode .re { }
+
+.sourceCode .er { color: #f2777a; font-weight: bold; }
+
+
+    </style>
+
+
+
+
+
+
+
+
+    <body class="pixelated">
+        <div class="content">
+        <div class="header"> Web Assembly </div>
+
+<p>Web-Assembly is a binary execution environment sheparded by major browser vendors in the WC3. Once implemented, web-assembly will be an alternative to Javascript when it comes to programming dynamic clientside applications on the web.</p>
+<p>The &quot;assembly&quot; piece of web-assembly is the Virtual Instruction Set Architecture (Virtual-ISA) that webassembly targets. Unlike other instruction set arcitectures (e.g. ARM, x86, Mips), web-assembly's ISA doesn't actually map to a specific hardware type</p>
+<p>Ok, so web-assembly is an ISA that runs compiled code in your web browser. If you're still interested, here's a table of contents so you can decide how much of this rambling article you want to skip.</p>
+<h2 id="table-of-contents">Table Of Contents</h2>
+<ul>
+<li><a href="#table-of-contents">Table Of Contents</a></li>
+<li><a href="#native-code-in-the-browser-a-history">Native Code in the Browser - A History</a>
+<ul>
+<li><a href="#activex">ActiveX</a></li>
+<li><a href="#nacl-and-pnacl">NaCl and PNaCl</a></li>
+<li><a href="#asm-js">asm.js</a></li>
+</ul></li>
+<li><a href="#what-is-web-assembly">What is Web Assembly</a></li>
+</ul>
+<h2 id="native-code-in-the-browser---a-history">Native Code in the Browser - A History</h2>
+<p>Perhaps unsurprisingly, web-assembly is not the first time that someone thought &quot;it would be cool to run native programs in a sandbox inside the browser&quot;. In fact, there are two major &quot;implementations&quot; that are widely available right now!</p>
+<h3 id="activex">ActiveX</h3>
+<h3 id="nacl-and-pnacl">NaCl and PNaCl</h3>
+<p>In 2011, Google demoed Native Client (NaCl) inside of Chrome. NaCl is a sandboxing architecture that allowed specially-compiled x86, x86-64, and arm binaries to be executed by the browser inside of a web page.</p>
+<p>When a binary was downloaded, first Chrome would verify various properties about the instructions contained within (no system calls, strict jump instruction alignment). Then the program could be ran with minimal interferance from the NaCl sandbox. As a result, developers are able to write chrome apps that took advantage of the performance benefits of running natively.</p>
+<p>Unfortunately, developers still had to produce a binary specific to each platform that they wanted to target - x86, x86-64, and arm. This annoyance was the inspiration for PNaCl: Portable Native Client. With PNaCl, a developer compiled their application down to a platform agnostic representation which was ahead-of-time compiled down to the native format on the target machine.</p>
+<p>In the end, neither NaCl or PNaCl took off, mostly because other browser vendors didn't want to implement them.</p>
+<h3 id="asm.js">asm.js</h3>
+<p>Javascript interpreters have been getting faster and faster ever since Google declared a holy war on jank in the late 2000s. Someone (TODO: who?) decided that Javascript interpreters with their fancy jitting engines would be able to interpret native code that had been compiled down to a low-level javascript subset that would be immediately obvious to jit-engines to optimize. This person created emscripten (a fork of LLVM) which would end up being able to compile entire game engines written in C and C++ to javascript.</p>
+<p>Along the way, Mozilla developer (TODO: who?) figured that the output generated by emscripten could be ahead-of-time compiled by the browser for even better optimization opporitunities. This was the birth of asm.js, a formalized javascript subset that would attempt to ahead-of-time jit modules with <code>&quot;use asm&quot;;</code> as the first statement.</p>
+<p>Unlike NaCl and PNaCl, asm.js saw lots of adoption! Because it was a subset of javascript, it worked in every browser; though it was faster in Fire Fox because of the explicit support for ahead-of-time compilation. Many game engines support publishing their games to the web via emscripten and asm.js.</p>
+<h2 id="what-is-web-assembly">What is Web-Assembly?</h2>
+
+
+
+
+    </div>
+    </body>
+</html>
+
+
