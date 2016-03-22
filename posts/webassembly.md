@@ -24,11 +24,26 @@ how much of this rambling article you want to skip.
 ## Native Code in the Browser - A History
 
 Perhaps unsurprisingly, web-assembly is not the first time that someone
-thought "it would be cool to run native programs in a sandbox inside the
-browser".  In fact, there are two major "implementations" that are widely
-available right now!
+thought "it would be cool to use the web as a vehicle for distributing
+binaries to be run in the browser".  In fact, this has already been done
+multiple times!
 
 ### ActiveX
+
+In 1996, Internet explorer gained the ability to download and execute
+signed binaries from the web and present the UI through the browser.
+If you ever remember watching videos in IE pre-flash, that was probably
+an ActiveX control.
+
+Unfortunately, there was no real sandboxing or security story; the only
+thing preventing people from creating and distributing malware was
+literally a contract that developers signed with Microsoft saying that
+they wouldn't.  That and digital signing which prevented the vast majority
+of developers from even publishing ActiveX controls.
+
+In the end, ActiveX died, partially due to the gaping security holes,
+partially due to the fact that you could really only run it in IE, on
+Windows, on an x86 chipset.
 
 ### NaCl and PNaCl
 
@@ -50,7 +65,7 @@ compiled their application down to a platform agnostic representation which was
 ahead-of-time compiled down to the native format on the target machine.
 
 In the end, neither NaCl or PNaCl took off, mostly because other browser vendors
-didn't want to implement them.
+didn't want to implement them.  Many critiqued NaCl as being another ActiveX
 
 ### asm.js
 
@@ -62,6 +77,20 @@ subset that would be immediately obvious to jit-engines to optimize.  This
 person created emscripten (a fork of LLVM) which would end up being able to
 compile entire game engines written in C and C++ to javascript.
 
+```js
+// calculate length of C string
+function strlen(ptr) { 
+  ptr = ptr|0;
+  var curr = 0;
+  curr = ptr;
+  // MEM8 is a typed array that represents the heap.
+  while (MEM8[curr]|0 != 0) {
+    curr = (curr + 1)|0;
+  }
+  return (curr − ptr)|0;
+}
+```
+
 Along the way, Mozilla developer (TODO: who?) figured that the output generated
 by emscripten could be ahead-of-time compiled by the browser for even better
 optimization opporitunities.  This was the birth of asm.js, a formalized
@@ -69,7 +98,7 @@ javascript subset that would attempt to ahead-of-time jit modules with
 `"use asm";` as the first statement.
 
 Unlike NaCl and PNaCl, asm.js saw lots of adoption!  Because it was a subset of
-javascript, it worked in every browser; though it was faster in Fire Fox because
+javascript, it worked in every browser; though it was faster in Firefox because
 of the explicit support for ahead-of-time compilation.  Many game engines support
 publishing their games to the web via emscripten and asm.js.
 
