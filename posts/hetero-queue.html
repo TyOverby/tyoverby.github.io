@@ -1,0 +1,207 @@
+
+
+
+
+<!doctype html>
+<html>
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Heterogeneous List </title>
+    </head>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400|Domine:700|Bitter:700" rel="stylesheet" type="text/css">
+    <style>
+
+html, body {
+    margin: 0;
+
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.1em;
+    line-height: 1.6em;
+    text-underline-position: under;
+}
+
+.header {
+    color: #1F102D;
+    font-size: 70px;
+    height: 100px;
+    line-height: 100px;
+    font-family: bitter, sans-serif;
+}
+
+body {
+    background-color: #1F102D;
+}
+
+.content {
+    padding: 30px;
+    width: 800px;
+    background: rgb(245, 245, 245);
+    color: #1F102D;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media only screen and (max-width: 860px) {
+    .content {
+        width: calc(100vw - 60px);
+    }
+}
+
+a, a:visited {
+    color: #69C;
+    text-decoration:none;
+}
+
+ul {
+    list-style: circle inside;
+    padding: 0;
+}
+
+h1, h2, h3 {
+    font-family: 'Bitter', sans-serif;
+    margin-bottom: 5px;
+    color: #252645;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+h2 {
+    font-size: 2.5em;
+}
+
+h3 {
+    font-size: 2em;
+}
+
+p {
+    margin-top: 5px;
+}
+
+pre.sourceCode {
+    font-size: 1em;
+    line-height: 1.6em;
+
+    width: calc(100% + 30px);
+    position: relative;
+    left: -30px;
+    padding-left: 30px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background: #372945;
+
+    border-top: 2px solid #1B1B1B;
+    border-bottom: 2px solid #404040;
+    overflow: auto;
+}
+
+.sourceCode { color: #CCC }
+
+.sourceCode .kw { color: #6CC; }
+
+.sourceCode .dt { color: #69C; }
+
+.sourceCode .dv, .sourceCode .bn, .sourceCode .fl { color: #C9C; }
+
+.sourceCode .ch { color: #C9C; }
+
+.sourceCode .st { color: #C9C; }
+
+.sourceCode .co { color: #9c9; }
+
+.sourceCode .ot { color: #CCC; }
+
+.sourceCode .al { color: #CB4B16; font-weight: bold; }
+
+.sourceCode .fu { color: #CCC; }
+
+.sourceCode .re { }
+
+.sourceCode .er { color: #f2777a; font-weight: bold; }
+
+
+    </style>
+
+
+
+
+
+
+
+
+    <body class="pixelated">
+        <div class="content">
+        <div class="header"> Heterogeneous List </div>
+
+<p>In object-oriented languages, it is common to have collections containing objects that implement a certain interface.</p>
+<div class="sourceCode"><pre class="sourceCode cs"><code class="sourceCode cs"><span class="kw">interface</span> Animal { ... }
+<span class="kw">class</span> Cat: Animal { ... }
+<span class="kw">class</span> Dog: Animal { ... }
+
+List&lt;Animal&gt; listOfAnimals = ...;</code></pre></div>
+<p>And while this is certainly possible in rust by using trait-objects,</p>
+<div class="sourceCode"><pre class="sourceCode rust"><code class="sourceCode rust"><span class="kw">trait</span> Animal { ... }
+
+<span class="kw">let</span> list_of_animals: <span class="dt">Vec</span>&lt;&amp;Animal&gt; = ...;
+<span class="co">// or</span>
+<span class="kw">let</span> list_of_animals: <span class="dt">Vec</span>&lt;<span class="dt">Box</span>&lt;Animal&gt;&gt; = ...;</code></pre></div>
+<p>it is frowned upon due for stylistic as well as performance reasons: each method call from here-on-out will be invoked via interface dispatch.</p>
+<p>I recently encountered a problem that <em>could</em> be solved by using a vec of trait objects, but due to performance concerns, I couldn't afford the performance penalty.</p>
+<p>Fortunately, the types of the objects in my list are known at compile-time, and the number of the items in the list stays constant, so I thought I'd try to work my way around this by way of a heterogeneous queue that constructs a specialized type for each instance of the list.</p>
+<h2 id="the-bad-approach">The bad approach</h2>
+<p>For comparisons sake, here's a rough outline of what I had <em>before</em> using trait objects.</p>
+<div class="sourceCode"><pre class="sourceCode rust"><code class="sourceCode rust"><span class="kw">trait</span> Shape { .. }
+
+<span class="co">// `process(..)` makes a *lot* of method calls on `shape`, so having</span>
+<span class="co">// this trait object as a parameter kills perf.</span>
+<span class="kw">fn</span> process(shape: &amp;Shape) { .. }
+
+<span class="kw">fn</span> main() {
+    <span class="kw">let</span> coll: <span class="dt">Vec</span>&lt;&amp;Shape&gt; = <span class="pp">vec!</span>[ .., .., .., .. ];
+
+    <span class="kw">for</span> obj <span class="kw">in</span> coll {
+        process(obj);
+    }
+}</code></pre></div>
+<h2 id="the-good-approach">The good approach</h2>
+<div class="sourceCode"><pre class="sourceCode rust"><code class="sourceCode rust"><span class="kw">trait</span> Shape { .. }
+
+<span class="co">// Generic function, no longer goes through interface dispatch.</span>
+<span class="kw">fn</span> process&lt;S: Shape&gt;(shape: &amp;S) { .. }
+
+<span class="kw">trait</span> ShapeList&lt;T: Shape&gt; {
+    <span class="kw">fn</span> apply(&amp;<span class="kw">self</span>);
+}
+
+<span class="kw">struct</span> ShapeNil&lt;T: Shape&gt; { }
+
+<span class="kw">struct</span> ShapeCons&lt;T: Shape, N: ShapeList&lt;T&gt;&gt; {
+    shape: T,
+    next: N
+}
+
+<span class="kw">impl</span> &lt;T&gt; ShapeList&lt;T&gt; <span class="kw">for</span> ShapeNil&lt;T&gt; {
+    <span class="kw">fn</span> apply(&amp;<span class="kw">self</span>) {
+        <span class="co">// do nothing, we&#39;ve reached the end</span>
+    }
+}
+
+<span class="kw">impl</span> &lt;T, N&gt; ShapeList&lt;T&gt; <span class="kw">for</span> ShapeCons&lt;T, N&gt; {
+    <span class="kw">fn</span> apply(&amp;<span class="kw">self</span>) {
+        <span class="co">// Process yourself</span>
+        process(&amp;<span class="kw">self</span>.shape);
+        <span class="co">// Then tell the next link to process itself</span>
+        next.apply();
+    }
+}</code></pre></div>
+
+
+
+
+    </div>
+    </body>
+</html>
+
+
