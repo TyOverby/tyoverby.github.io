@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+<head>
+    <title> Foo </title>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:700|Raleway:100|Roboto+Condensed:300|Roboto|Roboto+Mono" rel="stylesheet">
+    <style>
+        html, body, header {
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            min-height: 100vh;
+            background: url("./images/waves.jpg");
+            background-size: cover;
+            text-align: center;
+        
+			display: flex;
+			flex-direction: column;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: center;
+		}        
+
+        header #header-container {
+            background-color: red;
+        }
+
+        header #title {
+			font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            color: white;
+            font-size: 3em;
+        }
+
+        header #subtitle {
+			font-family: 'Raleway', sans-serif;
+            font-weight: bold;
+            color: white;
+            font-size: 2em;
+        }
+
+		section {
+			padding: 30px;
+			font-family: 'Roboto', sans-serif;
+			font-weight: 500;
+			width: 800px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		@media only screen and (max-width: 860px) {
+		section {
+			width: calc(100vw - 60px);
+		}
+		}
+
+		h1, h2, h3, h4 {
+			font-family: 'Roboto', sans-serif;
+			font-size: 2em;
+			font-weight: bold;
+color: rgb(10, 10, 60);
+		}
+		code {
+			font-family: 'Roboto Mono';
+			font-size: 0.9em;
+		}
+
+		.kw {
+			font-weight: bold;
+		}
+    </style>
+</head>
+
+<body>
+    <header>
+		<span id="title"> HETEROGENOUS LISTS </span>
+		<span id="subtitle"> And How To Implement Them </span>
+    </header>
+	<section>
+
+<p>As a totally contrived example, I will be computing the expression</p>
+<p><span class="math inline">\sum_{i=0}^{1,000,000,000} \begin{cases} i/2 + 2 &amp; \text{if } i \% 2 = 0 \\\\ 0 &amp; \text{otherwise} \end{cases}</span></p>
+<p>in both C and Rust to see how close in performance Rust can get to C while still being written in an idiomatic pure-functional style.</p>
+<h2 id="rust">Rust Implementaion</h2>
+<div class="sourceCode"><pre class="sourceCode rust"><code class="sourceCode rust"><span class="kw">use</span> std::iter::range;
+
+<span class="kw">fn</span> main() {
+    <span class="kw">let</span> <span class="kw">mut</span> iterator =
+      range(<span class="dv">0i32</span>, <span class="dv">1_000_000_000i32</span>)
+        .filter(|x| *x % <span class="dv">2</span> == <span class="dv">0</span>)
+        .map(|x| x / <span class="dv">2</span>)
+        .map(|x| x + <span class="dv">2</span>);
+    <span class="kw">let</span> ans = iterator.fold(<span class="dv">0</span>, |a, b| a + b);
+    <span class="pp">println!</span>(<span class="st">&quot;{}&quot;</span>, ans);
+}</code></pre></div>
+<h2 id="c">C Implementation</h2>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#include &lt;stdio.h&gt;</span>
+
+<span class="dt">void</span> main(<span class="dt">void</span>) {
+    <span class="dt">int</span> counter = <span class="dv">0</span>;
+    <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; <span class="dv">1000000000</span>; i++) {
+        <span class="kw">if</span> (i % <span class="dv">2</span> == <span class="dv">0</span>) {
+            counter += (i / <span class="dv">2</span>) + <span class="dv">2</span>;
+        }
+    }
+    printf(<span class="st">&quot;%d</span><span class="ch">\n</span><span class="st">&quot;</span>, counter);
+}</code></pre></div>
+<h2 id="benchmark-analysis">Benchmark / Analysis</h2>
+<p>Both of these implementations are flawed in various ways:</p>
+<ol style="list-style-type: decimal">
+<li>Using 32-bit integers means that the computation overflows very quickly</li>
+<li>Finding the even numbers doesn't require a filter or if statement when you could only look at every other number to begin with.</li>
+<li>The rust implementation should do both map steps at once.</li>
+</ol>
+<p>These issues were kept despite their flaws:</p>
+<ol style="list-style-type: decimal">
+<li>To avoid slower number operations;</li>
+<li>To test how well the compilers handle branching at the CPU level; and</li>
+<li>To see if Rust is able to optimize away the additional map.</li>
+</ol>
+<p>I was incredibly surprised to see that on my machine, Rust was able to outperform C reliably.</p>
+<h2 id="rust-1">Rust Timings</h2>
+<pre><code>$ rustc iter.rs  --opt-level 3
+$ time ./iter
+-1583310976
+
+real    0m0.884s
+user    0m0.872s
+sys     0m0.004s</code></pre>
+<h2 id="c-1">C Timings</h2>
+<pre><code>$ gcc test.c -std=c99 -O3
+$ time ./a.out
+-1583310976
+
+real    0m1.398s
+user    0m1.388s
+sys     0m0.004s</code></pre>
+<p>I'm sure that there are ways to get the C version faster, but the only important takeaway from this 5 second experiment is that the Rust compiler does a damn good job of providing abstractions that hit really close to the metal.</p>
+
+
+
+
+    <script>
+var maths = document.querySelectorAll(".math");
+for (var i = 0; i < maths.length; i++) {
+    var text = maths[i].innerText;
+    maths[i].innerText = "";
+    katex.render(text, maths[i]);
+}
+    </script>
+
+    </div>
+	</section>
+</body>
+</html>

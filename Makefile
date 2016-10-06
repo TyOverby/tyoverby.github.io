@@ -23,16 +23,33 @@ tmp/rust-vs-go.md.html: posts/rust-vs-go.md tmp
 	$(MARKDOWN) $< > $@
 
 posts/rust-speed.html: tmp/rust-speed.md.html $(SHARED)
-	$(TEMPLATE) "-D KATEX" "-D TITLE=Rust Speed" "-D POST=\"./tmp/rust-speed.md.html\"" post.t.html > posts/rust-speed.html
+	$(TEMPLATE) \
+		"-D KATEX" \
+		"-D TITLE=Rust Speed" \
+		"-D SUBTITLE=Turns Out: It's Pretty Fast" \
+		"-D POST=\"./tmp/rust-speed.md.html\"" \
+		post.t.html > posts/rust-speed.html
 
 posts/hetero-queue.html: tmp/hetero-queue.md.html $(SHARED)
-	$(TEMPLATE) "-D TITLE=Heterogeneous List" "-D POST=\"./tmp/hetero-queue.md.html\"" post.t.html > posts/hetero-queue.html
+	$(TEMPLATE) \
+		"-D TITLE=Heterogeneous Lists" \
+		"-D SUBTITLE=And How To Make Them" \
+		"-D POST=\"./tmp/hetero-queue.md.html\"" \
+		post.t.html > posts/hetero-queue.html
 
 posts/rust-vs-go.html: tmp/rust-vs-go.md.html $(SHARED)
-	$(TEMPLATE) "-D TITLE=Rust vs Go" "-D POST=\"./tmp/rust-vs-go.md.html\"" post.t.html > posts/rust-vs-go.html
+	$(TEMPLATE) \
+		"-D TITLE=Rust vs Go" \
+		"-D SUBTITLE=Adventures in Error Handling" \
+		"-D POST=\"./tmp/rust-vs-go.md.html\"" \
+		post.t.html > posts/rust-vs-go.html
 
 posts/webassembly.html: tmp/webassembly.md.html $(SHARED)
-	$(TEMPLATE) "-D TITLE=Web Assembly" "-D POST=\"./tmp/webassembly.md.html\"" post.t.html > posts/webassembly.html
+	$(TEMPLATE) \
+		"-D TITLE=Web Assembly" \
+		"-D SUBTITLE=The Future Is Here, Shiny And Chrome" \
+		"-D POST=\"./tmp/webassembly.md.html\"" \
+		post.t.html > posts/webassembly.html
 
 index.html: tmp/index.md.html index.t.html $(SHARED)
 	$(TEMPLATE) index.t.html > index.html

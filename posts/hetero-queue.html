@@ -6,121 +6,77 @@
 <html>
     <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> Heterogeneous List </title>
+        <title> Heterogeneous Lists </title>
     </head>
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400|Domine:700|Bitter:700" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:700|Raleway:100|Roboto+Condensed:300|Roboto|Roboto+Mono" rel="stylesheet">
     <style>
 
-html, body {
+html, body, header {
     margin: 0;
-
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1.1em;
-    line-height: 1.6em;
-    text-underline-position: under;
+    padding: 0;
 }
 
-.header {
-    color: #1F102D;
-    font-size: 70px;
-    height: 100px;
-    line-height: 100px;
-    font-family: bitter, sans-serif;
+header {
+    min-height: 100vh;
+    background: url("../images/waves.jpg");
+    background-size: cover;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}        
+
+header #header-container {
+    background-color: red;
 }
 
-body {
-    background-color: #1F102D;
+header #title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: white;
+    font-size: 3em;
+    text-transform: uppercase;
 }
 
-.content {
+header #subtitle {
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    color: white;
+    font-size: 2em;
+}
+
+section {
     padding: 30px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
     width: 800px;
-    background: rgb(245, 245, 245);
-    color: #1F102D;
-
     margin-left: auto;
     margin-right: auto;
 }
 
 @media only screen and (max-width: 860px) {
-    .content {
+    section {
         width: calc(100vw - 60px);
     }
 }
 
-a, a:visited {
-    color: #69C;
-    text-decoration:none;
-}
-
-ul {
-    list-style: circle inside;
-    padding: 0;
-}
-
-h1, h2, h3 {
-    font-family: 'Bitter', sans-serif;
-    margin-bottom: 5px;
-    color: #252645;
-}
-
-h1 {
-    font-size: 3em;
-}
-
-h2 {
-    font-size: 2.5em;
-}
-
-h3 {
+h1, h2, h3, h4 {
+    font-family: 'Roboto', sans-serif;
     font-size: 2em;
+    font-weight: bold;
+    color: rgb(10, 10, 60);
+}
+code {
+    font-family: 'Roboto Mono';
+    font-size: 0.9em;
 }
 
-p {
-    margin-top: 5px;
+.kw {
+    font-weight: bold;
 }
-
-pre.sourceCode {
-    font-size: 1em;
-    line-height: 1.6em;
-
-    width: calc(100% + 30px);
-    position: relative;
-    left: -30px;
-    padding-left: 30px;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    background: #372945;
-
-    border-top: 2px solid #1B1B1B;
-    border-bottom: 2px solid #404040;
-    overflow: auto;
-}
-
-.sourceCode { color: #CCC }
-
-.sourceCode .kw { color: #6CC; }
-
-.sourceCode .dt { color: #69C; }
-
-.sourceCode .dv, .sourceCode .bn, .sourceCode .fl { color: #C9C; }
-
-.sourceCode .ch { color: #C9C; }
-
-.sourceCode .st { color: #C9C; }
-
-.sourceCode .co { color: #9c9; }
-
-.sourceCode .ot { color: #CCC; }
-
-.sourceCode .al { color: #CB4B16; font-weight: bold; }
-
-.sourceCode .fu { color: #CCC; }
-
-.sourceCode .re { }
-
-.sourceCode .er { color: #f2777a; font-weight: bold; }
-
 
     </style>
 
@@ -131,9 +87,12 @@ pre.sourceCode {
 
 
 
-    <body class="pixelated">
-        <div class="content">
-        <div class="header"> Heterogeneous List </div>
+    <body>
+        <header>
+            <span id="title"> Heterogeneous Lists </span>
+            <span id="subtitle"> And How To Make Them </span>
+        </header>
+        <section>
 
 <p>In object-oriented languages, it is common to have collections containing objects that implement a certain interface.</p>
 <div class="sourceCode"><pre class="sourceCode cs"><code class="sourceCode cs"><span class="kw">interface</span> Animal { ... }
@@ -200,7 +159,7 @@ List&lt;Animal&gt; listOfAnimals = ...;</code></pre></div>
 
 
 
-    </div>
+    </section>
     </body>
 </html>
 
