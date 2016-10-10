@@ -19,7 +19,7 @@ html, body, header {
 
 header {
     min-height: 100vh;
-    background: url("../images/waves.jpg");
+    background: url(HEADER_IMAGE_PATH);
     background-size: cover;
     text-align: center;
 
@@ -37,7 +37,6 @@ header #header-container {
 header #title {
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
-    color: white;
     font-size: 3em;
     text-transform: uppercase;
 }
@@ -45,8 +44,15 @@ header #title {
 header #subtitle {
     font-family: 'Raleway', sans-serif;
     font-weight: bold;
-    color: white;
     font-size: 2em;
+}
+
+.black {
+    color: black;
+}
+
+.white {
+    color: white;
 }
 
 section {
@@ -90,8 +96,8 @@ code {
 
     <body>
         <header>
-            <span id="title"> Ty Overby </span>
-            <span id="subtitle"> SUBTITLE </span>
+            <span id="title" class=HEADER_STYLE> Ty Overby </span>
+            <span id="subtitle" class=HEADER_STYLE> SUBTITLE </span>
         </header>
         <section>
 

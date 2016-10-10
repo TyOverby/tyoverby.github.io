@@ -18,7 +18,7 @@ html, body, header {
 
 header {
     min-height: 100vh;
-    background: url("../images/waves.jpg");
+    background: url(../images/waves.jpg);
     background-size: cover;
     text-align: center;
 
@@ -36,7 +36,6 @@ header #header-container {
 header #title {
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
-    color: white;
     font-size: 3em;
     text-transform: uppercase;
 }
@@ -44,8 +43,15 @@ header #title {
 header #subtitle {
     font-family: 'Raleway', sans-serif;
     font-weight: bold;
-    color: white;
     font-size: 2em;
+}
+
+.black {
+    color: black;
+}
+
+.white {
+    color: white;
 }
 
 section {
@@ -97,8 +103,8 @@ group:"textord",replace:"\u03a5"},"\\Phi":{font:"main",group:"textord",replace:"
 
     <body>
         <header>
-            <span id="title"> Rust Speed </span>
-            <span id="subtitle"> Turns Out: It's Pretty Fast </span>
+            <span id="title" class=white> Rust Speed </span>
+            <span id="subtitle" class=white> Turns Out: It's Pretty Fast </span>
         </header>
         <section>
 

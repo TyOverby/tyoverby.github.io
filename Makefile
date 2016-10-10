@@ -27,6 +27,8 @@ posts/rust-speed.html: tmp/rust-speed.md.html $(SHARED)
 		"-D KATEX" \
 		"-D TITLE=Rust Speed" \
 		"-D SUBTITLE=Turns Out: It's Pretty Fast" \
+		"-D HEADER_IMAGE_PATH=../images/waves.jpg" \
+		"-D HEADER_STYLE=white" \
 		"-D POST=\"./tmp/rust-speed.md.html\"" \
 		post.t.html > posts/rust-speed.html
 
@@ -34,6 +36,8 @@ posts/hetero-queue.html: tmp/hetero-queue.md.html $(SHARED)
 	$(TEMPLATE) \
 		"-D TITLE=Heterogeneous Lists" \
 		"-D SUBTITLE=And How To Make Them" \
+		"-D HEADER_IMAGE_PATH=../images/dark-field.jpeg" \
+		"-D HEADER_STYLE=white" \
 		"-D POST=\"./tmp/hetero-queue.md.html\"" \
 		post.t.html > posts/hetero-queue.html
 
@@ -41,6 +45,8 @@ posts/rust-vs-go.html: tmp/rust-vs-go.md.html $(SHARED)
 	$(TEMPLATE) \
 		"-D TITLE=Rust vs Go" \
 		"-D SUBTITLE=Adventures in Error Handling" \
+		"-D HEADER_IMAGE_PATH=../images/city.jpg" \
+		"-D HEADER_STYLE=white" \
 		"-D POST=\"./tmp/rust-vs-go.md.html\"" \
 		post.t.html > posts/rust-vs-go.html
 
@@ -48,6 +54,8 @@ posts/webassembly.html: tmp/webassembly.md.html $(SHARED)
 	$(TEMPLATE) \
 		"-D TITLE=Web Assembly" \
 		"-D SUBTITLE=The Future Is Here, Shiny And Chrome" \
+		"-D HEADER_IMAGE_PATH=../images/snowy-mountains.jpeg" \
+		"-D HEADER_STYLE=black" \
 		"-D POST=\"./tmp/webassembly.md.html\"" \
 		post.t.html > posts/webassembly.html
 
