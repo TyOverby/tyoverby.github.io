@@ -3,7 +3,9 @@
 
 
 
+
 <!doctype html>
+
 <html>
     <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,8 +20,11 @@ html, body, header {
 }
 
 header {
+    position: relative;
     min-height: 100vh;
-    background: url(HEADER_IMAGE_PATH);
+
+
+
     background-size: cover;
     text-align: center;
 
@@ -28,7 +33,7 @@ header {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-}        
+}
 
 header #header-container {
     background-color: red;
@@ -95,13 +100,31 @@ code {
 
 
     <body>
+        <canvas style="display:none;"></canvas>
         <header>
             <span id="title" class=HEADER_STYLE> Ty Overby </span>
-            <span id="subtitle" class=HEADER_STYLE> SUBTITLE </span>
+            <span id="subtitle" class=HEADER_STYLE> Ballard | Seattle | Washington | USA | Earth </span>
         </header>
         <section>
 
 
+
+<style>
+canvas {
+    width: 100vw;
+    height: 100vh;
+    image-rendering: pixelated;
+    position: absolute;
+}
+#title {
+    text-shadow: 0 -2px 0 white, 0 2px 0 white, -2px 0 0 white, 2px 0 0 white;
+}
+#subtitle {
+    color: white;
+    text-shadow: 0 -2px 0 black, 0 2px 0 black, -2px 0 0 black, 2px 0 0 black;
+}
+</style>
+<script> document.querySelector("canvas").style.display = "block" </script>
 
 
 
@@ -116,6 +139,7 @@ code {
 <li><a href="https://github.com/TyOverby/implicit">A CAD program that uses implicit surfaces</a></li>
 </ul>
 <p>This static-content blog is built using the C preprocessor and a Makefile, and that doesn't bother me at all. Oh right; this is a blog. Here are some posts that I've written:</p>
+<script src="http://tyoverby.com/artgen/dist/bundle.js"></script>
 
 
 <ul>

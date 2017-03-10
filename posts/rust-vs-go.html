@@ -3,6 +3,7 @@
 
 
 <!doctype html>
+
 <html>
     <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,8 +18,11 @@ html, body, header {
 }
 
 header {
+    position: relative;
     min-height: 100vh;
+
     background: url(../images/city.jpg);
+
     background-size: cover;
     text-align: center;
 
@@ -27,7 +31,7 @@ header {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-}        
+}
 
 header #header-container {
     background-color: red;
@@ -94,6 +98,7 @@ code {
 
 
     <body>
+        <canvas style="display:none;"></canvas>
         <header>
             <span id="title" class=white> Rust vs Go </span>
             <span id="subtitle" class=white> Adventures in Error Handling </span>

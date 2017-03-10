@@ -14,3 +14,5 @@ Some of the things that I'm working on right now include:
 
 This static-content blog is built using the C preprocessor and a Makefile, and that doesn't
 bother me at all.  Oh right; this is a blog. Here are some posts that I've written:
+
+<script src="http://tyoverby.com/artgen/dist/bundle.js"></script>

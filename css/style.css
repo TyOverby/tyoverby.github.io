@@ -4,8 +4,11 @@ html, body, header {
 }
 
 header {
+    position: relative;
     min-height: 100vh;
+#ifdef HEADER_IMAGE_PATH
     background: url(HEADER_IMAGE_PATH);
+#endif
     background-size: cover;
     text-align: center;
 
@@ -14,7 +17,7 @@ header {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-}        
+}
 
 header #header-container {
     background-color: red;
