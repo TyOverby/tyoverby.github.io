@@ -1,10 +1,3 @@
----
-layout: post
-title: A Rusty Microbenchmark
-subtitle: Rust eating C food
-author: Ty Overby
----
-
 As a totally contrived example, I will be computing the expression
 
 $\sum_{i=0}^{1,000,000,000} \begin{cases} i/2 + 2 & \text{if } i \% 2 = 0 \\\\ 0 & \text{otherwise} \end{cases}$

@@ -26,7 +26,7 @@ posts/rust-speed.html: tmp/rust-speed.md.html $(SHARED)
 	$(TEMPLATE) \
 		"-D KATEX" \
 		"-D TITLE=Rust Speed" \
-		"-D SUBTITLE=Turns Out: It's Pretty Fast" \
+		"-D SUBTITLE=Turns Out It's Pretty Fast" \
 		"-D HEADER_IMAGE_PATH=../images/waves.jpg" \
 		"-D HEADER_STYLE=white" \
 		"-D POST=\"./tmp/rust-speed.md.html\"" \
@@ -43,7 +43,7 @@ posts/hetero-queue.html: tmp/hetero-queue.md.html $(SHARED)
 
 posts/rust-vs-go.html: tmp/rust-vs-go.md.html $(SHARED)
 	$(TEMPLATE) \
-		"-D TITLE=Rust vs Go" \
+		"-D TITLE=Error Handling in Rust and Go" \
 		"-D SUBTITLE=Adventures in Error Handling" \
 		"-D HEADER_IMAGE_PATH=../images/city.jpg" \
 		"-D HEADER_STYLE=white" \
@@ -59,8 +59,14 @@ posts/webassembly.html: tmp/webassembly.md.html $(SHARED)
 		"-D POST=\"./tmp/webassembly.md.html\"" \
 		post.t.html > posts/webassembly.html
 
-index.html: tmp/index.md.html index.t.html $(SHARED)
-	$(TEMPLATE) index.t.html > index.html
+index.html: tmp/index.md.html $(SHARED)
+	$(TEMPLATE) \
+		"-D TITLE=Ty Overby" \
+		"-D SUBTITLE=subtitle goes here" \
+		"-D HEADER_IMAGE_PATH=./images/snowy-mountains.jpeg" \
+		"-D HEADER_STYLE=black" \
+		"-D POST=\"./tmp/index.md.html\"" \
+		post.t.html > index.html
 
 clean:
 	rm index.html -rf tmp/ posts/*.html

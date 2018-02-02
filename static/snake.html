@@ -368,7 +368,7 @@ function basicGame(canvasID){
     }
 }
 inputHandler = function(e){
-    var key = event.keyCode;
+    var key = e.keyCode;
     if(key==87||key==38){        //Up
         newDirection=new GameMath.Vector2f(0,-1);
     } else if(key==83||key==40){ // Down

@@ -2,8 +2,6 @@
 
 
 
-
-
 <!doctype html>
 
 <html>
@@ -23,7 +21,7 @@ header {
     position: relative;
     min-height: 100vh;
 
-
+    background: url(./images/snowy-mountains.jpeg);
 
     background-size: cover;
     text-align: center;
@@ -98,36 +96,12 @@ code {
 
 
 
-
     <body>
-        <canvas style="display:none;"></canvas>
         <header>
-            <span id="title" class=HEADER_STYLE> Ty Overby </span>
-            <span id="subtitle" class=HEADER_STYLE> Ballard | Seattle | Washington | USA | Earth </span>
+            <span id="title" class=black> Ty Overby </span>
+            <span id="subtitle" class=black> subtitle goes here </span>
         </header>
         <section>
-
-
-
-<style>
-canvas {
-    width: 100vw;
-    height: 100vh;
-    image-rendering: pixelated;
-    position: absolute;
-}
-#title {
-    text-shadow: 0 -2px 0 white, 0 2px 0 white, -2px 0 0 white, 2px 0 0 white;
-}
-#subtitle {
-    color: white;
-    text-shadow: 0 -2px 0 black, 0 2px 0 black, -2px 0 0 black, 2px 0 0 black;
-}
-</style>
-<script> document.querySelector("canvas").style.display = "block" </script>
-
-
-
 
 <p>Hi, I'm Ty!</p>
 <p>I'm a dev at Microsoft working on the <a href="https://github.com/dotnet/roslyn">Roslyn compiler service</a>.</p>
@@ -139,14 +113,10 @@ canvas {
 <li><a href="https://github.com/TyOverby/implicit">A CAD program that uses implicit surfaces</a></li>
 </ul>
 <p>This static-content blog is built using the C preprocessor and a Makefile, and that doesn't bother me at all. Oh right; this is a blog. Here are some posts that I've written:</p>
-<script src="http://tyoverby.com/artgen/dist/bundle.js"></script>
-
-
 <ul>
-    <li><a href="posts/rust-vs-go.html">  Rust vs Go (Error Handling) </a></li>
-    <li><a href="posts/rust-speed.html">  Rust Speed </a></li>
+<li><a href="posts/rust-vs-go.html">Error Handling in Rust and Go</a></li>
+<li><a href="posts/rust-speed.html">Rust Speed</a></li>
 </ul>
-
 
 
 
