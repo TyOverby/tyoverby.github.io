@@ -62,7 +62,7 @@ posts/webassembly.html: tmp/webassembly.md.html $(SHARED)
 index.html: tmp/index.md.html $(SHARED)
 	$(TEMPLATE) \
 		"-D TITLE=Ty Overby" \
-		"-D SUBTITLE=subtitle goes here" \
+		"-D SUBTITLE=" \
 		"-D HEADER_IMAGE_PATH=./images/snowy-mountains.jpeg" \
 		"-D HEADER_STYLE=black" \
 		"-D POST=\"./tmp/index.md.html\"" \
