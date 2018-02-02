@@ -1,6 +1,6 @@
 TEMPLATE=cpp -w -undef -nostdinc -E -P
 MARKDOWN=pandoc -f markdown -t html --katex --toc
-SHARED=common-header.t.html common-footer.t.html css/style.css js/katex.min.js css/katex.min.css
+SHARED=common-header.t.html common-footer.t.html css/style.css 
 
 all: index.html posts/rust-speed.html posts/rust-vs-go.html posts/webassembly.html posts/hetero-queue.html
 
@@ -44,7 +44,7 @@ posts/hetero-queue.html: tmp/hetero-queue.md.html $(SHARED)
 posts/rust-vs-go.html: tmp/rust-vs-go.md.html $(SHARED)
 	$(TEMPLATE) \
 		"-D TITLE=Error Handling in Rust and Go" \
-		"-D SUBTITLE=Adventures in Error Handling" \
+		"-D SUBTITLE=Products and Sums" \
 		"-D HEADER_IMAGE_PATH=../images/city.jpg" \
 		"-D HEADER_STYLE=white" \
 		"-D POST=\"./tmp/rust-vs-go.md.html\"" \
