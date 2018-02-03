@@ -1,8 +1,8 @@
 TEMPLATE=cpp -w -undef -nostdinc -E -P
 MARKDOWN=pandoc -f markdown -t html --katex --toc
-SHARED=common-header.t.html common-footer.t.html css/style.css 
+SHARED=common-header.t.html common-footer.t.html css/style.css
 
-all: index.html posts/rust-speed.html posts/rust-vs-go.html posts/webassembly.html posts/hetero-queue.html
+all: index.html posts/rust-speed.html posts/rust-vs-go.html posts/webassembly.html posts/hetero-queue.html posts/implicit.html
 
 tmp:
 	mkdir tmp
@@ -17,6 +17,9 @@ tmp/webassembly.md.html: posts/webassembly.md tmp
 	$(MARKDOWN) $< > $@
 
 tmp/index.md.html: index.md tmp
+	$(MARKDOWN) $< > $@
+
+tmp/implicit.md.html: posts/implicit.md tmp
 	$(MARKDOWN) $< > $@
 
 tmp/rust-vs-go.md.html: posts/rust-vs-go.md tmp
@@ -58,6 +61,16 @@ posts/webassembly.html: tmp/webassembly.md.html $(SHARED)
 		"-D HEADER_STYLE=black" \
 		"-D POST=\"./tmp/webassembly.md.html\"" \
 		post.t.html > posts/webassembly.html
+
+posts/implicit.html: tmp/implicit.md.html $(SHARED)
+	$(TEMPLATE) \
+		"-D TITLE=Implicit CAD" \
+		"-D SUBTITLE=A Better Way to Shape" \
+		"-D HEADER_IMAGE_PATH=../images/foam.jpeg" \
+		"-D HEADER_STYLE=white" \
+		"-D POST=\"./tmp/implicit.md.html\"" \
+		post.t.html > posts/implicit.html
+
 
 index.html: tmp/index.md.html $(SHARED)
 	$(TEMPLATE) \
