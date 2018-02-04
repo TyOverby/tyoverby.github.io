@@ -68,6 +68,10 @@ section {
     width: 800px;
     margin-left: auto;
     margin-right: auto;
+    font-size: 1.05em;
+    line-height: 1.5em;
+    text-align: justify;
+    text-justify: distribute;
 }
 
 @media only screen and (max-width: 860px) {
@@ -78,10 +82,18 @@ section {
 
 h1, h2, h3, h4 {
     font-family: 'Roboto', sans-serif;
-    font-size: 2em;
     font-weight: bold;
     color: rgb(10, 10, 60);
 }
+
+h1, h2 {
+    font-size: 2em;
+}
+
+h3 {
+    font-size: 1.3em;
+}
+
 code {
     font-family: 'Roboto Mono';
     font-size: 0.9em;
@@ -163,11 +175,18 @@ code {
 <p>When a programmer needs to handle errors in a way that isn't simply returning a result, he would have to inspect the result like in the first example, but if transforming one error value to another is enough, the <code>try!</code> macro can do that too.</p>
 <p>For more information on error handling in rust, read the chapter from the <a href="https://doc.rust-lang.org/book/error-handling.html">Rust Book</a>.</p>
 
+<script>
+    var maths = document.querySelectorAll(".math");
+    for (var i = 0; i < maths.length; i++) {
+        var text = maths[i].innerText;
+        maths[i].innerText = "";
+        katex.render(text, maths[i]);
+    }
+</script>
 
+</section>
+</body>
 
-
-    </section>
-    </body>
 </html>
 
 

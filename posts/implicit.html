@@ -68,6 +68,10 @@ section {
     width: 800px;
     margin-left: auto;
     margin-right: auto;
+    font-size: 1.05em;
+    line-height: 1.5em;
+    text-align: justify;
+    text-justify: distribute;
 }
 
 @media only screen and (max-width: 860px) {
@@ -78,10 +82,18 @@ section {
 
 h1, h2, h3, h4 {
     font-family: 'Roboto', sans-serif;
-    font-size: 2em;
     font-weight: bold;
     color: rgb(10, 10, 60);
 }
+
+h1, h2 {
+    font-size: 2em;
+}
+
+h3 {
+    font-size: 1.3em;
+}
+
 code {
     font-family: 'Roboto Mono';
     font-size: 0.9em;
@@ -100,13 +112,59 @@ code {
         </header>
         <section>
 
+<p>Implicit-GPU is a new 2d CAD program based on the principals of Constructive Solid Geometry (commonly refered to as CSG). What makes Implicit-GPU different is the implementation detail that shapes are described mathematically, allowing them to be rendered at low resolution for quick feedback and infinite resolution for publishing.</p>
+<h1 id="core-mathematical-principals">Core Mathematical Principals</h1>
+<p>As you may have guessed from the name, Implicit-GPU uses <a href="https://en.wikipedia.org/wiki/Implicit_curve">Implicit Curves</a> as the core model for defining shapes. If you don't want to read the wiki page, the rest of this section will be a brief primer on the subject.</p>
+<p>An implicit curve is a curve that is defined by the locations on a plane where the function applied to that location is <span class="math inline">0</span>. Put another way, given a shape <span class="math inline">F</span>, the outline of <span class="math inline">F</span> is all the locations where <span class="math inline">F(x, y) = 0</span>.</p>
+<p>To further simplify things for my application, I'll make a stronger garuntee about the implicit functions. Not only will they return <span class="math inline">0</span> on the edges, but they'll also always return positive numbers when applied <em>outside</em> of the shape, and negative numbers <em>inside</em> the shape.</p>
+<h2 id="shapes">Shapes</h2>
+<p>Before you can do interesting things with shapes, you've got to have some core building blocks to build scenes out of. The circle and polygon are great places to start!</p>
+<h3 id="circles">Circles</h3>
+<p>Let's look at a simple example, circles! The function that produces a circle centered at <span class="math inline">(x&#39;, y&#39;)</span> with radius <span class="math inline">r</span> would be <span class="math inline">\sqrt{(x-x&#39;)^2 + (y-y&#39;)^2} - r = 0</span></p>
+<p>Try applying this function to any point; on the edge of the circle, you'd get <span class="math inline">0</span>; any point <em>outside</em> of the circle a positive number; and any point <em>inside</em> the circle will be negative.</p>
+<h3 id="polygons">Polygons</h3>
+<p>Unlike circles, the algorithm for polygons are a bit more complex, requiring iterating over every line segment, finding the distance to the line segment and then negating the distance if the point query lies on the &quot;inside&quot; of the line segment.</p>
+<p>In order to determine if a point is on the &quot;inside&quot; or &quot;outside&quot; of a line segment, all polygons are encoded as points progresing in a clockwise winding order. Then, determining if a point is on one side of the line segment or the other only requires looking at the sign on <span class="math inline">(x&#39;&#39; - x&#39;) * (y - y&#39;) - (y&#39;&#39; - y&#39;) * (x - x&#39;&#39;)</span> where <span class="math inline">(x, y)</span> is the sampling point, <span class="math inline">(x&#39;, y&#39;)</span> is the first point of the line segment, and <span class="math inline">(x&#39;&#39;, y&#39;&#39;)</span> is the second.</p>
+<h2 id="operations">Operations</h2>
+<p>The real killer feature of implicit geometry is how easy it is to represent operations on shapes. The most basic of these are the traditional &quot;venn diagram&quot; operations.</p>
+<h3 id="negation">Negation</h3>
+<p>The negation operator takes a shape and returns a shape that has it's insides and outsides flipped. While not incredibly useful by itself, negating a shape is handy in defining further operations.</p>
+<blockquote>
+<p>Picture here</p>
+</blockquote>
+<p><span class="math inline">\text{negate}(A(x, y)) = -A(x, y)</span></p>
+<h3 id="intersection">Intersection</h3>
+<p>The intersection operator takes two shapes and returns a new shape that contains all of the area that was contained inside of both shapes.</p>
+<blockquote>
+<p>Picture here</p>
+</blockquote>
+<p><span class="math inline">\text{intersect}(A(x, y), B(x, y)) = \text{min}(A(x, y), B(x, y))</span></p>
+<h3 id="union">Union</h3>
+<p>The union operator takes two shapes and returns a new shape that contains the area that was contained inside of either shape.</p>
+<blockquote>
+<p>Picture here</p>
+</blockquote>
+<p><span class="math inline">\text{union}(A(x, y), B(x, y)) = \text{max}(A(x, y), B(x, y))</span></p>
+<h3 id="subtract">Subtract</h3>
+<p>The subtraction operator takes a target shape and a cutting shape and subtracts the cutting shape out of the target shape.</p>
+<blockquote>
+<p>Picture here</p>
+</blockquote>
+<p><span class="math inline">\text{subtract}(Target(x, y), Cut(x, y)) = \text{union}(Target(x, y), \text{negate}(Cut(x, y)))</span></p>
+<p>You'll notice that this operator is defined in terms of previous operators, namely <span class="math inline">\text{union}</span> and <span class="math inline">\text{negate}</span>.</p>
 
+<script>
+    var maths = document.querySelectorAll(".math");
+    for (var i = 0; i < maths.length; i++) {
+        var text = maths[i].innerText;
+        maths[i].innerText = "";
+        katex.render(text, maths[i]);
+    }
+</script>
 
+</section>
+</body>
 
-
-
-    </section>
-    </body>
 </html>
 
 

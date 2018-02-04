@@ -53,6 +53,10 @@ section {
     width: 800px;
     margin-left: auto;
     margin-right: auto;
+    font-size: 1.05em;
+    line-height: 1.5em;
+    text-align: justify;
+    text-justify: distribute;
 }
 
 @media only screen and (max-width: 860px) {
@@ -63,10 +67,18 @@ section {
 
 h1, h2, h3, h4 {
     font-family: 'Roboto', sans-serif;
-    font-size: 2em;
     font-weight: bold;
     color: rgb(10, 10, 60);
 }
+
+h1, h2 {
+    font-size: 2em;
+}
+
+h3 {
+    font-size: 1.3em;
+}
+
 code {
     font-family: 'Roboto Mono';
     font-size: 0.9em;

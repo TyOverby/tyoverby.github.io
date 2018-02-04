@@ -1,15 +1,13 @@
+<script>
+    var maths = document.querySelectorAll(".math");
+    for (var i = 0; i < maths.length; i++) {
+        var text = maths[i].innerText;
+        maths[i].innerText = "";
+        katex.render(text, maths[i]);
+    }
+</script>
 
+</section>
+</body>
 
-#ifdef KATEX
-    <script>
-var maths = document.querySelectorAll(".math");
-for (var i = 0; i < maths.length; i++) {
-    var text = maths[i].innerText;
-    maths[i].innerText = "";
-    katex.render(text, maths[i]);
-}
-    </script>
-#endif
-    </section>
-    </body>
 </html>

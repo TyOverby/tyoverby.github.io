@@ -68,6 +68,10 @@ section {
     width: 800px;
     margin-left: auto;
     margin-right: auto;
+    font-size: 1.05em;
+    line-height: 1.5em;
+    text-align: justify;
+    text-justify: distribute;
 }
 
 @media only screen and (max-width: 860px) {
@@ -78,10 +82,18 @@ section {
 
 h1, h2, h3, h4 {
     font-family: 'Roboto', sans-serif;
-    font-size: 2em;
     font-weight: bold;
     color: rgb(10, 10, 60);
 }
+
+h1, h2 {
+    font-size: 2em;
+}
+
+h3 {
+    font-size: 1.3em;
+}
+
 code {
     font-family: 'Roboto Mono';
     font-size: 0.9em;
@@ -159,20 +171,18 @@ user    0m1.388s
 sys     0m0.004s</code></pre>
 <p>I'm sure that there are ways to get the C version faster, but the only important takeaway from this 5 second experiment is that the Rust compiler does a damn good job of providing abstractions that hit really close to the metal.</p>
 
+<script>
+    var maths = document.querySelectorAll(".math");
+    for (var i = 0; i < maths.length; i++) {
+        var text = maths[i].innerText;
+        maths[i].innerText = "";
+        katex.render(text, maths[i]);
+    }
+</script>
 
+</section>
+</body>
 
-
-    <script>
-var maths = document.querySelectorAll(".math");
-for (var i = 0; i < maths.length; i++) {
-    var text = maths[i].innerText;
-    maths[i].innerText = "";
-    katex.render(text, maths[i]);
-}
-    </script>
-
-    </section>
-    </body>
 </html>
 
 

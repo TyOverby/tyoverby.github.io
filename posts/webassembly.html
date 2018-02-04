@@ -68,6 +68,10 @@ section {
     width: 800px;
     margin-left: auto;
     margin-right: auto;
+    font-size: 1.05em;
+    line-height: 1.5em;
+    text-align: justify;
+    text-justify: distribute;
 }
 
 @media only screen and (max-width: 860px) {
@@ -78,10 +82,18 @@ section {
 
 h1, h2, h3, h4 {
     font-family: 'Roboto', sans-serif;
-    font-size: 2em;
     font-weight: bold;
     color: rgb(10, 10, 60);
 }
+
+h1, h2 {
+    font-size: 2em;
+}
+
+h3 {
+    font-size: 1.3em;
+}
+
 code {
     font-family: 'Roboto Mono';
     font-size: 0.9em;
@@ -142,11 +154,18 @@ function strlen(ptr) {
 <p>Unlike NaCl and PNaCl, asm.js saw lots of adoption! Because it was a subset of javascript, it worked in every browser; though it was faster in Firefox because of the explicit support for ahead-of-time compilation. Many game engines support publishing their games to the web via emscripten and asm.js.</p>
 <h2 id="what-is-web-assembly">What is Web-Assembly?</h2>
 
+<script>
+    var maths = document.querySelectorAll(".math");
+    for (var i = 0; i < maths.length; i++) {
+        var text = maths[i].innerText;
+        maths[i].innerText = "";
+        katex.render(text, maths[i]);
+    }
+</script>
 
+</section>
+</body>
 
-
-    </section>
-    </body>
 </html>
 
 
