@@ -69,6 +69,7 @@ h1, h2, h3, h4 {
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
     color: rgb(10, 10, 60);
+    text-justify: none;
 }
 
 h1, h2 {
@@ -86,4 +87,8 @@ code {
 
 .kw {
     font-weight: bold;
+}
+
+th {
+    text-align: center;
 }
