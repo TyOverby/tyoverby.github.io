@@ -138,6 +138,7 @@ th {
 <p><span class="math inline">\text{negate}(A(x, y)) = -A(x, y)</span></p>
 <h3 id="intersection">Intersection</h3>
 <p>The intersection operator takes two shapes and returns a new shape that contains only the area that was contained inside of both shapes.</p>
+<p><span class="math inline">\text{intersect}(A(x, y), B(x, y)) = \text{min}(A(x, y), B(x, y))</span></p>
 <table>
 <thead>
 <tr class="header">
@@ -152,9 +153,9 @@ th {
 </tr>
 </tbody>
 </table>
-<p><span class="math inline">\text{intersect}(A(x, y), B(x, y)) = \text{min}(A(x, y), B(x, y))</span></p>
 <h3 id="union">Union</h3>
 <p>The union operator takes two shapes and returns a new shape that contains the area that was contained inside of either shape.</p>
+<p><span class="math inline">\text{union}(A(x, y), B(x, y)) = \text{max}(A(x, y), B(x, y))</span></p>
 <table>
 <thead>
 <tr class="header">
@@ -169,9 +170,9 @@ th {
 </tr>
 </tbody>
 </table>
-<p><span class="math inline">\text{union}(A(x, y), B(x, y)) = \text{max}(A(x, y), B(x, y))</span></p>
 <h3 id="subtract">Subtract</h3>
-<p>The subtraction operator takes a target shape and a cutting shape and subtracts the cutting shape out of the target shape.</p>
+<p>The subtraction operator takes a target shape and a cutting shape and subtracts the cutting shape out of the target shape. You'll notice that this operator is defined in terms of previous operators: <span class="math inline">\text{union}</span> and <span class="math inline">\text{negate}</span>.</p>
+<p><span class="math inline">\text{subtract}(Target(x, y), Cut(x, y)) = \text{union}(Target(x, y), \text{negate}(Cut(x, y)))</span></p>
 <table>
 <thead>
 <tr class="header">
@@ -186,8 +187,6 @@ th {
 </tr>
 </tbody>
 </table>
-<p><span class="math inline">\text{subtract}(Target(x, y), Cut(x, y)) = \text{union}(Target(x, y), \text{negate}(Cut(x, y)))</span></p>
-<p>You'll notice that this operator is defined in terms of previous operators: <span class="math inline">\text{union}</span> and <span class="math inline">\text{negate}</span>.</p>
 
 <script>
     var maths = document.querySelectorAll(".math");

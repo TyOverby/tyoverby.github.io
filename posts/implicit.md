@@ -31,7 +31,7 @@ centered at $(x', y')$ with radius $r$ would be $\sqrt{(x-x')^2 + (y-y')^2} - r 
 Try applying this function to any point; on the edge of the circle, you'd
 get $0$; any point _outside_ of the circle a positive number; and any point _inside_
 the circle will be negative.  The image to the right shows sample positions on a circle
-with blue as positive results and red as negative.  
+with blue as positive results and red as negative.
 
 ### Polygons
 Unlike circles, the algorithm for polygons are a bit more complex, requiring
@@ -60,31 +60,32 @@ $\text{negate}(A(x, y)) = -A(x, y)$
 The intersection operator takes two shapes and returns a new shape that contains only the
 area that was contained inside of both shapes.
 
+$\text{intersect}(A(x, y), B(x, y)) = \text{min}(A(x, y), B(x, y))$
+
 | $A, B$ | $\text{intersect}(A, B)$ |
 |:------:|:------------------------:|
 |<img src="../images/poly_ops/unaltered.svg" /> | <img src="../images/poly_ops/intersection.svg" /> |
-
-$\text{intersect}(A(x, y), B(x, y)) = \text{min}(A(x, y), B(x, y))$
 
 ### Union
 The union operator takes two shapes and returns a new shape that contains the
 area that was contained inside of either shape.
 
+$\text{union}(A(x, y), B(x, y)) = \text{max}(A(x, y), B(x, y))$
+
 | $A, B$ | $\text{union}(A, B)$ |
 |:------:|:--------------------:|
 |<img src="../images/poly_ops/unaltered.svg" /> | <img src="../images/poly_ops/union.svg" /> |
 
-$\text{union}(A(x, y), B(x, y)) = \text{max}(A(x, y), B(x, y))$
 
 ### Subtract
 The subtraction operator takes a target shape and a cutting shape and subtracts
 the cutting shape out of the target shape.
+You'll notice that this operator is defined in terms of previous operators: $\text{union}$ and
+$\text{negate}$.
+
+$\text{subtract}(Target(x, y), Cut(x, y)) = \text{union}(Target(x, y), \text{negate}(Cut(x, y)))$
 
 | $Target, Cut$ | $\text{subtract}(Target, Cut)$ |
 |:-------------:|:------------------------------:|
 |<img src="../images/poly_ops/unaltered.svg" /> | <img  src="../images/poly_ops/subtract.svg" /> |
 
-$\text{subtract}(Target(x, y), Cut(x, y)) = \text{union}(Target(x, y), \text{negate}(Cut(x, y)))$
-
-You'll notice that this operator is defined in terms of previous operators: $\text{union}$ and
-$\text{negate}$.
