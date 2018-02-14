@@ -1,0 +1,214 @@
+
+
+
+
+<!doctype html>
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Bincode 1.0.0 </title>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:700|Raleway:100|Roboto+Condensed:300|Roboto|Roboto+Mono" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-beta1/katex.min.css" integrity="sha384-VEnyslhHLHiYPca9KFkBB3CMeslnM9CzwjxsEbZTeA21JBm7tdLwKoZmCt3cZTYD" crossorigin="anonymous" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-beta1/katex.min.js" integrity="sha384-O4hpKqcplNCe+jLuBVEXC10Rn1QEqAmX98lKAIFBEDxZI0a+6Z2w2n8AEtQbR4CD" crossorigin="anonymous"></script>
+        <style>
+
+html, body, header {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    position: relative;
+    min-height: 100vh;
+
+    background: url(../images/snowy-mountains.jpeg);
+
+    background-size: cover;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+header #header-container {
+    background-color: red;
+}
+
+header #title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 3em;
+    text-transform: uppercase;
+}
+
+header #subtitle {
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.black {
+    color: black;
+    text-shadow: 0px 0px 4px white;
+}
+
+.white {
+    color: white;
+    text-shadow: 0px 0px 4px black;
+}
+
+section {
+    padding: 30px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.05em;
+    line-height: 1.5em;
+    text-align: justify;
+    text-justify: distribute;
+}
+
+@media only screen and (max-width: 860px) {
+    section {
+        width: calc(100vw - 60px);
+    }
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    color: rgb(10, 10, 60);
+    text-justify: none;
+}
+
+h1, h2 {
+    font-size: 2em;
+}
+
+h3 {
+    font-size: 1.3em;
+}
+
+code {
+    font-family: 'Roboto Mono';
+    font-size: 0.9em;
+}
+
+.kw {
+    font-weight: bold;
+}
+
+th {
+    text-align: center;
+}
+
+blockquote {
+    border-left: 3px solid green;
+    padding-left: 20px;
+    margin-left: 0;
+    color: darkgreen;
+}
+
+        </style>
+    </head>
+    <body>
+        <header>
+            <span id="title" class=black> Bincode 1.0.0 </span>
+            <span id="subtitle" class=black> Fucking Finally </span>
+        </header>
+        <section>
+
+<p>Today <a href="https://github.com/tyoverby/bincode">bincode</a> hits 1.0.0! Before we truly get started, a brief history</p>
+<ul>
+<li>Sep 15, 2014: First prototype, then named <code>writer_encoder</code> was written on a plane because I was too poor to pay for in-flight wifi so I could download the JSON crate.</li>
+<li>Oct 27, 2014: Rename to <code>bincode</code>.</li>
+<li>Apr 05, 2015: Initial port to serde written by <a href="https://github.com/erickt">erickt</a>. Prior to this, we were using <a href="https://github.com/rust-lang-deprecated/rustc-serialize">rustc-serialize</a>.</li>
+<li>Aug 8, 2015: Servo starts using bincode in <a href="https://crates.io/crates/ipc-channel">ipc-channel</a>!</li>
+<li>Jan 12, 2016: <a href="https://github.com/google/tarpc">Tarpc</a> starts using bincode!</li>
+<li>Apr 21, 2017: Serde hits 1.0! Serde maintainer <a href="https://github.com/dtolnay">dtolnday</a> ports bincode to use the new Serde APIs.</li>
+</ul>
+<p>Many thanks to <a href="https://github.com/TyOverby/bincode/graphs/contributors">everyone that has contributed</a>, I deeply appreciate the help.</p>
+<h1 id="what-is-bincode">What is Bincode</h1>
+<p>At it's root, Bincode is a serializer implementation for Serde. If you stick a <code>#[derive(Deserialize, Serialize)]</code> on your struct, you can use bincode to efficiently serialize and deserialize those structs to and from bytes.</p>
+<blockquote>
+<p>If bincode is just another serializer implementation, what sets it apart from all the others?</p>
+</blockquote>
+<p>Bincode is a bit weird in that it's a format that was purpose built for the rust serialization ecosystem. It's tight coupling with Serde allows bincode to be very fast and serialize to very small payloads.</p>
+<h1 id="how-does-bincode-work">How does Bincode work?</h1>
+<p>The way that bincode achieves its speed and size wins is by choosing to not encode structure into the serialized output. It relies on the fact that <code>#[derive(Deserialize, Serialize)]</code> implementation of the serde traits deserializes fields in <em>exactly the same order</em> as it serialized them. This means that if you implement those traits by hand, you need to uphold this invariant as well.</p>
+<p>Because Bincode leaves out this extraneous structure information, an struct serialized with bincode is often smaller than it was in memory!</p>
+<p>Let's take a look at how bincode serializes some common structures.</p>
+<h3 id="numbers">Numbers</h3>
+<p>All the rust numbers are encoded directly into the output in little-endian format by default.</p>
+<div class="sourceCode"><pre class="sourceCode rust"><code class="sourceCode rust"><span class="kw">use</span> bincode::{serialize, deserialize};
+<span class="kw">let</span> bytes: <span class="dt">Vec</span>&lt;<span class="dt">u8</span>&gt; = serialize(&amp;<span class="dv">123456789u32</span>).unwrap();
+<span class="co">// a 4-byte u32 gets serialized to 4 bytes.</span>
+<span class="pp">assert_eq!</span>(bytes.len(), <span class="dv">4</span>);
+<span class="kw">let</span> number: <span class="dt">u32</span> = deserialize(&amp;bytes).unwrap();</code></pre></div>
+<p><img src="../images/bincode/u32.svg" style="padding: 5px; background:rgb(240, 240, 240)"/></p>
+<h3 id="strings">Strings</h3>
+<p>Strings are serialized by first serializing the length, then the byte content of the string.</p>
+<div class="sourceCode"><pre class="sourceCode rust"><code class="sourceCode rust"><span class="kw">use</span> bincode::{serialize, deserialize};
+<span class="kw">let</span> bytes: <span class="dt">Vec</span>&lt;<span class="dt">u8</span>&gt; = serialize(&amp;<span class="dt">String</span>::from(<span class="st">&quot;hello!&quot;</span>)).unwrap();
+<span class="kw">let</span> string: <span class="dt">String</span> = deserialize(&amp;bytes).unwrap();</code></pre></div>
+<p><img src="../images/bincode/string.svg" style="padding: 5px; background:rgb(240, 240, 240)"/></p>
+<h3 id="structs">Structs</h3>
+<p>When serializing a struct, each field is serialized in order of their declaration in the struct. No additional field information is encoded.</p>
+<div class="sourceCode"><pre class="sourceCode rust"><code class="sourceCode rust"><span class="kw">use</span> bincode::{serialize, deserialize};
+
+<span class="at">#[</span>derive<span class="at">(</span>Serialize<span class="at">,</span> Deserialize<span class="at">)]</span>
+<span class="kw">struct</span> Person {
+    age: <span class="dt">u32</span>,
+    name: <span class="dt">String</span>
+}
+
+<span class="kw">let</span> person = Person {
+    <span class="co">// hey, making these svgs is hard, I&#39;m reusing values for my own sanity.</span>
+    age: <span class="dv">123456789</span>,
+    name: <span class="dt">String</span>::from(<span class="st">&quot;hello!&quot;</span>),
+};
+
+<span class="kw">let</span> bytes: <span class="dt">Vec</span>&lt;<span class="dt">u8</span>&gt; = serialize(&amp;person).unwrap();
+<span class="kw">let</span> person_2: Person = deserialize(&amp;bytes).unwrap()A;</code></pre></div>
+<p><img src="../images/bincode/struct.svg" style="padding: 5px; background:rgb(240, 240, 240)"/></p>
+<h3 id="enums">Enums</h3>
+<p>Enums are serialized as a tag (u32) followed by a their fields serialized in declaration order.</p>
+<div class="sourceCode"><pre class="sourceCode rust"><code class="sourceCode rust"><span class="kw">use</span> bincode::{serialize, deserialize};
+
+<span class="at">#[</span>derive<span class="at">(</span>Serialize<span class="at">,</span> Deserialize<span class="at">)]</span>
+<span class="kw">struct</span> NumberOrString {
+    Number(<span class="dt">u32</span>),
+    <span class="dt">String</span>(<span class="dt">String</span>),
+}
+
+<span class="kw">let</span> num = NumberOrString::Number(<span class="dv">123456789</span>);
+<span class="kw">let</span> string = NumberOrString::<span class="dt">String</span>(<span class="st">&quot;hello!&quot;</span>);
+
+<span class="kw">let</span> bytes_num: <span class="dt">Vec</span>&lt;<span class="dt">u8</span>&gt; = serialize(&amp;num).unwrap();
+<span class="kw">let</span> bytes_string: <span class="dt">Vec</span>&lt;<span class="dt">u8</span>&gt; = serialize(&amp;string).unwrap();
+
+<span class="kw">let</span> num_out: NumberOrString = deserialize(&amp;bytes_num);
+<span class="kw">let</span> num_out: NumberOrString = deserialize(&amp;bytes_string);</code></pre></div>
+<p><img src="../images/bincode/enum.svg" style="padding: 5px; background:rgb(240, 240, 240)"/></p>
+
+<script>
+    var maths = document.querySelectorAll(".math");
+    for (var i = 0; i < maths.length; i++) {
+        var text = maths[i].innerText;
+        maths[i].innerText = "";
+        katex.render(text, maths[i]);
+    }
+</script>
+
+</section>
+</body>
+
+</html>
+
+

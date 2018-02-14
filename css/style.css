@@ -92,3 +92,10 @@ code {
 th {
     text-align: center;
 }
+
+blockquote {
+    border-left: 3px solid green;
+    padding-left: 20px;
+    margin-left: 0;
+    color: darkgreen;
+}
