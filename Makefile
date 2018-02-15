@@ -74,7 +74,7 @@ posts/webassembly.html: tmp/webassembly.md.html $(SHARED)
 posts/bincode_release.html: tmp/bincode_release.md.html $(SHARED)
 	$(TEMPLATE) \
 		"-D TITLE=Bincode 1.0.0" \
-		"-D SUBTITLE=Fucking Finally" \
+		"-D SUBTITLE=" \
 		"-D HEADER_IMAGE_PATH=../images/snowy-mountains.jpeg" \
 		"-D HEADER_STYLE=black" \
 		"-D POST=\"./tmp/bincode_release.md.html\"" \
