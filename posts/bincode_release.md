@@ -14,26 +14,24 @@ I deeply appreciate the help.
 
 # What is Bincode?
 At it's root, Bincode is a serializer implementation for Serde.
-If you stick a `#[derive(Deserialize, Serialize)]` on your struct, you can use Bincode to efficiently
+If you stick a `#[derive(Deserialize, Serialize)]` on your struct, Bincode can efficiently
 serialize and deserialize those structs to and from bytes.
 
 > If Bincode is just another serializer implementation, what sets it apart from all the others?
 
-Bincode is a bit weird in that it's a format that was built specifically for the Rust serialization
-ecosystem.  Its tight coupling with Serde allows Bincode to be very fast and serialize to
+Bincode is unique in that it's a format that was built specifically for the Rust serialization
+ecosystem.  Tight coupling with Serde allows Bincode to be very fast and serialize to
 very small payloads.
 
 # How does Bincode work?
-Bincode achieves its speed and size wins is by choosing to not encode structure
+Bincode achieves its speed and size wins is by not encoding structure information
 into the serialized output.  It relies on the fact that `#[derive(Deserialize, Serialize)]`
-implementation of the Serde traits deserializes fields in _exactly the same order_ as it
-serialized them.  This means that if you implement those traits by hand, you need to uphold this
-invariant as well.
+implementations of the Serde traits deserializes fields in _exactly the same order_ as it
+serialized them.  (If you implement those traits by hand, you need to uphold this
+invariant as well.)
 
 Because Bincode leaves out this extraneous structure information, a struct serialized with Bincode is
-often smaller than it was in memory!
-
-Let's take a look at how Bincode serializes some common structures.
+often smaller than it was in memory! Let's take a look at how Bincode serializes some common structures.
 
 ### Encoding Numbers
 
@@ -41,10 +39,10 @@ All the Rust numbers are encoded directly into the output in little-endian forma
 
 ```rust
 use bincode::{serialize, deserialize};
-let bytes: Vec<u8> = serialize(&123456789u32).unwrap();
+let bytes: Vec<u8> = serialize(&123456789u32)?;
 // a 4-byte u32 gets serialized to 4 bytes.
 assert_eq!(bytes.len(), 4);
-let number: u32 = deserialize(&bytes).unwrap();
+let number: u32 = deserialize(&bytes)?;
 ```
 <img src="../images/bincode/u32.svg" style="padding: 5px; background:rgb(240, 240, 240)"/>
 
@@ -54,8 +52,8 @@ Strings are serialized by first serializing the length and then serializing the 
 
 ```rust
 use bincode::{serialize, deserialize};
-let bytes: Vec<u8> = serialize(&String::from("hello!")).unwrap();
-let string: String = deserialize(&bytes).unwrap();
+let bytes: Vec<u8> = serialize(&String::from("hello!"))?;
+let string: String = deserialize(&bytes)?;
 ```
 
 <img src="../images/bincode/string.svg" style="padding: 5px; background:rgb(240, 240, 240)"/>
@@ -79,8 +77,8 @@ let person = Person {
     name: String::from("hello!"),
 };
 
-let bytes: Vec<u8> = serialize(&person).unwrap();
-let person_2: Person = deserialize(&bytes).unwrap()A;
+let bytes: Vec<u8> = serialize(&person)?;
+let person_2: Person = deserialize(&bytes)?;
 ```
 
 <img src="../images/bincode/struct.svg" style="padding: 5px; background:rgb(240, 240, 240)"/>
@@ -100,11 +98,11 @@ struct NumberOrString {
 let num = NumberOrString::Number(123456789);
 let string = NumberOrString::String("hello!");
 
-let bytes_num: Vec<u8> = serialize(&num).unwrap();
-let bytes_string: Vec<u8> = serialize(&string).unwrap();
+let bytes_num: Vec<u8> = serialize(&num)?;
+let bytes_string: Vec<u8> = serialize(&string)?;
 
-let num_out: NumberOrString = deserialize(&bytes_num);
-let num_out: NumberOrString = deserialize(&bytes_string);
+let num_out: NumberOrString = deserialize(&bytes_num)?;
+let num_out: NumberOrString = deserialize(&bytes_string)?;
 ```
 
 <img src="../images/bincode/enum.svg" style="padding: 5px; background:rgb(240, 240, 240)"/>
@@ -159,5 +157,5 @@ requirements.
 * Data encoded by one version of Bincode should be readable by future versions of Bincode.
 
 Both of these are fairly easy to achieve while also permitting Bincode to evolve
-through the use of configuration options.
-
+through the use of configuration options.  As new language features come online (I'm looking
+at you impl-trait), bincode will be re-released with major version changes.
