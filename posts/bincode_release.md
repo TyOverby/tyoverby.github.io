@@ -6,7 +6,7 @@ Today [Bincode](https://github.com/tyoverby/bincode) hits 1.0.0!  Before we trul
   Prior to this, we were using [rustc-serialize](https://github.com/rust-lang-deprecated/rustc-serialize).
 * Aug 8, 2015: Servo starts using bincode in [ipc-channel](https://crates.io/crates/ipc-channel)!
 * Jan 12, 2016: [Tarpc](https://github.com/google/tarpc) starts using bincode!
-* Apr 21, 2017: Serde hits 1.0!  Serde maintainer [dtolnday](https://github.com/dtolnay)
+* Apr 21, 2017: Serde hits 1.0!  Serde maintainer [dtolnay](https://github.com/dtolnay)
   ports bincode to use the new Serde APIs.
 
 Many thanks to [everyone who has contributed]( https://github.com/TyOverby/bincode/graphs/contributors).
@@ -127,6 +127,7 @@ __Pros__
 __Cons__
 
 * Not human readable
+* No cross-language support
 * __Serialized data can not be read if structure changes__
   * No reordering fields
   * No adding / removing fields

@@ -153,7 +153,7 @@ div#toc>ul {
 <li>Apr 05, 2015: Initial port to serde written by <a href="https://github.com/erickt">erickt</a>. Prior to this, we were using <a href="https://github.com/rust-lang-deprecated/rustc-serialize">rustc-serialize</a>.</li>
 <li>Aug 8, 2015: Servo starts using bincode in <a href="https://crates.io/crates/ipc-channel">ipc-channel</a>!</li>
 <li>Jan 12, 2016: <a href="https://github.com/google/tarpc">Tarpc</a> starts using bincode!</li>
-<li>Apr 21, 2017: Serde hits 1.0! Serde maintainer <a href="https://github.com/dtolnay">dtolnday</a> ports bincode to use the new Serde APIs.</li>
+<li>Apr 21, 2017: Serde hits 1.0! Serde maintainer <a href="https://github.com/dtolnay">dtolnay</a> ports bincode to use the new Serde APIs.</li>
 </ul>
 <p>Many thanks to <a href="https://github.com/TyOverby/bincode/graphs/contributors">everyone who has contributed</a>. I deeply appreciate the help.</p>
 <h1 id="what-is-bincode">What is Bincode?</h1>
@@ -237,6 +237,7 @@ div#toc>ul {
 <p><strong>Cons</strong></p>
 <ul>
 <li>Not human readable</li>
+<li>No cross-language support</li>
 <li><strong>Serialized data can not be read if structure changes</strong>
 <ul>
 <li>No reordering fields</li>
