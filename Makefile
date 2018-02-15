@@ -1,5 +1,5 @@
 TEMPLATE=cpp -w -undef -nostdinc -E -P
-MARKDOWN=pandoc -f markdown -t html --katex --toc
+MARKDOWN=pandoc --template pandoc_template.txt -f markdown -t html --katex --toc
 SHARED=common-header.t.html common-footer.t.html css/style.css
 
 all: index.html \
@@ -100,4 +100,6 @@ index.html: tmp/index.md.html $(SHARED)
 		post.t.html > index.html
 
 clean:
-	rm index.html -rf tmp/ posts/*.html
+	rm index.html
+	rm -rf tmp/
+	rm posts/*.html

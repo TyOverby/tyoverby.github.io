@@ -99,3 +99,10 @@ blockquote {
     margin-left: 0;
     color: darkgreen;
 }
+
+div#toc ul {
+    list-style: none;
+}
+div#toc>ul {
+    padding-left: 0;
+}

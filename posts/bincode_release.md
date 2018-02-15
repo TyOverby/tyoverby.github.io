@@ -35,7 +35,7 @@ often smaller than it was in memory!
 
 Let's take a look at how bincode serializes some common structures.
 
-### Numbers
+### Encoding Numbers
 
 All the rust numbers are encoded directly into the output in little-endian format by default.
 
@@ -48,7 +48,7 @@ let number: u32 = deserialize(&bytes).unwrap();
 ```
 <img src="../images/bincode/u32.svg" style="padding: 5px; background:rgb(240, 240, 240)"/>
 
-### Strings
+### Encoding Strings
 
 Strings are serialized by first serializing the length, then the byte content of the string.
 
@@ -60,7 +60,7 @@ let string: String = deserialize(&bytes).unwrap();
 
 <img src="../images/bincode/string.svg" style="padding: 5px; background:rgb(240, 240, 240)"/>
 
-### Structs
+### Encoding Structs
 When serializing a struct, each field is serialized in order of their declaration in the struct.
 No additional field information is encoded.
 
@@ -85,7 +85,7 @@ let person_2: Person = deserialize(&bytes).unwrap()A;
 
 <img src="../images/bincode/struct.svg" style="padding: 5px; background:rgb(240, 240, 240)"/>
 
-### Enums
+### Encoding Enums
 Enums are serialized as a tag (u32) followed by a their fields serialized in declaration order.
 
 ```rust
@@ -108,3 +108,56 @@ let num_out: NumberOrString = deserialize(&bytes_string);
 ```
 
 <img src="../images/bincode/enum.svg" style="padding: 5px; background:rgb(240, 240, 240)"/>
+
+
+# Should I use Bincode?
+Bincode is great for very specific serialization tasks, but is less than ideal for others.
+To help you decide if you should use bincode or not, I've provided a helpful cost benefit
+analysis below.
+
+__Pros__
+
+* Fast
+* Small serialized size
+* Configurable options for improving speed and size even further!
+    * Choose between endianness for integers
+    * Set message size limits for Denial Of Service protection
+    * Upcoming configurations
+        * Variable sized integers for lengths and enum variants
+        * Null terminated strings
+
+__Cons__
+
+* Not human readable
+* __Serialized data can not be read if structure changes__
+  * No re-ordering fields
+  * No adding / removing fields
+
+The "no structure changes" drawback can not be understated.  If your program
+requires backwards-compatible data representations, take a look at other
+formats like [ProtoBuf](https://github.com/google/protobuf) and
+[Cap'n Proto](https://capnproto.org/).
+
+However, there are many areas where those limitations aren't actual issues!
+The best example of this is [ipc-channel](https://crates.io/crates/ipc-channel) which
+uses bincode to send structs across the process boundary.  When both processes are the
+same binary, there's no need to worry about the struct definitions being different.
+
+Another popular use case would be video games.  Rarely do networked video games permit
+players of different versions of a game to connect to each other.  Similarly to the
+ipc-channel example, if every player is running the same build, no need to worry about
+back-compat issues.
+
+# The Future of Bincode
+Bincode 1.0.0 is at a point where I feel comfortable recommending the project and
+am happy overall with the library ergonomics.
+
+Being both a library and an ad-hoc data format, Bincode has some interesting compatibility
+requirements.
+
+* The library itself must obey semver (as all crates should).
+* Data encoded by one version of Bincode should be readable by future versions of Bincode.
+
+I feel like both of these are fairly easy to achieve while also permitting Bincode to evolve
+through the use of configuration options.
+
