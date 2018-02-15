@@ -1,6 +1,6 @@
-Today [bincode](https://github.com/tyoverby/bincode) hits 1.0.0!  Before we truly get started, a brief history
+Today [Bincode](https://github.com/tyoverby/bincode) hits 1.0.0!  Before we truly get started, a brief history:
 
-* Sep 15, 2014: First prototype, then named `writer_encoder` was written on a plane because I was too poor to pay for in-flight wifi so I could download the JSON crate.
+* Sep 15, 2014: First prototype - then named `writer_encoder` - was written on a plane.  I was too poor at the time to pay for in-flight wifi so I wasn't able to download any other serializers.
 * Oct 27, 2014: Rename to `bincode`.
 * Apr 05, 2015: Initial port to serde written by [erickt](https://github.com/erickt).
   Prior to this, we were using [rustc-serialize](https://github.com/rust-lang-deprecated/rustc-serialize).
@@ -9,35 +9,35 @@ Today [bincode](https://github.com/tyoverby/bincode) hits 1.0.0!  Before we trul
 * Apr 21, 2017: Serde hits 1.0!  Serde maintainer [dtolnday](https://github.com/dtolnay)
   ports bincode to use the new Serde APIs.
 
-Many thanks to [everyone that has contributed]( https://github.com/TyOverby/bincode/graphs/contributors),
+Many thanks to [everyone who has contributed]( https://github.com/TyOverby/bincode/graphs/contributors).
 I deeply appreciate the help.
 
-# What is Bincode
+# What is Bincode?
 At it's root, Bincode is a serializer implementation for Serde.
-If you stick a `#[derive(Deserialize, Serialize)]` on your struct, you can use bincode to efficiently
+If you stick a `#[derive(Deserialize, Serialize)]` on your struct, you can use Bincode to efficiently
 serialize and deserialize those structs to and from bytes.
 
-> If bincode is just another serializer implementation, what sets it apart from all the others?
+> If Bincode is just another serializer implementation, what sets it apart from all the others?
 
-Bincode is a bit weird in that it's a format that was purpose built for the rust serialization
-ecosystem.  It's tight coupling with Serde allows bincode to be very fast and serialize to
+Bincode is a bit weird in that it's a format that was built specifically for the Rust serialization
+ecosystem.  Its tight coupling with Serde allows Bincode to be very fast and serialize to
 very small payloads.
 
 # How does Bincode work?
-The way that bincode achieves its speed and size wins is by choosing to not encode structure
+Bincode achieves its speed and size wins is by choosing to not encode structure
 into the serialized output.  It relies on the fact that `#[derive(Deserialize, Serialize)]`
-implementation of the serde traits deserializes fields in _exactly the same order_ as it
+implementation of the Serde traits deserializes fields in _exactly the same order_ as it
 serialized them.  This means that if you implement those traits by hand, you need to uphold this
 invariant as well.
 
-Because Bincode leaves out this extraneous structure information, an struct serialized with bincode is
+Because Bincode leaves out this extraneous structure information, a struct serialized with Bincode is
 often smaller than it was in memory!
 
-Let's take a look at how bincode serializes some common structures.
+Let's take a look at how Bincode serializes some common structures.
 
 ### Encoding Numbers
 
-All the rust numbers are encoded directly into the output in little-endian format by default.
+All the Rust numbers are encoded directly into the output in little-endian format by default.
 
 ```rust
 use bincode::{serialize, deserialize};
@@ -50,7 +50,7 @@ let number: u32 = deserialize(&bytes).unwrap();
 
 ### Encoding Strings
 
-Strings are serialized by first serializing the length, then the byte content of the string.
+Strings are serialized by first serializing the length and then serializing the byte content of the string.
 
 ```rust
 use bincode::{serialize, deserialize};
@@ -61,7 +61,7 @@ let string: String = deserialize(&bytes).unwrap();
 <img src="../images/bincode/string.svg" style="padding: 5px; background:rgb(240, 240, 240)"/>
 
 ### Encoding Structs
-When serializing a struct, each field is serialized in order of their declaration in the struct.
+When serializing a struct, each field is serialized in order of its declaration in the struct.
 No additional field information is encoded.
 
 ```rust
@@ -86,7 +86,7 @@ let person_2: Person = deserialize(&bytes).unwrap()A;
 <img src="../images/bincode/struct.svg" style="padding: 5px; background:rgb(240, 240, 240)"/>
 
 ### Encoding Enums
-Enums are serialized as a tag (u32) followed by a their fields serialized in declaration order.
+Enums are serialized as a tag (u32) followed by their fields serialized in declaration order.
 
 ```rust
 use bincode::{serialize, deserialize};
@@ -112,7 +112,7 @@ let num_out: NumberOrString = deserialize(&bytes_string);
 
 # Should I use Bincode?
 Bincode is great for very specific serialization tasks, but is less than ideal for others.
-To help you decide if you should use bincode or not, I've provided a helpful cost benefit
+To help you decide if you should use it or not, I've provided a helpful cost benefit
 analysis below.
 
 __Pros__
@@ -130,12 +130,12 @@ __Cons__
 
 * Not human readable
 * __Serialized data can not be read if structure changes__
-  * No re-ordering fields
+  * No reordering fields
   * No adding / removing fields
 
 The "no structure changes" drawback can not be understated.  If your program
 requires backwards-compatible data representations, take a look at other
-formats like [ProtoBuf](https://github.com/google/protobuf) and
+formats such as [ProtoBuf](https://github.com/google/protobuf) or
 [Cap'n Proto](https://capnproto.org/).
 
 However, there are many areas where those limitations aren't actual issues!
@@ -143,10 +143,10 @@ The best example of this is [ipc-channel](https://crates.io/crates/ipc-channel) 
 uses bincode to send structs across the process boundary.  When both processes are the
 same binary, there's no need to worry about the struct definitions being different.
 
-Another popular use case would be video games.  Rarely do networked video games permit
+Another popular use case would be video games.  Networked video games rarely permit
 players of different versions of a game to connect to each other.  Similarly to the
-ipc-channel example, if every player is running the same build, no need to worry about
-back-compat issues.
+ipc-channel example, if every player is running the same build, there is no need to
+worry about back-compat issues.
 
 # The Future of Bincode
 Bincode 1.0.0 is at a point where I feel comfortable recommending the project and
@@ -158,6 +158,6 @@ requirements.
 * The library itself must obey semver (as all crates should).
 * Data encoded by one version of Bincode should be readable by future versions of Bincode.
 
-I feel like both of these are fairly easy to achieve while also permitting Bincode to evolve
+Both of these are fairly easy to achieve while also permitting Bincode to evolve
 through the use of configuration options.
 
