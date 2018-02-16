@@ -1,16 +1,39 @@
-Today [Bincode](https://github.com/tyoverby/bincode) hits 1.0.0!  Before we truly get started, a brief history:
+---
+title: Bincode 1.0.0
+author: Ty Overby
+image: ../images/snowy-mountains.jpeg
+abstract: |
+    Today [Bincode](https://github.com/tyoverby/bincode) hits 1.0.0!  Before we truly get started, a brief history:
+    <table>
+    <tr>
+    <td style="min-width: 7em;">Sep 15 2014</td>
+    <td>First prototype - then named <code>writer_encoder</code> - was written while I was on a plane with no wifi.
+    </tr>
+    <tr>
+    <td>Oct 27 2014</td>
+    <td>Rename to <code>bincode</code></td>
+    </tr>
+    <tr>
+    <td>Apr 05 2015</td>
+    <td>Initial port to serde written by <a href="https://github.com/erickt">erickt</a> Prior to this, we were using <a href="https://github.com/rust-lang-deprecated/rustc-serialize">rustc-serialize</a></td>
+    </tr>
+    <tr>
+    <td>Aug 08 2015</td>
+    <td><div class="line-block">Servo starts using bincode in <a href="https://crates.io/crates/ipc-channel">ipc-channel</a></div></td>
+    </tr>
+    <tr>
+    <td>Jan 12 2016</td>
+    <td><a href="https://github.com/google/tarpc">Tarpc</a> starts using bincode</td>
+    </tr>
+    <tr>
+    <td>Apr 21 2017</td>
+    <td>Serde hits 1.0! Serde maintainer <a href="https://github.com/dtolnay">dtolnay</a> ports bincode to use the new Serde APIs</td>
+    </tr>
+    </table>
 
-* Sep 15, 2014: First prototype - then named `writer_encoder` - was written on a plane.  I was too poor at the time to pay for in-flight wifi so I wasn't able to download any other serializers.
-* Oct 27, 2014: Rename to `bincode`.
-* Apr 05, 2015: Initial port to serde written by [erickt](https://github.com/erickt).
-  Prior to this, we were using [rustc-serialize](https://github.com/rust-lang-deprecated/rustc-serialize).
-* Aug 8, 2015: Servo starts using bincode in [ipc-channel](https://crates.io/crates/ipc-channel)!
-* Jan 12, 2016: [Tarpc](https://github.com/google/tarpc) starts using bincode!
-* Apr 21, 2017: Serde hits 1.0!  Serde maintainer [dtolnay](https://github.com/dtolnay)
-  ports bincode to use the new Serde APIs.
-
-Many thanks to [everyone who has contributed]( https://github.com/TyOverby/bincode/graphs/contributors).
-I deeply appreciate the help.
+    Many thanks to [everyone who has contributed]( https://github.com/TyOverby/bincode/graphs/contributors).
+    I deeply appreciate the help.
+---
 
 # What is Bincode?
 At it's root, Bincode is a serializer implementation for Serde.
@@ -44,7 +67,7 @@ let bytes: Vec<u8> = serialize(&123456789u32)?;
 assert_eq!(bytes.len(), 4);
 let number: u32 = deserialize(&bytes)?;
 ```
-<img src="../images/bincode/u32.svg" style="padding: 5px; background:rgb(240, 240, 240)"/>
+<img src="../images/bincode/u32.svg" />
 
 ### Encoding Strings
 
@@ -56,7 +79,7 @@ let bytes: Vec<u8> = serialize(&String::from("hello!"))?;
 let string: String = deserialize(&bytes)?;
 ```
 
-<img src="../images/bincode/string.svg" style="padding: 5px; background:rgb(240, 240, 240)"/>
+<img src="../images/bincode/string.svg" />
 
 ### Encoding Structs
 When serializing a struct, each field is serialized in order of its declaration in the struct.
@@ -81,7 +104,7 @@ let bytes: Vec<u8> = serialize(&person)?;
 let person_2: Person = deserialize(&bytes)?;
 ```
 
-<img src="../images/bincode/struct.svg" style="padding: 5px; background:rgb(240, 240, 240)"/>
+<img src="../images/bincode/struct.svg" />
 
 ### Encoding Enums
 Enums are serialized as a tag (u32) followed by their fields serialized in declaration order.
@@ -105,7 +128,7 @@ let num_out: NumberOrString = deserialize(&bytes_num)?;
 let num_out: NumberOrString = deserialize(&bytes_string)?;
 ```
 
-<img src="../images/bincode/enum.svg" style="padding: 5px; background:rgb(240, 240, 240)"/>
+<img src="../images/bincode/enum.svg" />
 
 
 # Should I use Bincode?

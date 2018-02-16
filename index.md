@@ -1,3 +1,9 @@
+---
+title: Ty Overby
+image: ./images/snowy-mountains.jpeg
+color: black
+---
+
 Hi, I'm Ty!
 
 I'm a dev at Microsoft working on the [Roslyn compiler service](https://github.com/dotnet/roslyn).

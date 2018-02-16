@@ -6,9 +6,6 @@ html, body, header {
 header {
     position: relative;
     min-height: 100vh;
-#ifdef HEADER_IMAGE_PATH
-    background: url(HEADER_IMAGE_PATH);
-#endif
     background-size: cover;
     text-align: center;
 
@@ -23,14 +20,14 @@ header #header-container {
     background-color: red;
 }
 
-header #title {
+header .title {
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     font-size: 3em;
     text-transform: uppercase;
 }
 
-header #subtitle {
+header .subtitle, header .author {
     font-family: 'Raleway', sans-serif;
     font-weight: bold;
     font-size: 2em;
@@ -105,4 +102,8 @@ div#toc ul {
 }
 div#toc>ul {
     padding-left: 0;
+}
+
+img {
+    max-width: 100%;
 }

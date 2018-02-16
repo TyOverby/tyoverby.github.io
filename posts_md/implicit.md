@@ -1,8 +1,15 @@
-Implicit-GPU is a new 2d CAD program based on the principals of Constructive
-Solid Geometry (commonly refered to as CSG).  What makes Implicit-GPU
-different is the implementation detail that shapes are described mathematically,
-allowing them to be rendered at low resolution for quick feedback and infinite
-resolution for publishing.
+---
+title: Implicit GPU
+subtitle: A new way to shape
+image: ../images/foam.jpeg
+color: white
+abstract: |
+    Implicit-GPU is a new 2d CAD program based on the principals of Constructive
+    Solid Geometry (commonly refered to as CSG).  What makes Implicit-GPU
+    different is the implementation detail that shapes are described mathematically,
+    allowing them to be rendered at low resolution for quick feedback and infinite
+    resolution for publishing.
+---
 
 # Core Mathematical Principals
 

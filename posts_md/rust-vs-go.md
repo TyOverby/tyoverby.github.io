@@ -1,3 +1,9 @@
+---
+title: Rust and Go (Error Handling)
+subtitle: Sums and Products
+image: ../images/waves.jpg
+color: white
+---
 
 The Rust and Go programming languages are relatively new programming languages with an emphasis on
 writing and maintaining very large codebases.  Go was designed to be used internally at Google in their internal services
