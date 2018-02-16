@@ -1,200 +1,201 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-        <title>
-            orbit
+
+<head>
+	<title>
+		orbit
 	</title>
-<script>
-/*
- *	./js/engine/GameMath.js
- */
-GameMath = {
-	Vector2f: function(x,y){
-		this.x = x;
-		this.y = y;
+	<script>
+		/*
+		 *	./js/engine/GameMath.js
+		 */
+		GameMath = {
+			Vector2f: function (x, y) {
+				this.x = x;
+				this.y = y;
 
-		this.clone = function(){
-			return new GameMath.Vector2f(this.x,this.y);
+				this.clone = function () {
+					return new GameMath.Vector2f(this.x, this.y);
+				}
+				this.plus = function (one, two) {
+					if (two != undefined) {
+						return new GameMath.Vector2f(this.x + one, this.y + two);
+					}
+					else {
+						return this.plus(one.x, one.y)
+					}
+				}
+				this.plusEquals = function (one, two) {
+					if (two != undefined) {
+						this.x += one;
+						this.y += two;
+					}
+					else {
+						this.plusEquals(one.x, one.y)
+					}
+				}
+
+				this.minus = function (one, two) {
+					if (two != undefined) {
+						return new GameMath.Vector2f(this.x - one, this.y - two);
+					}
+					else {
+						return this.minus(one.x, one.y)
+					}
+				}
+				this.minusEquals = function (one, two) {
+					if (two != undefined) {
+						this.x -= one;
+						this.y -= two;
+					}
+					else {
+						this.minusEquals(one.x, one.y)
+					}
+				}
+
+
+
+				this.times = function (one, two) {
+					if (two != undefined) {
+						return new GameMath.Vector2f(this.x * one, this.y * two);
+					}
+					else {
+						return new GameMath.Vector2f(this.x * one, this.y * one);
+					}
+				}
+				this.timesEquals = function (one, two) {
+					if (two != undefined) {
+						this.x *= one;
+						this.y *= two;
+					}
+					else {
+						this.x *= one;
+						this.y *= one;
+					}
+				}
+
+
+				this.divideBy = function (one, two) {
+					if (two != undefined) {
+						return new GameMath.Vector2f(this.x / one, this.y / two);
+					}
+					else {
+						return new GameMath.Vector2f(this.x / one, this.y / one);
+					}
+				}
+
+				this.divideEquals = function (one, two) {
+					if (two != undefined) {
+						this.x /= one;
+						this.y /= two;
+					}
+					else {
+						this.x /= one;
+						this.y /= one;
+					}
+				}
+
+				this.reverse = function () {
+					this.x = -this.x;
+					this.y = -this.y;
+
+					return this;
+				}
+
+				this.normalize = function () {
+					var magnitude = Math.sqrt(this.x * this.x + this.y * this.y);
+
+					this.x /= magnitude;
+					this.y /= magnitude;
+					return this;
+				}
+
+				this.magnitude = function () {
+					return Math.sqrt(this.x * this.x + this.y * this.y);
+				}
+
+				this.equals = function (other) {
+					if (this.x != other.x) {
+						return false;
+					}
+					if (this.y != other.y) {
+						return false;
+					}
+					return true;
+				}
+			},
+			Random: {
+				randDouble: function (limit1, limit2) {
+					if (limit2 != undefined) {
+						return GameMath.Random.randDouble(limit2 - limit1) + limit1;
+					}
+					else {
+						return Math.random() * limit1;
+					}
+				},
+				randInt: function (limit1, limit2) {
+					if (limit2 != undefined) {
+						return GameMath.Random.randInt(limit2 - limit1) + limit1;
+					}
+					else {
+						return Math.floor(Math.random() * (limit1 + 1));
+					}
+				}
+			}
 		}
-		this.plus = function(one,two){
-			if(two!=undefined){
-				return new GameMath.Vector2f(this.x + one,this.y + two);
-			}
-			else{
-				return this.plus(one.x,one.y)
-			}
-		}
-		this.plusEquals = function(one,two){
-			if(two!=undefined){
-				this.x += one;
-				this.y += two;
-			}
-			else{
-				this.plusEquals(one.x,one.y)
-			}
-		}
 
-		this.minus = function(one,two){
-			if(two!=undefined){
-				return new GameMath.Vector2f(this.x - one,this.y - two);
-			}
-			else{
-				return this.minus(one.x,one.y)
-			}
-		}
-		this.minusEquals = function(one,two){
-			if(two!=undefined){
-				this.x -= one;
-				this.y -= two;
-			}
-			else{
-				this.minusEquals(one.x,one.y)
-			}
+	</script>
+	<script>
+		/*
+		 *	./js/engine/draw.js
+		 */
+		CanvasRenderingContext2D.prototype.drawLine = function (p1, p2) {
+			this.beginPath();
+			this.moveTo(p1.x, p1.y);
+			this.lineTo(p2.x, p2.y);
+			this.closePath();
+			this.stroke();
 		}
 
 
+		CanvasRenderingContext2D.prototype.drawVector = function (position, velocity) {
+			if (velocity == null || velocity == undefined) {
+				velocity = position;
+				position = new Vector2f(0, 0);
+			}
 
-		this.times = function(one,two){
-			if(two!=undefined){
-				return new GameMath.Vector2f(this.x * one,this.y * two);
-			}
-			else{
-				return new GameMath.Vector2f(this.x * one, this.y * one);
-			}
-		}
-		this.timesEquals = function(one,two){
-			if(two!=undefined){
-				this.x *= one;
-				this.y *= two;
-			}
-			else{
-				this.x *= one;
-				this.y *= one;
-			}
+			this.drawLine(position, velocity.plus(position));
 		}
 
+		CanvasRenderingContext2D.prototype.fillCircle = function (position, radius) {
+			this.beginPath();
+			this.arc(position.x, position.y, radius, 0, Math.PI * 2, true);
+			this.fill();
+			this.closePath();
+		}
+		CanvasRenderingContext2D.prototype.setSize = function (width, height) {
+			this.width = width;
+			this.height = height;
 
-		this.divideBy = function(one,two){
-			if(two!=undefined){
-				return new GameMath.Vector2f(this.x / one,this.y / two);
-			}
-			else{
-				return new GameMath.Vector2f(this.x / one, this.y / one);
-			}
+			this.canvas.width = width;
+			this.canvas.height = height;
 		}
 
-		this.divideEquals = function(one,two){
-			if(two!=undefined){
-				this.x /= one;
-				this.y /= two;
+		CanvasRenderingContext2D.prototype.tileBackground = function (image, offset) {
+			if (offset == undefined || offset == null) {
+				offset = 0;
 			}
-			else{
-				this.x /= one;
-				this.y /= one;
+
+			for (var x = 0; x < this.width; x += image.width) {
+				for (var y = 0; y < this.height; y += image.height) {
+					this.drawImage(image, x + offset, y + offset);
+				}
 			}
 		}
 
-		this.reverse = function(){
-			this.x=-this.x;
-			this.y=-this.y;
-
-			return this;
+		CanvasRenderingContext2D.prototype.cover = function () {
+			this.fillRect(0, 0, this.width, this.height);
 		}
-
-		this.normalize = function(){
-			var magnitude = Math.sqrt(this.x*this.x+this.y*this.y);
-
-			this.x /= magnitude;
-			this.y /= magnitude;
-			return this;
-		}
-
-        this.magnitude =function(){
-            return Math.sqrt(this.x*this.x+this.y*this.y);
-        }
-
-		this.equals = function(other){
-			if(this.x!=other.x){
-				return false;
-			}
-			if(this.y!=other.y){
-				return false;
-			}
-			return true;
-		}
-	},
-	Random:{
-		randDouble: function(limit1,limit2){
-			if(limit2 != undefined){
-				return GameMath.Random.randDouble(limit2-limit1)+limit1;
-			}
-			else{
-				return Math.random()*limit1;
-			}
-		},
-		randInt:function(limit1,limit2){
-			if(limit2!=undefined){
-				return GameMath.Random.randInt(limit2-limit1)+limit1;
-			}
-			else{
-				return Math.floor(Math.random()*(limit1+1));
-			}
-		}
-	}
-}
-
-</script>
-<script>
-/*
- *	./js/engine/draw.js
- */
-CanvasRenderingContext2D.prototype.drawLine = function(p1,p2){
-    this.beginPath();
-    this.moveTo(p1.x,p1.y);
-    this.lineTo(p2.x,p2.y);
-    this.closePath();
-    this.stroke();
-}
-
-
-CanvasRenderingContext2D.prototype.drawVector = function(position, velocity){
-    if(velocity == null || velocity ==undefined){
-        velocity = position;
-        position = new Vector2f(0,0);
-    }
-
-    this.drawLine(position,velocity.plus(position));
-}
-
-CanvasRenderingContext2D.prototype.fillCircle = function(position, radius){
-    this.beginPath();
-    this.arc(position.x,position.y,radius,0,Math.PI*2,true);
-    this.fill();
-    this.closePath();
-}
-CanvasRenderingContext2D.prototype.setSize = function(width,height){
-    this.width = width;
-    this.height = height;
-
-    this.canvas.width = width;
-    this.canvas.height = height;
-}
-
-CanvasRenderingContext2D.prototype.tileBackground = function(image, offset){
-    if(offset==undefined||offset==null){
-        offset = 0;
-    }
-
-    for(var x=0; x<this.width;x+=image.width){
-        for(var y=0; y<this.height;y+=image.height){
-            this.drawImage(image,x+offset,y+offset);
-        }
-    }
-}
-
-CanvasRenderingContext2D.prototype.cover = function(){
-    this.fillRect(0,0,this.width,this.height);
-}
 
 /*
 function Pane(canvasId){
@@ -310,314 +311,315 @@ function Pane(canvasId){
 }
 */
 
-</script>
-<script>
-/*
- *	./js/engine/engine.js
- */
-Object.prototype.clone = function() {
-    var newObj = (this instanceof Array) ? [] : {};
-    for (i in this) {
-        if (i == 'clone') continue;
-        if (this[i] && typeof this[i] == "object") {
-            newObj[i] = this[i].clone();
-        } else newObj[i] = this[i]
-    } return newObj;
-};
+	</script>
+	<script>
+		/*
+		 *	./js/engine/engine.js
+		 */
+		Object.prototype.clone = function () {
+			var newObj = (this instanceof Array) ? [] : {};
+			for (i in this) {
+				if (i == 'clone') continue;
+				if (this[i] && typeof this[i] == "object") {
+					newObj[i] = this[i].clone();
+				} else newObj[i] = this[i]
+			} return newObj;
+		};
 
-function Engine(game,paneID){
-	var hasRan = false;
-	var game = game;
-	var targetFps = 25;
-	var prevTime;
+		function Engine(game, paneID) {
+			var hasRan = false;
+			var game = game;
+			var targetFps = 25;
+			var prevTime;
 
-    var intervalId = [];
-    var pane = document.getElementById(paneID).getContext("2d");
+			var intervalId = [];
+			var pane = document.getElementById(paneID).getContext("2d");
 
-    game.preload(pane);
+			game.preload(pane);
 
-	this.run = function(){
-		if(!hasRan){
-			game.startup();
+			this.run = function () {
+				if (!hasRan) {
+					game.startup();
+				}
+				hasRan = true;
+				intervalId.push(setInterval(this.update, 1));
+				prevTime = new Date();
+			}
+
+			this.stop = function (message) {
+				for (var i = 0; i < intervalId.length; i++) {
+					clearInterval(intervalId[i]);
+				}
+
+				if (message != null) {
+					console.error(message);
+				}
+			}
+
+			this.update = function () {
+				var curTime = new Date();
+				var diffTime = curTime.valueOf() - prevTime.valueOf();
+				if (diffTime > 1000 / targetFps) {
+					var fracOfSec = diffTime / 1000;
+					game.update(fracOfSec * 5, pane);
+					prevTime = curTime;
+					game.render(pane);
+				}
+			}
 		}
-        hasRan = true;
-		intervalId.push(setInterval(this.update,1));
-        prevTime = new Date();
-	}
 
-	this.stop = function(message){
-        for(var i=0;i<intervalId.length;i++){
-		    clearInterval(intervalId[i]);
-        }
+	</script>
 
-		if(message!=null){
-			console.error(message);
+	<script>
+		/*
+		 *	./js/game/game.js
+		 */
+		Vector2f = GameMath.Vector2f;
+		somevar = true;
+		function BasicGame() {
+			var screenDims;
+
+			var backgroundWhite;
+			var backgroundBlack;
+
+			var bodies = [];
+
+			this.preload = function (pane, callback) {
+				screenDims = new Vector2f(window.innerWidth - 5, window.innerHeight - 5);
+				pane.setSize(screenDims.x, screenDims.y);
+
+				backgroundWhite = new Image();
+				backgroundWhite.src = 'http://tyoverby.com/orbit/img/backgroundWhite.png';
+				backgroundWhite.onload = function () {
+					backgroundBlack = new Image();
+					backgroundBlack.src = 'http://tyoverby.com/orbit/img/backgroundBlack.png';
+					backgroundBlack.onload = callback;
+				};
+			}
+
+			this.startup = function () {
+				console.log("starting up");
+
+				var startPos = screenDims.times(0.5).clone();
+
+				bodies.push(Presets.STAR.create(startPos));
+				bodies.push(Presets.PLANET.create(startPos));
+				bodies.push(Presets.PLANET2.create(startPos));
+				bodies.push(Presets.SATURN.create(startPos));
+				bodies.push(Presets.MOON.create(startPos));
+			}
+
+			this.update = function (fracOfSecond, pane) {
+				for (var i = 0; i < bodies.length; i++) {
+					bodies[i].update(fracOfSecond, bodies);
+				}
+
+				fadeoutTime -= fracOfSecond;
+				if (fadeoutTime < 0) {
+					fadeoutTime = 0;
+				}
+			}
+
+			var maxFadeoutTime = 10;
+			var fadeoutTime = maxFadeoutTime;
+
+			this.render = function (pane) {
+				pane.fillStyle = "#111";
+				pane.cover();
+
+				for (var i = 0; i < bodies.length; i++) {
+					bodies[i].render(pane);
+				}
+
+				pane.tileBackground(backgroundWhite, 1);
+				if (somevar) {
+					pane.tileBackground(backgroundBlack);
+
+					pane.tileBackground(backgroundBlack);
+				}
+
+				pane.fillStyle = "rgba(0,0,0," + fadeoutTime / maxFadeoutTime + ")";
+				pane.cover();
+			}
 		}
-	}
 
-	this.update = function(){
-		var curTime = new Date();
-		var diffTime=curTime.valueOf()-prevTime.valueOf();
-		if(diffTime>1000/targetFps){
-            var fracOfSec = diffTime/1000;
-			game.update(fracOfSec*5,pane);
-			prevTime = curTime;
-			game.render(pane);
+
+		function initializeEngine(callback) {
+			var cv = document.getElementById("canvas").getContext("2d");
+			g = new BasicGame();
+			g.preload(cv, function () {
+				game = new Engine(new BasicGame(), "canvas");
+				console.log("initialized!");
+				callback();
+			});
 		}
-	}
-}
 
-</script>
 
+	</script>
+	<script>
+		/*
+		 *	./js/game/Body.js
+		 */
+		Presets = {
+			AVACADO: 6.67E-11,
+			STAR: {
+				velocity: new Vector2f(0, 0),
+				mass: 1.0E13,
+				radius: 30,
+				color: "yellow",
+				create: function (position) {
+					return new Body(position, this.velocity, this.mass, this.radius, this.color);
+				}
+			},
+			PLANET: {
+				positionOffset: new Vector2f(74.111, 0),
+				velocity: new Vector2f(0, -3),
+				mass: 1,
+				radius: 3,
+				color: "green",
+				create: function (parentPosition) {
+					return new Body(parentPosition.plus(this.positionOffset), this.velocity, this.mass, this.radius, this.color);
+				}
+			},
+			PLANET2: {
+				positionOffset: new Vector2f(-100, 0),
+				velocity: new Vector2f(0, -2.58263),
+				mass: 1,
+				radius: 5,
+				color: "blue",
+				create: function (parentPosition) {
+					return new Body(parentPosition.plus(this.positionOffset), this.velocity, this.mass, this.radius, this.color);
+				}
+			},
+
+			SATURN: {
+				positionOffset: new Vector2f(0, 400),
+				velocity: new Vector2f(1.29132, 0),
+				mass: 1.0E12,
+				radius: 10,
+				color: "purple",
+				create: function (parentPosition) {
+					return new Body(parentPosition.plus(this.positionOffset), this.velocity, this.mass, this.radius, this.color);
+				}
+			},
+
+			MOON: {
+				positionOffset: new Vector2f(0, 420),
+				velocity: new Vector2f(1.82620 + 1.29132, 0),
+				mass: 1,
+				radius: 5,
+				color: "red",
+				create: function (parentPosition) {
+					return new Body(parentPosition.plus(this.positionOffset), this.velocity, this.mass, this.radius, this.color);
+				}
+			}
+		}
+
+		function Body(position, velocity, mass, radius, color) {
+			this.position = position;
+			this.velocity = velocity;
+			this.acceleration;
+			this.mass = mass;
+			this.radius = radius;
+
+			this.color = color;
+
+			this.pathPoints = [];
+			this.pathTimer = 0;
+
+			this.update = function (fracOfSecond, bodies) {
+				this.acceleration = new Vector2f(0, 0);
+
+
+				for (var i = 0; i < bodies.length; i++) {
+					var other = bodies[i];
+
+					if (!this.equals(other) && this.color != "yellow") {
+						var other_mass = other.mass;
+						var other_dist = (this.position.minus(other.position)).magnitude();
+
+						var force = (Presets.AVACADO * other_mass) / (other_dist * other_dist);
+						var acc = force;
+
+						this.acceleration.plusEquals((other.position.minus(this.position)).normalize().times(acc));
+					}
+				}
+
+				this.acceleration.timesEquals(fracOfSecond);
+				this.velocity.plusEquals(this.acceleration);
+				this.position.plusEquals(this.velocity.times(fracOfSecond));
+
+
+
+				if (this.pathTimer <= 0) {
+					this.pathTimer = 3;
+					this.pathPoints.push(this.position.clone());
+				}
+				this.pathTimer -= fracOfSecond;
+			}
+
+			this.render = function (pane) {
+				// Draw the path
+				pane.strokeStyle = "white";
+				for (var i = 0; i < this.pathPoints.length; i += 2) {
+					if (i + 1 < this.pathPoints.length) {
+						var arrDist = this.pathPoints.length - i;
+						var alpha = (50 - arrDist) / 50;
+						pane.strokeStyle = "rgba(255,255,255," + alpha + ")";
+						pane.drawLine(this.pathPoints[i], this.pathPoints[i + 1]);
+					}
+				}
+				if (this.pathPoints.length % 2 == 1) {
+					pane.drawLine(this.position, this.pathPoints[this.pathPoints.length - 1]);
+				}
+
+				// Draw the planet
+				//pane.setFillColor(this.color);
+				pane.fillStyle = (this.color);
+				pane.fillCircle(this.position, this.radius);
+
+				//        // Draw the velocity vector
+				//        pane.strokeStyle = "red";
+				//        pane.drawVector(this.position,this.velocity.times(10));
+				//        // Draw the acceleration vector
+				//        pane.strokeStyle = "pink";
+				//        pane.drawVector(this.position,this.acceleration.normalize().times(15));
+			}
+
+			this.equals = function (other) {
+				if (this.mass != other.mass) {
+					return false;
+				}
+				if (this.radius != other.radius) {
+					return false;
+				}
+				if (this.color != other.color) {
+					return false;
+				}
+				if (!this.position.equals(other.position)) {
+					return false;
+				}
+				if (!this.velocity.equals(other.velocity)) {
+					return false;
+				}
+				return true;
+			}
+		}
+
+	</script>
+</head>
+
+<body style="background-color:black; padding:0px; margin:0px">
+	<img style="display: none;" src="http://tyoverby.com/orbit/img/backgroundWhite.png">
+	<img style="display: none;" src="http://tyoverby.com/orbit/img/backgroundBlack.png">
+	<canvas id="canvas"></canvas>
+</body>
 <script>
-/*
- *	./js/game/game.js
- */
-Vector2f = GameMath.Vector2f;
-somevar = true;
-function BasicGame(){
-    var screenDims;
-
-    var backgroundWhite;
-    var backgroundBlack;
-
-    var bodies = [];
-
-    this.preload = function(pane, callback){
-        screenDims = new Vector2f(window.innerWidth-5,window.innerHeight-5);
-        pane.setSize(screenDims.x,screenDims.y);
-
-        backgroundWhite = new Image();
-        backgroundWhite.src = 'http://tyoverby.com/orbit/img/backgroundWhite.png';
-        backgroundWhite.onload = function() {
-            backgroundBlack = new Image();
-            backgroundBlack.src = 'http://tyoverby.com/orbit/img/backgroundBlack.png';
-            backgroundBlack.onload = callback;
-        };
-    }
-
-	this.startup = function(){
-        console.log("starting up");
-
-        var startPos = screenDims.times(0.5).clone();
-
-        bodies.push(Presets.STAR.create(startPos));
-        bodies.push(Presets.PLANET.create(startPos));
-        bodies.push(Presets.PLANET2.create(startPos));
-        bodies.push(Presets.SATURN.create(startPos));
-        bodies.push(Presets.MOON.create(startPos));
-	}
-
-	this.update = function(fracOfSecond,pane){
-        for(var i=0;i<bodies.length;i++){
-            bodies[i].update(fracOfSecond,bodies);
-        }
-
-        fadeoutTime -= fracOfSecond;
-        if(fadeoutTime<0){
-            fadeoutTime =0;
-        }
-	}
-
-    var maxFadeoutTime =10;
-    var fadeoutTime = maxFadeoutTime;
-
-	this.render = function(pane){
-        pane.fillStyle="#111";
-        pane.cover();
-
-        for(var i=0;i<bodies.length;i++){
-            bodies[i].render(pane);
-        }
-
-        pane.tileBackground(backgroundWhite,1);
-        if(somevar){
-        pane.tileBackground(backgroundBlack);
-
-        pane.tileBackground(backgroundBlack);
-        }
-
-        pane.fillStyle = "rgba(0,0,0,"+fadeoutTime/maxFadeoutTime+")";
-        pane.cover();
-	}
-}
-
-
-function initializeEngine(callback){
-    var cv = document.getElementById("canvas").getContext("2d");
-    g = new BasicGame();
-    g.preload(cv, function (){
-        game = new Engine(new BasicGame(),"canvas");
-        console.log("initialized!");
-        callback();
-    });
-}
-
-
+	setTimeout(function () {
+		initializeEngine(function () {
+			game.run();
+		});
+	}, 500);
 </script>
-<script>
-/*
- *	./js/game/Body.js
- */
-Presets = {
-    AVACADO: 6.67E-11,
-    STAR:{
-        velocity: new Vector2f(0,0),
-        mass: 1.0E13,
-        radius: 30,
-        color: "yellow",
-        create: function(position){
-            return new Body(position, this.velocity, this.mass, this.radius, this.color);
-        }
-    },
-    PLANET:{
-        positionOffset: new Vector2f(74.111,0),
-        velocity: new Vector2f(0,-3),
-        mass: 1,
-        radius:3,
-        color:"green",
-        create: function(parentPosition){
-            return new Body(parentPosition.plus(this.positionOffset), this.velocity, this.mass, this.radius, this.color);
-        }
-    },
-    PLANET2:{
-        positionOffset: new Vector2f(-100,0),
-        velocity: new Vector2f(0,-2.58263),
-        mass: 1,
-        radius:5,
-        color:"blue",
-        create: function(parentPosition){
-            return new Body(parentPosition.plus(this.positionOffset), this.velocity, this.mass, this.radius, this.color);
-        }
-    },
 
-    SATURN:{
-        positionOffset: new Vector2f(0,400),
-        velocity: new Vector2f(1.29132,0),
-        mass: 1.0E12,
-        radius:10,
-        color:"purple",
-        create: function(parentPosition){
-            return new Body(parentPosition.plus(this.positionOffset), this.velocity, this.mass, this.radius, this.color);
-        }
-    },
-
-    MOON:{
-        positionOffset: new Vector2f(0,420),
-        velocity: new Vector2f(1.82620+1.29132,0),
-        mass: 1,
-        radius:5,
-        color:"red",
-        create: function(parentPosition){
-            return new Body(parentPosition.plus(this.positionOffset), this.velocity, this.mass, this.radius, this.color);
-        }
-    }
-}
-
-function Body(position, velocity, mass, radius, color){
-    this.position = position;
-    this.velocity = velocity;
-    this.acceleration;
-    this.mass     = mass;
-    this.radius  = radius;
-
-    this.color = color;
-
-    this.pathPoints = [];
-    this.pathTimer = 0;
-
-    this.update = function(fracOfSecond, bodies){
-        this.acceleration = new Vector2f(0,0);
-
-
-        for(var i=0;i<bodies.length;i++){
-            var other = bodies[i];
-
-            if(!this.equals(other) && this.color != "yellow"){
-                var other_mass = other.mass;
-                var other_dist = (this.position.minus(other.position)).magnitude();
-
-                var force = (Presets.AVACADO*other_mass)/(other_dist*other_dist);
-                var acc = force;
-
-                this.acceleration.plusEquals((other.position.minus(this.position)).normalize().times(acc));
-            }
-        }
-
-        this.acceleration.timesEquals(fracOfSecond);
-        this.velocity.plusEquals(this.acceleration);
-        this.position.plusEquals(this.velocity.times(fracOfSecond));
-
-
-
-        if(this.pathTimer<=0){
-            this.pathTimer=3;
-            this.pathPoints.push(this.position.clone());
-        }
-        this.pathTimer -= fracOfSecond;
-    }
-
-    this.render = function(pane){
-        // Draw the path
-        pane.strokeStyle = "white";
-        for(var i=0;i<this.pathPoints.length;i+=2){
-            if(i+1<this.pathPoints.length){
-                var arrDist = this.pathPoints.length-i;
-                var alpha = (50-arrDist)/50;
-                pane.strokeStyle = "rgba(255,255,255,"+alpha+")";
-                pane.drawLine(this.pathPoints[i],this.pathPoints[i+1]);
-            }
-        }
-        if(this.pathPoints.length%2==1){
-            pane.drawLine(this.position,this.pathPoints[this.pathPoints.length-1]);
-        }
-
-        // Draw the planet
-        //pane.setFillColor(this.color);
-        pane.fillStyle =(this.color);
-        pane.fillCircle(this.position,this.radius);
-
-//        // Draw the velocity vector
-//        pane.strokeStyle = "red";
-//        pane.drawVector(this.position,this.velocity.times(10));
-//        // Draw the acceleration vector
-//        pane.strokeStyle = "pink";
-//        pane.drawVector(this.position,this.acceleration.normalize().times(15));
-    }
-
-    this.equals = function(other){
-        if(this.mass!=other.mass){
-            return false;
-        }
-        if(this.radius!=other.radius){
-            return false;
-        }
-        if(this.color != other.color){
-            return false;
-        }
-        if(!this.position.equals(other.position)){
-            return false;
-        }
-        if(!this.velocity.equals(other.velocity)){
-            return false;
-        }
-        return true;
-    }
-}
-
-</script>
-	</head>
-
-    <body style="background-color:black; padding:0px; margin:0px">
-        <img style="display: none;" src= "http://tyoverby.com/orbit/img/backgroundWhite.png">
-        <img style="display: none;" src= "http://tyoverby.com/orbit/img/backgroundBlack.png">
-        <canvas id="canvas"></canvas>
-    </body>
-    <script>
-        setTimeout(function(){
-            initializeEngine(function(){
-                game.run();
-            });
-        }, 500);
-    </script>
 </html>
