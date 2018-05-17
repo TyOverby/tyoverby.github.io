@@ -1,0 +1,106 @@
+body {
+    font-family: serif;
+    text-align: justify;
+    text-justify: inter-word;
+    padding: 0.25in;
+}
+
+h2 {
+    margin: 0;
+    margin-bottom: 0.5em;
+    color: rgb(43, 0, 127);
+    font-family: sans-serif;
+}
+p {
+    margin-top: 8px;
+    line-height: 1.2em;
+}
+
+article {
+    width: 7.5in;
+    height: 10in;
+    margin: auto;
+    padding: 0.5in;
+    box-shadow: 0 0 0.1in black;
+}
+
+article#cover {
+    display:flex;
+    flex-wrap:wrap;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:stretch;
+}
+
+#left {
+    flex-basis: 70%;
+}
+#right{
+    flex-basis: 25%;
+}
+
+#name {
+    font-size: 3em;
+    font-family: sans-serif;
+}
+
+#name, #contact {
+    margin-bottom: 20px;
+}
+
+#contact > ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    font-size: 0.8em;
+    font-weight: 700;
+    font-family: sans-serif;
+}
+
+#contact > ul >li {
+    margin-bottom:0.4em;
+}
+
+strong {
+    color:#540065;
+    font-weight: 900;
+}
+
+.work {
+    font-family: sans-serif;
+    background-color: rgba(255, 242, 185, 0.25);
+    padding: 2px;
+    padding-top: 4px;
+}
+
+
+.work > .company {
+    font-size: 1.0em;
+    font-weight: bold;
+    color: rgb(127, 0, 34);
+}
+.work > .company::after {
+    font-size: 1em;
+    font-weight: 400;
+    content: ",";
+    color: black;
+}
+
+.work > .city::after {
+    content:" \2013";
+}
+
+.work > .date {
+    float:right;
+    font-weight: 500;
+}
+
+#tools {
+    text-align: left;
+    text-justify: unset;
+}
+
+#interests {
+    text-align: left;
+    text-justify: unset;
+}
