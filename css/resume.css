@@ -66,7 +66,7 @@ strong {
     font-weight: 900;
 }
 
-.work {
+.detail {
     font-family: sans-serif;
     background-color: rgba(255, 242, 185, 0.25);
     padding: 2px;
@@ -74,23 +74,20 @@ strong {
 }
 
 
-.work > .company {
+.detail > .main{
     font-size: 1.0em;
     font-weight: bold;
     color: rgb(127, 0, 34);
 }
-.work > .company::after {
-    font-size: 1em;
-    font-weight: 400;
-    content: ",";
-    color: black;
+
+.detail > .follow::before{
+    content:"(";
+}
+.detail > .follow::after {
+    content:") \2013 ";
 }
 
-.work > .city::after {
-    content:" \2013";
-}
-
-.work > .date {
+.detail > .last{
     float:right;
     font-weight: 500;
 }
@@ -103,4 +100,14 @@ strong {
 #interests {
     text-align: left;
     text-justify: unset;
+}
+
+#education .detail > .last{
+    float:left;
+    font-weight: 500;
+}
+
+ul {
+    margin-top: -1em;
+    padding-left: 1em;
 }

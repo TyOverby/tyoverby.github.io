@@ -1,0 +1,12 @@
+article {
+    margin: 0;
+    box-shadow: none;
+    width: auto;
+    height: auto;
+    padding: 0.25in;
+    page-break-after: always;
+}
+body, html {
+    padding: 0;
+    margin: 0;
+}
