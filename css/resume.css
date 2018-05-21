@@ -3,6 +3,14 @@ body {
     text-align: justify;
     text-justify: inter-word;
     padding: 0.25in;
+    font-size:0.95em;
+}
+
+img {
+    float: left;
+    margin-right: 2em;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 h2 {

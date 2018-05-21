@@ -20,22 +20,23 @@
                 <div class="detail">
                     <span class="main">Microsoft</span>
                     <span class="follow">Redmond</span>
-                    <span class="sep">Software Developer II</span>
+                    <span class="sep">Software Developer 2</span>
                     <span class="last">Autumn 2015 - now</span>
                 </div>
                 <p>
                     As a developer on the
                     <strong>Roslyn Compiler</strong> for C# and Visual Basic I participated in language design, implemented language
-                    features, found and fixed bugs, and worked on improving the user experience for the compiler developers
-                    and users on linux. I took the "async Main" language feature from concept to its release in C# 7.1.
+                    features, found/fixed bugs, and worked on improving the user experience for the compiler developers and
+                    users on Linux. I took the "async Main" language feature from concept to its release in C# 7.1.
                 </p>
 
                 <p>
                     As a member of an internal
                     <strong>"Infrastructure Swat Team"</strong> I spent roughly &#8531; of my time on point for all performance investigations
-                    in the product. While conducting performance analysis, I became competent in debugging from heap dumps
-                    as well as collecting and analyzing performance traces on Windows. Before switching teams internally
-                    I successfuly trained another employee to take over my position.
+                    in the product. While conducting performance analysis, I learned how to debug from heap dumps as well
+                    as how to collect and analyze performance traces on Windows. Because of my involvement, Visual Studio
+                    was able to ship on time and with fewer perf regressions. Before switching teams internally, I successfully
+                    trained another employee to take over my position.
                 </p>
 
                 <p>
@@ -43,9 +44,26 @@
                     <strong>
                         <code>try.dot.net</code>
                     </strong>
-                    team I helped build and maintain a full stack service for evaluating C# from the browser. It required frontend development
-                    for the web portal (Typescript and React/Redux), backend web servers and services in C# and integration
-                    with many Azure services.
+                    team, I helped build and maintain a full stack service for evaluating C# from the browser. It required frontend development
+                    for the web portal (Typescript and React/Redux), backend web servers / services in C#, and integration
+                    with many Azure services. While preparing for a major conference where our software would be demoed,
+                    I built a simulator for evaluating the reliability of our service under heavy load. This simulator discovered
+                    a flaw in our scaling algorithm which we were able to fix in time for the conference.
+                </p>
+
+                <div class="detail">
+                    <span class="main">Google</span>
+                    <span class="follow">Seattle</span>
+                    <span class="sep">Software Developer Intern</span>
+                    <span class="last">Summer 2014</span>
+                </div>
+                <p>
+                    As an intern on the
+                    <strong>Dart language compiler</strong>, I instrumented the compiler to produce metadata alongside a compilation.
+                    I also built an in-browser visualizer that consumed the metadata produced at compilation. With the metadata
+                    and visualizer, it became possible to answer questions about the compilation such as "what is the inferred
+                    type of this variable", "why was this function not tree-shaken out of the compilation", and "which functions
+                    are the most responsible for code bloat after tree shaking occurrs".
                 </p>
 
                 <div class="detail">
@@ -60,21 +78,6 @@
                     reporting information about the media streams that are currently live in the browser. This tool is still
                     available at
                     <code>chrome://media-internals/</code>
-                </p>
-
-                <div class="detail">
-                    <span class="main">Google</span>
-                    <span class="follow">Seattle</span>
-                    <span class="sep">Software Developer Intern</span>
-                    <span class="last">Summer 2014</span>
-                </div>
-                <p>
-                    As an intern on the
-                    <strong>Dart language compiler</strong>, I instrumented the compiler to produce metadata alongside a comilation.
-                    This metadata is consumed by an in-browser visualizer which I also built. With the metadata and visualizer,
-                    it became possible to answer questions about the compilation such as "what is the inferred type of this
-                    variable", "why was this function not tree-shaken out of the compilation", and "which functions are the
-                    most responsible for code bloat after tree shaking occurrs".
                 </p>
             </section>
             <section id="education">
@@ -100,11 +103,11 @@
                 <h2> Tools </h2>
                 <p>
                     I know enough about
-                    <strong>git</strong> to get coworkers (and myself) out of tricky situations.
+                    <strong>Git</strong> to get coworkers (and myself) out of tricky situations.
                 </p>
                 <p>
                     5 years of using
-                    <strong>rust</strong> and I'm still loving every day of it!
+                    <strong>Rust</strong> and I'm still loving every day of it!
                 </p>
                 <p>
                     Professional experience developing, debugging and profiling
@@ -156,7 +159,7 @@
                 to very small serlization sizes and fast serialization and deserialization.
             </p>
             <p>
-                Bincode has been used in production by many other projects including
+                Bincode has been used in production by a multitude of projects including
                 <ul>
                     <li>
                         <strong>google/tarpc</strong>: Bincode is used to serialize and deserialize networked RPC messages.
@@ -181,6 +184,7 @@
                 <span class="sep">Rust, TypeScript, OpenCL</span>
                 <span class="last">December 2016 - Present</span>
             </div>
+            <img src="./images/implicit.png" width=300 />
             <p>
                 Implicit is the latest iteration of a 2D CAD (Computer Aided Design) program that I've been developing for use with laser
                 cutters and pen plotters. It features a TypeScript API where the user designs their shape in a purely functional
@@ -202,6 +206,11 @@
                         <strong>JIT Compiler</strong>
                     </li>
                 </ul>
+
+                The interface for the CAD software is an in browser IDE written in TypeScript and React. It has an in-browser editor with
+                autocomplete and diagnostics, and a live preview of the scene that is being rendered. When launched in developer
+                mode, the IDE comes with an integrated performance visualizer - great for finding out why an operation took
+                longer than expected!
             </p>
             <div class="detail">
                 <span class="main">Flame</span>
@@ -220,34 +229,13 @@
                 While I've had great experiences using Flame in other projects, the core model for Flame falls over in the presense of asynchronous
                 code. For this reason, Flame is currently under redesign.
             </p>
+            <img src="./images/flame.png" height=100 />
             <p>
                 <strong>Fireplace</strong> is a browser based visualizer for the flamegraph data produced by Flame. It supports viewing
                 performance data across multiple threads and can be embedded in other projects for quick performance debugging.
             </p>
+
         </section>
-    </article>
-    <article>
-        <h2> A Fit for Mozilla </h2>
-        <div class="detail">
-            <span class="main">Cultural</span>
-        </div>
-        <p>
-
-        </p>
-
-        <div class="detail">
-            <span class="main">Ideological</span>
-        </div>
-        <p>
-
-        </p>
-
-        <div class="detail">
-            <span class="main">Technological</span>
-        </div>
-        <p>
-
-        </p>
     </article>
 </body>
 

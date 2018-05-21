@@ -3,7 +3,7 @@ article {
     box-shadow: none;
     width: auto;
     height: auto;
-    padding: 0.25in;
+    padding: 0;
     page-break-after: always;
 }
 body, html {
