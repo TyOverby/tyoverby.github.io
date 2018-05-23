@@ -142,9 +142,9 @@
                     <strong>compilers</strong> and their IDE tooling.
                 </p>
                 <p>
-                    After learning some
-                    <strong> GPU programming </strong> in order to make a CAD program for laser cutters, I've been interested in using
-                    the GPU to speed up other traditional programs.
+                    I have a strong interest in
+                    <strong>functional programming</strong> and would like to spend a good chunk of my next job writing and developing
+                    tools for functional languages.
                 </p>
                 <p>
                     I'm a hobby
@@ -157,6 +157,30 @@
     <article id="continued">
         <section id="personal-projects">
             <h2>Personal Projects</h2>
+            <div class="detail">
+                <span class="main">Ares III</span>
+                <span class="follow">
+                    <a href="github.com/tyoverby/ares-3">github.com/tyoverby/ares-3</a>
+                </span>
+                <span class="sep">Rust</span>
+                <span class="last">??? - Present</span>
+            </div>
+            <p>
+                Ares is a never-ending language experiment of mine that I've re-written from scratch multiple times. Ares is a functional
+                language with a focus on first class control flow via delimited continuations (with named prompts). While
+                I worked on production grade compilers (C# and VB), Ares was a nice project to come back to and toy with
+                different IRs, different parsers, and different emit strategies.
+            </p>
+            <p>
+                My most recent endevor is adding an IR inbetween parsing and binding that converts the program to Continuation Passing Style.
+                I've been reading Compiling with Continuations by Appel and I might wind up just re-implementing that book
+                inside Ares as a way to better understand it.
+            </p>
+            <p>
+                Right now Ares is strongly dynamically typed, and I didn't plan on adding a static type system to it, but I've been reading
+                about row polymorphism recently, so...
+            </p>
+
             <div class="detail">
                 <span class="main">Bincode</span>
                 <span class="follow">
@@ -228,6 +252,7 @@
                 in developer mode, the IDE comes with an integrated performance visualizer - great for finding out why an
                 operation took longer than expected!
             </p>
+            <!--
             <div class="detail">
                 <span class="main">Flame</span>
                 <span class="follow">
@@ -252,7 +277,7 @@
                 <strong>Fireplace</strong> is a browser-based visualizer for the flamegraph data produced by Flame. It supports viewing
                 performance data across multiple threads and can be embedded in other projects for quick performance debugging.
             </p>
-
+            -->
         </section>
     </article>
 </body>
