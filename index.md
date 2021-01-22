@@ -1,25 +1,60 @@
 ---
-title: Ty Overby
-image: ./images/snowy-mountains.jpeg
-color: black
+pagetitle: Ty Overby
 ---
+<style>
+    html, body, pre, p {
+        margin:0;
+        padding:0;
+    }
+    body {
+        padding: 2em; 
+        font-size:1.1em;
+        line-height:1.7em; 
+        font-family: monospace;
 
-Hi, I'm Ty!
+    }
 
-I'm a dev at Microsoft working on the [Roslyn compiler service](https://github.com/dotnet/roslyn).
+    a, a:visited {
+        color: #1ba1f2;
+        text-decoration:none;
+        margin-left:-0.5em;
+        transition: linear 0.07s background, 
+                    linear 0.07s color;
+    }
+    a:hover {
+        background: #1ba1f2;
+        color: white;
+    }
+</style>
 
-In my free time I like [leatherworking](https://xxory.tumblr.com/) and
-working on [hobby programming](https://github.com/TyOverby) projects.
+I always feel strange when people tell me that they've visited
 
-Some of the things that I'm working on right now include:
+this page.&nbsp; What should I put here?&nbsp;  What were they expecting?
 
-* [A *fast* binary serialization scheme](https://github.com/TyOverby/bincode)
-* [A scripting language built for embedding](https://github.com/TyOverby/ares-2)
-* [A CAD program that uses implicit surfaces](https://github.com/TyOverby/implicit)
+<br/>
 
+Other people appear to have links to 
 
-This static-content blog is built using the C preprocessor and a Makefile, and that doesn't
-bother me at all.  Oh right; this is a blog. Here are some posts that I've written:
+blog posts, or projects that they've
 
-* [Error Handling in Rust and Go](posts/rust-vs-go.html)
-* [Rust Speed](posts/rust-speed.html)
+worked on but as someone that spends 
+
+so much time hacking on things which 
+
+interests me, I certainly don't have 
+
+very much to show for all the effort
+
+<br/>
+
+Oh well, as long as 
+
+you're here I might
+
+as well shamelessly
+
+<br/>
+
+plug my 
+
+<a href="https://twitter.com/tyroverby">&nbsp;twitter&nbsp;</a>
