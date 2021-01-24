@@ -44,10 +44,12 @@ pagetitle: Ty Overby
 
 
         box-shadow: 
+        /*
           -0.5px 0.5px 0px #007bc5, 
           -1.0px 1.0px 0px #007bc5,
           -1.5px 1.5px 0px #007bc5,
           -2.0px 2.0px 0px #007bc5,
+          */
           -2.5px 2.5px 0px #007bc5;
     }
 </style>
