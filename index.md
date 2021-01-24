@@ -21,12 +21,28 @@ pagetitle: Ty Overby
         border-radius:5px;
         transition: linear 0.07s background, 
                     linear 0.07s color,
-                    linear 0.07s border-radius;
+                    linear 0.07s border-radius,
+                    linear 0.07s box-shadow;
+
+        box-shadow: 
+          -0.5px 0.5px 0px white, 
+          -1.0px 1.0px 0px white,
+          -1.5px 1.5px 0px white,
+          -2.0px 2.0px 0px white,
+          -2.5px 2.5px 0px white;
     }
     a:hover {
         background: #1ba1f2;
         border-radius:2px;
         color: white;
+
+
+        box-shadow: 
+          -0.5px 0.5px 0px #007bc5, 
+          -1.0px 1.0px 0px #007bc5,
+          -1.5px 1.5px 0px #007bc5,
+          -2.0px 2.0px 0px #007bc5,
+          -2.5px 2.5px 0px #007bc5;
     }
 </style>
 
