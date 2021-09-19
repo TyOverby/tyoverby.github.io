@@ -57,12 +57,14 @@
     }
 
     a, a:visited {
+        display: inline-block;
         color: #1ba1f2;
         text-decoration:none;
         margin-left:-0.5em;
         border-radius:5px;
         transition: linear 0.07s background, 
                     linear 0.07s color,
+                    linear 0.07s transform,
                     linear 0.07s border-radius,
                     linear 0.07s box-shadow;
 
@@ -72,6 +74,10 @@
           -1.5px 1.5px 0px white,
           -2.0px 2.0px 0px white,
           -2.5px 2.5px 0px white;
+    }
+    a:active {
+       transform: translate(-2px, 2px);
+       box-shadow: none;  
     }
     a:hover {
         background: #1ba1f2;
