@@ -18,7 +18,7 @@
   </div>
   {{ end }}
 
-  {{ if .TableOfContents }}
+  {{ if and .TableOfContents (ne .Params.toc false) }}
   <nav id="TableOfContents">
     <h2>Table of Contents</h2>
     {{ .TableOfContents }}

@@ -1,0 +1,25 @@
+{{ define "main" }}
+<article class="page">
+  <header>
+    <h1>{{ .Title }}</h1>
+    {{ if .Params.description }}
+    <p class="page-description">{{ .Params.description }}</p>
+    {{ end }}
+  </header>
+
+  {{ if and .TableOfContents (ne .Params.toc false) }}
+  <nav id="TableOfContents">
+    <h2>Table of Contents</h2>
+    {{ .TableOfContents }}
+  </nav>
+  {{ end }}
+
+  <div class="content">
+    {{ .Content }}
+  </div>
+
+  <footer class="page-footer">
+    <a href="/pages/">← Back to all pages</a>
+  </footer>
+</article>
+{{ end }}

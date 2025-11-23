@@ -1,0 +1,18 @@
+{{ define "main" }}
+<article class="thought">
+  <header>
+    <h1>{{ .Title }}</h1>
+    <div class="meta">
+      <span class="date">{{ .Date.Format "January 2, 2006" }}</span>
+    </div>
+  </header>
+
+  <div class="content">
+    {{ .Content }}
+  </div>
+
+  <footer class="thought-footer">
+    <a href="/thoughts/">← Back to all thoughts</a>
+  </footer>
+</article>
+{{ end }}

@@ -12,3 +12,5 @@ title = 'Ty Overby'
 
 [permalinks]
   posts = '/posts/:filename/'
+  thoughts = '/thoughts/:filename/'
+  pages = '/:filename/'

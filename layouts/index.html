@@ -2,14 +2,30 @@
 <div class="home">
   {{ .Content }}
 
+  <nav class="sections">
+    <a href="/posts/" class="section-link">Blog Posts</a>
+    <a href="/thoughts/" class="section-link">Daily Thoughts</a>
+    <a href="/pages/" class="section-link">Pages</a>
+  </nav>
+
   <h2>Recent Posts</h2>
   <ul>
-    {{ range (where .Site.RegularPages "Type" "posts").ByDate.Reverse }}
+    {{ range first 5 (where .Site.RegularPages "Type" "posts").ByDate.Reverse }}
     <li>
       <a href="{{ .Permalink }}">{{ .Title }}</a>
       {{ if .Date }}
       <span class="date"> - {{ .Date.Format "January 2, 2006" }}</span>
       {{ end }}
+    </li>
+    {{ end }}
+  </ul>
+
+  <h2>Recent Thoughts</h2>
+  <ul>
+    {{ range first 5 (where .Site.RegularPages "Type" "thoughts").ByDate.Reverse }}
+    <li>
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+      <span class="date"> - {{ .Date.Format "Jan 2, 2006" }}</span>
     </li>
     {{ end }}
   </ul>

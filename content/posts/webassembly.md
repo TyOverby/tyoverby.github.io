@@ -1,7 +1,6 @@
 ---
-title: Web Assembly
+title: Before Web Assembly
 date: 2016-03-21
-draft: true
 ---
 
 Web-Assembly is a binary execution environment sheparded by major browser
@@ -14,27 +13,10 @@ Architecture (Virtual-ISA) that webassembly targets.  Unlike other
 instruction set arcitectures (e.g. ARM, x86, Mips), web-assembly's ISA
 doesn't actually map to a specific hardware type
 
-Ok, so web-assembly is an ISA that runs compiled code in your web browser.
-If you're still interested, here's a table of contents so you can decide
-how much of this rambling article you want to skip.
+Ok, so web-assembly is an ISA that runs compiled code in your web browser, but
+it's not the first to try!
 
-## Table Of Contents
-
-* [Table Of Contents](#table-of-contents)
-* [Native Code in the Browser - A History](#native-code-in-the-browser-a-history)
-    * [ActiveX](#activex)
-    * [NaCl and PNaCl](#nacl-and-pnacl)
-    * [asm.js](#asm-js)
-* [What is Web Assembly](#what-is-web-assembly)
-
-## Native Code in the Browser - A History
-
-Perhaps unsurprisingly, web-assembly is not the first time that someone
-thought "it would be cool to use the web as a vehicle for distributing
-binaries to be run in the browser".  In fact, this has already been done
-multiple times!
-
-### ActiveX
+# ActiveX
 
 In 1996, Internet explorer gained the ability to download and execute
 signed binaries from the web and present the UI through the browser.
@@ -51,7 +33,7 @@ In the end, ActiveX died, partially due to the gaping security holes,
 partially due to the fact that you could really only run it in IE, on
 Windows, on an x86 chipset.
 
-### NaCl and PNaCl
+# NaCl and PNaCl
 
 In 2011, Google demoed Native Client (NaCl) inside of Chrome.  NaCl is a
 sandboxing architecture that allowed specially-compiled x86, x86-64, and
@@ -73,7 +55,7 @@ ahead-of-time compiled down to the native format on the target machine.
 In the end, neither NaCl or PNaCl took off, mostly because other browser vendors
 didn't want to implement them.  Many critiqued NaCl as being another ActiveX
 
-### asm.js
+# asm.js
 
 Javascript interpreters have been getting faster and faster ever since Google
 declared a holy war on jank in the late 2000s.  Someone (TODO: who?) decided
@@ -97,7 +79,7 @@ function strlen(ptr) {
 }
 ```
 
-Along the way, Mozilla developer (TODO: who?) figured that the output generated
+Along the way, Mozilla developers figured that the output generated
 by emscripten could be ahead-of-time compiled by the browser for even better
 optimization opporitunities.  This was the birth of asm.js, a formalized
 javascript subset that would attempt to ahead-of-time jit modules with
@@ -107,5 +89,3 @@ Unlike NaCl and PNaCl, asm.js saw lots of adoption!  Because it was a subset of
 javascript, it worked in every browser; though it was faster in Firefox because
 of the explicit support for ahead-of-time compilation.  Many game engines support
 publishing their games to the web via emscripten and asm.js.
-
-## What is Web-Assembly?

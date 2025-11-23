@@ -1,0 +1,21 @@
+{{ define "main" }}
+<h1>{{ .Title }}</h1>
+
+{{ .Content }}
+
+{{ if .Data.Pages }}
+<div class="thoughts-list">
+  {{ range .Data.Pages.ByDate.Reverse }}
+  <article class="thought-item">
+    <div class="thought-header">
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+      <span class="date">{{ .Date.Format "Jan 2, 2006" }}</span>
+    </div>
+    <div class="thought-content">
+      {{ .Content }}
+    </div>
+  </article>
+  {{ end }}
+</div>
+{{ end }}
+{{ end }}
