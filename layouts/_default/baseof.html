@@ -58,16 +58,44 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
-    header.site-header h1 {
+    header.site-header .header-left {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    header.site-header .header-right {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    header.site-header .site-title {
       margin: 0;
       font-size: 1.5rem;
+      font-weight: bold;
     }
-    header.site-header a {
+    header.site-header .site-title a {
       text-decoration: none;
       color: var(--text-color);
     }
-    .theme-toggle {
+    header.site-header nav {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    header.site-header nav a {
+      text-decoration: none;
+      color: var(--text-color);
+      font-size: 1rem;
+      transition: color 0.2s ease;
+    }
+    header.site-header nav a:hover {
+      color: var(--link-color);
+    }
+    .icon-button {
       background: none;
       border: 1px solid var(--border-color);
       border-radius: 5px;
@@ -76,8 +104,12 @@
       font-size: 1.2rem;
       color: var(--text-color);
       transition: background-color 0.2s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
-    .theme-toggle:hover {
+    .icon-button:hover {
       background-color: var(--code-bg);
     }
     article header h1 {
@@ -139,10 +171,22 @@
 </head>
 <body>
   <header class="site-header">
-    <h1><a href="/">{{ .Site.Title }}</a></h1>
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-      <span class="theme-icon"></span>
-    </button>
+    <div class="header-left">
+      <h1 class="site-title"><a href="/">{{ .Site.Title }}</a></h1>
+      <nav>
+        <a href="/posts/">Blog</a>
+        <a href="/thoughts/">Thoughts</a>
+        <a href="/pages/">Pages</a>
+      </nav>
+    </div>
+    <div class="header-right">
+      <a href="/index.xml" class="icon-button" aria-label="RSS Feed" title="RSS Feed">
+        <span>📡</span>
+      </a>
+      <button class="icon-button" id="theme-toggle" aria-label="Toggle theme">
+        <span class="theme-icon"></span>
+      </button>
+    </div>
   </header>
   <main>
     {{ block "main" . }}{{ end }}

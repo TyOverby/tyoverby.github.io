@@ -2,12 +2,6 @@
 <div class="home">
   {{ .Content }}
 
-  <nav class="sections">
-    <a href="/posts/" class="section-link">Blog Posts</a>
-    <a href="/thoughts/" class="section-link">Daily Thoughts</a>
-    <a href="/pages/" class="section-link">Pages</a>
-  </nav>
-
   <h2>Recent Posts</h2>
   <ul>
     {{ range first 5 (where .Site.RegularPages "Type" "posts").ByDate.Reverse }}
