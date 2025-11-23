@@ -1,8 +1,8 @@
 ---
 title: Rust Speed
 subtitle: Turns out it's pretty fast
-image: ../images/dark-field.jpeg
-color: white
+date: 2014-04-30
+math: true
 ---
 
 # Problem

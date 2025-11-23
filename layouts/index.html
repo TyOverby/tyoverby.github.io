@@ -1,0 +1,17 @@
+{{ define "main" }}
+<div class="home">
+  {{ .Content }}
+
+  <h2>Recent Posts</h2>
+  <ul>
+    {{ range (where .Site.RegularPages "Type" "posts").ByDate.Reverse }}
+    <li>
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+      {{ if .Date }}
+      <span class="date"> - {{ .Date.Format "January 2, 2006" }}</span>
+      {{ end }}
+    </li>
+    {{ end }}
+  </ul>
+</div>
+{{ end }}

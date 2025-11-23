@@ -1,0 +1,14 @@
+baseURL = 'https://tyoverby.com/'
+languageCode = 'en-us'
+title = 'Ty Overby'
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true  # Allow HTML in markdown
+  [markup.tableOfContents]
+    endLevel = 3
+    startLevel = 1
+
+[permalinks]
+  posts = '/posts/:filename/'

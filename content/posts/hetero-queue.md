@@ -1,3 +1,9 @@
+---
+title: Heterogeneous Queue in Rust
+date: 2016-10-05
+draft: true
+---
+
 In object-oriented languages, it is common to have collections containing
 objects that implement a certain interface.
 

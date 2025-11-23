@@ -1,8 +1,7 @@
 ---
 title: Rust and Go (Error Handling)
 subtitle: Sums and Products
-image: ../images/waves.jpg
-color: white
+date: 2015-10-30
 ---
 
 The Rust and Go programming languages are relatively new programming languages with an emphasis on

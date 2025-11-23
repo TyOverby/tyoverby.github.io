@@ -1,2 +1,7 @@
 *.swp
 tmp/
+
+# Hugo
+public/
+.hugo_build.lock
+resources/_gen/

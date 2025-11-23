@@ -1,3 +1,9 @@
+---
+title: Web Assembly
+date: 2016-03-21
+draft: true
+---
+
 Web-Assembly is a binary execution environment sheparded by major browser
 vendors in the WC3.  Once implemented, web-assembly will be an alternative
 to Javascript when it comes to programming dynamic clientside applications
@@ -79,7 +85,7 @@ compile entire game engines written in C and C++ to javascript.
 
 ```js
 // calculate length of C string
-function strlen(ptr) { 
+function strlen(ptr) {
   ptr = ptr|0;
   var curr = 0;
   curr = ptr;

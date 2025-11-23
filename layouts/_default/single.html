@@ -1,0 +1,32 @@
+{{ define "main" }}
+<article>
+  <header>
+    <h1>{{ .Title }}</h1>
+    <div class="meta">
+      {{ if .Params.author }}
+      <span class="author">By {{ .Params.author }}</span>
+      {{ end }}
+      {{ if .Date }}
+      <span class="date"> - {{ .Date.Format "January 2, 2006" }}</span>
+      {{ end }}
+    </div>
+  </header>
+
+  {{ if .Params.abstract }}
+  <div class="abstract">
+    {{ .Params.abstract | safeHTML }}
+  </div>
+  {{ end }}
+
+  {{ if .TableOfContents }}
+  <nav id="TableOfContents">
+    <h2>Table of Contents</h2>
+    {{ .TableOfContents }}
+  </nav>
+  {{ end }}
+
+  <div class="content">
+    {{ .Content }}
+  </div>
+</article>
+{{ end }}

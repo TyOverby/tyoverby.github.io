@@ -1,7 +1,7 @@
 ---
 title: Bincode 1.0.0
 author: Ty Overby
-image: ../images/snowy-mountains.jpeg
+date: 2018-02-14
 abstract: |
     Today [Bincode](https://github.com/tyoverby/bincode) hits 1.0.0!  Before we truly get started, a brief history:
     <table>
@@ -31,7 +31,7 @@ abstract: |
     </tr>
     </table>
 
-    Many thanks to [everyone who has contributed]( https://github.com/TyOverby/bincode/graphs/contributors).
+    Many thanks to [everyone who has contributed](https://github.com/TyOverby/bincode/graphs/contributors).
     I deeply appreciate the help.
 ---
 
@@ -67,7 +67,7 @@ let bytes: Vec<u8> = serialize(&123456789u32)?;
 assert_eq!(bytes.len(), 4);
 let number: u32 = deserialize(&bytes)?;
 ```
-<img src="../images/bincode/u32.svg" />
+<img src="/images/bincode/u32.svg" />
 
 ### Encoding Strings
 
@@ -79,7 +79,7 @@ let bytes: Vec<u8> = serialize(&String::from("hello!"))?;
 let string: String = deserialize(&bytes)?;
 ```
 
-<img src="../images/bincode/string.svg" />
+<img src="/images/bincode/string.svg" />
 
 ### Encoding Structs
 When serializing a struct, each field is serialized in order of its declaration in the struct.
@@ -104,7 +104,7 @@ let bytes: Vec<u8> = serialize(&person)?;
 let person_2: Person = deserialize(&bytes)?;
 ```
 
-<img src="../images/bincode/struct.svg" />
+<img src="/images/bincode/struct.svg" />
 
 ### Encoding Enums
 Enums are serialized as a tag (u32) followed by their fields serialized in declaration order.
@@ -128,7 +128,7 @@ let num_out: NumberOrString = deserialize(&bytes_num)?;
 let num_out: NumberOrString = deserialize(&bytes_string)?;
 ```
 
-<img src="../images/bincode/enum.svg" />
+<img src="/images/bincode/enum.svg" />
 
 
 # Should I use Bincode?

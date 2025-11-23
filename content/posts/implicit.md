@@ -1,8 +1,8 @@
 ---
 title: Implicit GPU
 subtitle: A new way to shape
-image: ../images/foam.jpeg
-color: white
+date: 2018-02-02
+math: true
 abstract: |
     Implicit-GPU is a new 2d CAD program based on the principals of Constructive
     Solid Geometry (commonly refered to as CSG).  What makes Implicit-GPU
@@ -32,7 +32,7 @@ building blocks to build scenes out of.  The circle and polygon are great places
 to start!
 
 ### Circles
-<img style="float: right; padding-left: 5px;" src="../images/poly_ops/field.png" />
+<img style="float: right; padding-left: 5px;" src="/images/poly_ops/field.png" />
 Let's look at a simple example, circles!  The function that produces a circle
 centered at $(x', y')$ with radius $r$ would be $\sqrt{(x-x')^2 + (y-y')^2} - r = 0$.
 Try applying this function to any point; on the edge of the circle, you'd
@@ -71,7 +71,7 @@ $\text{intersect}(A(x, y), B(x, y)) = \text{min}(A(x, y), B(x, y))$
 
 | $A, B$ | $\text{intersect}(A, B)$ |
 |:------:|:------------------------:|
-|<img src="../images/poly_ops/unaltered.svg" /> | <img src="../images/poly_ops/intersection.svg" /> |
+|<img src="/images/poly_ops/unaltered.svg" /> | <img src="/images/poly_ops/intersection.svg" /> |
 
 ### Union
 The union operator takes two shapes and returns a new shape that contains the
@@ -81,7 +81,7 @@ $\text{union}(A(x, y), B(x, y)) = \text{max}(A(x, y), B(x, y))$
 
 | $A, B$ | $\text{union}(A, B)$ |
 |:------:|:--------------------:|
-|<img src="../images/poly_ops/unaltered.svg" /> | <img src="../images/poly_ops/union.svg" /> |
+|<img src="/images/poly_ops/unaltered.svg" /> | <img src="/images/poly_ops/union.svg" /> |
 
 
 ### Subtract
@@ -94,5 +94,4 @@ $\text{subtract}(Target(x, y), Cut(x, y)) = \text{union}(Target(x, y), \text{neg
 
 | $Target, Cut$ | $\text{subtract}(Target, Cut)$ |
 |:-------------:|:------------------------------:|
-|<img src="../images/poly_ops/unaltered.svg" /> | <img  src="../images/poly_ops/subtract.svg" /> |
-
+|<img src="/images/poly_ops/unaltered.svg" /> | <img  src="/images/poly_ops/subtract.svg" /> |
