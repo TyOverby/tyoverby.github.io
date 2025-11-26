@@ -1,4 +1,4 @@
-# Hugo Blog Documentation
+# tyoverby.com hugo blog project
 
 This is a personal blog built with Hugo and deployed to GitHub Pages via GitHub Actions.
 
@@ -145,21 +145,84 @@ fn main() {
 ```
 ````
 
+### Code Snippets from Files
+
+You can inline code snippets from external source files using the `code-snippet` shortcode. This keeps code DRY and ensures examples stay in sync with actual source files.
+
+**Location:** `layouts/shortcodes/code-snippet.html`
+
+**Usage:**
+
+1. In your source file, add marker comments around the code you want to extract:
+
+```rust
+// static/examples/demo.rs
+fn example() {
+    // SNIPPET_START: region_name
+    let x = 42;
+    println!("Value: {}", x);
+    // SNIPPET_END: region_name
+}
+```
+
+2. In your markdown file, use the shortcode:
+
+```markdown
+{{</* code-snippet file="static/examples/demo.rs" region="region_name" lang="rust" */>}}
+```
+
+**Parameters:**
+- `file` - Path to source file (relative to project root)
+- `region` - Name of the region to extract (must match marker comments)
+- `lang` - Syntax highlighting language (rust, go, python, javascript, etc.)
+
+**Marker format:**
+- Default: `// SNIPPET_START: name` and `// SNIPPET_END: name`
+- Adjust comment style for your language (e.g., `#` for Python, `/* */` for C)
+
+**Benefits:**
+- Single source of truth for code examples
+- Code can be compiled/tested separately
+- Automatic updates when source files change
+- Clean separation of code and documentation
+
+**Example:** See `content/posts/hugo-snippet-demo.md` and `static/examples/parser.rs`
+
 ## Common Commands
 
-### Local Development
+### Testing Your Changes
+
+After making a change to hugo templates or blog content, please preview your changes and inspect the generated HTML:
+
+**1. Build the site locally:**
+```bash
+hugo --buildDrafts
+```
+
+**2. Inspect generated HTML:**
+
+The built site is in the `public/` directory. You can inspect the generated HTML:
 
 ```bash
-# Start development server (includes drafts)
-hugo server -D
+# View a specific post's HTML
+cat public/posts/my-post/index.html
+```
 
-# Start development server (published posts only)
-hugo server
+**3. Common checks:**
+- Verify code snippets extracted correctly from source files
+- Ensure syntax highlighting is applied (look for `<div class="highlight">`)
+- Check that images load with correct paths
+- Validate math rendering (if using KaTeX)
+- Confirm links work and point to correct URLs
 
-# Build site locally
-hugo
+**4. Clean rebuild:**
 
-# Build including drafts
+If you encounter issues, try a clean rebuild:
+```bash
+# Remove old build artifacts
+rm -rf public/
+
+# Rebuild from scratch
 hugo --buildDrafts
 ```
 

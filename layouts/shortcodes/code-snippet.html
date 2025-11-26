@@ -1,0 +1,25 @@
+{{- $file := .Get "file" -}}
+{{- $region := .Get "region" -}}
+{{- $lang := .Get "lang" | default "" -}}
+{{- $content := readFile $file -}}
+{{- $startMarker := printf "// SNIPPET_START: %s" $region -}}
+{{- $endMarker := printf "// SNIPPET_END: %s" $region -}}
+
+{{- $lines := split $content "\n" -}}
+{{- $output := slice -}}
+{{- $capturing := false -}}
+
+{{- range $lines -}}
+  {{- if strings.Contains . $endMarker -}}
+    {{- $capturing = false -}}
+  {{- end -}}
+  {{- if $capturing -}}
+    {{- $output = $output | append . -}}
+  {{- end -}}
+  {{- if strings.Contains . $startMarker -}}
+    {{- $capturing = true -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $code := delimit $output "\n" -}}
+{{ highlight $code $lang "" }}
