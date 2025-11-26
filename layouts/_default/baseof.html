@@ -112,6 +112,23 @@
     .icon-button:hover {
       background-color: var(--code-bg);
     }
+    .icon-button img {
+      width: 20px;
+      height: 20px;
+      filter: brightness(0) saturate(100%);
+      opacity: 0.8;
+    }
+    [data-theme="dark"] .icon-button img {
+      filter: brightness(0) saturate(100%) invert(100%);
+      opacity: 0.9;
+    }
+    .theme-icon {
+      display: none;
+    }
+    [data-theme="light"] .sun-icon,
+    [data-theme="dark"] .moon-icon {
+      display: block;
+    }
     article header h1 {
       margin-bottom: 0.5rem;
     }
@@ -181,10 +198,11 @@
     </div>
     <div class="header-right">
       <a href="/index.xml" class="icon-button" aria-label="RSS Feed" title="RSS Feed">
-        <span>📡</span>
+        <img src="/icons/rss.svg" alt="RSS" />
       </a>
       <button class="icon-button" id="theme-toggle" aria-label="Toggle theme">
-        <span class="theme-icon"></span>
+        <img class="theme-icon sun-icon" src="/icons/sun.svg" alt="Light mode" />
+        <img class="theme-icon moon-icon" src="/icons/moon.svg" alt="Dark mode" />
       </button>
     </div>
   </header>
@@ -194,15 +212,6 @@
   <script>
     // Theme toggle functionality
     const themeToggle = document.getElementById('theme-toggle');
-    const themeIcon = document.querySelector('.theme-icon');
-
-    function updateIcon(theme) {
-      themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
-    }
-
-    // Set initial icon
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    updateIcon(currentTheme);
 
     themeToggle.addEventListener('click', () => {
       const current = document.documentElement.getAttribute('data-theme');
@@ -210,7 +219,6 @@
 
       document.documentElement.setAttribute('data-theme', next);
       localStorage.setItem('theme', next);
-      updateIcon(next);
     });
   </script>
 </body>
