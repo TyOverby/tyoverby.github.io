@@ -1,0 +1,11 @@
+[workspace]
+resolver = "2"
+members = [
+    "how_sorted",
+]
+
+# Shared dependencies across all workspace members
+[workspace.dependencies]
+# Add common dependencies here as needed
+# Example:
+# serde = { version = "1.0", features = ["derive"] }

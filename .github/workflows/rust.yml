@@ -1,0 +1,38 @@
+name: Rust Check
+
+on:
+  push:
+    branches:
+      - master
+      - main
+  pull_request:
+    branches:
+      - master
+      - main
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+        with:
+          toolchain: stable
+
+      - name: Run cargo check
+        working-directory: ./rust
+        run: cargo check --all-targets
+
+      - name: Run cargo test
+        working-directory: ./rust
+        run: cargo test
+
+      - name: Run cargo clippy
+        working-directory: ./rust
+        run: cargo clippy -- -D warnings
