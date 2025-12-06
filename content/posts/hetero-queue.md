@@ -1,7 +1,7 @@
 ---
 title: Heterogeneous Queue in Rust
 date: 2016-10-05
-tags: ["rust", "type-systems", "performance", "design-patterns"]
+tags: ["rust", "type-systems"]
 ---
 
 In object-oriented languages, it is common to have collections containing

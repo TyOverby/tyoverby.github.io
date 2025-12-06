@@ -1,7 +1,7 @@
 ---
 title: "New blog woes"
 date: 2025-11-26
-tags: ["hugo", "blogging", "tooling"]
+tags: ["hugo", "blog"]
 ---
 
 In the hopes that I'll start regularly blogging soon, I decided to use a real static site 

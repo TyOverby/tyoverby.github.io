@@ -2,7 +2,7 @@
 title: Bincode 1.0.0
 author: Ty Overby
 date: 2018-02-14
-tags: ["rust", "serialization", "performance", "open-source"]
+tags: ["rust", "serialization"]
 abstract: |
     Today [Bincode](https://github.com/tyoverby/bincode) hits 1.0.0!  Before we truly get started, a brief history:
     <table>
