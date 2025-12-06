@@ -7,6 +7,14 @@
     </div>
   </header>
 
+  {{ if .Params.tags }}
+  <div class="tags">
+    {{ range .Params.tags }}
+    <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="tag">#{{ . }}</a>
+    {{ end }}
+  </div>
+  {{ end }}
+
   <div class="content">
     {{ .Content }}
   </div>
