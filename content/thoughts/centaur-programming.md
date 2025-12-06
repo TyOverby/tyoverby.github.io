@@ -19,4 +19,6 @@ conceptual realm.
 It's fun, and certainly a productivity boost, but it's not how I want to do
 _every_ project.  I still like programming by hand because I enjoy the process
 of learning and refining my craft, and in the past few weeks, I haven't learned
-much about Rust.
+much about Rust.  The code Claude has written seems fine, but I wouldn't vouch 
+for its cleanliness or correctness, which is fine in a research setting, but 
+wouldn't cut it for code that I would feel comfortable running in production.
