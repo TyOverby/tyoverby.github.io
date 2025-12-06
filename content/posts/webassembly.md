@@ -1,6 +1,7 @@
 ---
 title: Before Web Assembly
 date: 2016-03-21
+tags: ["webassembly", "browser-technology", "history", "web"]
 ---
 
 Web-Assembly is a binary execution environment sheparded by major browser

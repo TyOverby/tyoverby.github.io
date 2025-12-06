@@ -3,6 +3,7 @@ title: Rust Speed
 subtitle: Turns out it's pretty fast
 date: 2014-04-30
 math: true
+tags: ["rust", "performance", "benchmarks", "c"]
 ---
 
 # Problem

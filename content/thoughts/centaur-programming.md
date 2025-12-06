@@ -1,6 +1,7 @@
 ---
 title: Centaur Programming
 date: 2025-12-06
+tags: ["ai", "productivity", "programming", "rust"]
 ---
 
 In 2014 while I was an intern on the Dart Language team, Google hired Erik

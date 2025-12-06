@@ -2,6 +2,7 @@
 title: "Quick Note on Rust Macros"
 date: 2025-01-20
 draft: true
+tags: ["rust", "tooling", "debugging"]
 ---
 
 Was debugging some macro expansion today and realized I keep forgetting about `cargo expand`.
