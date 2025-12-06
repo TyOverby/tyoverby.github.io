@@ -18,6 +18,14 @@
   </div>
   {{ end }}
 
+  {{ if .Params.tags }}
+  <div class="tags">
+    {{ range .Params.tags }}
+    <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="tag">#{{ . }}</a>
+    {{ end }}
+  </div>
+  {{ end }}
+
   {{ if and .TableOfContents (ne .Params.toc false) }}
   <nav id="TableOfContents">
     <h2>Table of Contents</h2>

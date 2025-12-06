@@ -175,6 +175,73 @@
     table th {
       background-color: var(--code-bg);
     }
+    .tags {
+      margin: 1.5rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .tag {
+      display: inline-block;
+      background-color: var(--code-bg);
+      color: var(--text-color);
+      padding: 0.25rem 0.75rem;
+      border-radius: 3px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: background-color 0.2s ease;
+      border: 1px solid var(--border-color);
+    }
+    .tag:hover {
+      background-color: var(--border-color);
+      text-decoration: none;
+    }
+    .post-list {
+      list-style: none;
+      padding: 0;
+    }
+    .post-item {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .post-item:last-child {
+      border-bottom: none;
+    }
+    .post-date {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+    .post-subtitle {
+      color: var(--text-secondary);
+      margin-top: 0.25rem;
+      font-size: 0.9rem;
+    }
+    .tags-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 2rem 0;
+    }
+    .tag-link {
+      display: inline-block;
+      background-color: var(--code-bg);
+      color: var(--link-color);
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background-color 0.2s ease;
+      border: 1px solid var(--border-color);
+    }
+    .tag-link:hover {
+      background-color: var(--border-color);
+      text-decoration: none;
+    }
+    .tag-count {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+    }
   </style>
   <script>
     // Initialize theme before page renders to avoid flash
@@ -194,6 +261,7 @@
         <a href="/posts/">Blog</a>
         <a href="/thoughts/">Thoughts</a>
         <a href="/pages/">Pages</a>
+        <a href="/tags/">Tags</a>
       </nav>
     </div>
     <div class="header-right">

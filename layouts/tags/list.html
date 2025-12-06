@@ -1,0 +1,26 @@
+{{ define "main" }}
+<article>
+  <header>
+    <h1>Tag: {{ .Title }}</h1>
+    <div class="meta">
+      {{ .Pages | len }} {{ if eq (.Pages | len) 1 }}post{{ else }}posts{{ end }} tagged with "{{ .Title }}"
+    </div>
+  </header>
+
+  <div class="content">
+    <ul class="post-list">
+      {{ range .Pages }}
+      <li class="post-item">
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+        {{ if .Date }}
+        <span class="post-date">- {{ .Date.Format "January 2, 2006" }}</span>
+        {{ end }}
+        {{ if .Params.subtitle }}
+        <div class="post-subtitle">{{ .Params.subtitle }}</div>
+        {{ end }}
+      </li>
+      {{ end }}
+    </ul>
+  </div>
+</article>
+{{ end }}

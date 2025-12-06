@@ -2,6 +2,9 @@ baseURL = 'https://tyoverby.com/'
 languageCode = 'en-us'
 title = 'Ty Overby'
 
+[taxonomies]
+  tag = 'tags'
+
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
