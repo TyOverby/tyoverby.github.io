@@ -13,9 +13,10 @@ I think the senior dev also did much of the typing, but I'm more fuzzy on that.
 
 Recently I've been using LLMs to write code for some algorithms research.
 I chose Rust even though I haven't used it in ~8 years, and with the AI
-assistance, I've never felt more like Erik.  I'm still reviewing and making
-modifications to the LLM-generated code, but almost all of my labor is at a 
-layer above the programming language.
+assistance, the workflow is closer to what I imagine Erik was having than I've
+experienced before.  I'm still reviewing and making modifications to the
+LLM-generated code, but almost all of my labor is at a layer above the
+programming language.
 
 It's fun, and certainly a productivity boost, but it's not how I want to do
 _every_ project.  I still like programming by hand because I enjoy the process
