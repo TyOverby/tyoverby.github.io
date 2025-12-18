@@ -2,6 +2,7 @@
 title: Rust and Go (Error Handling)
 subtitle: Sums and Products
 date: 2015-10-30
+tags: ["rust", "go"]
 ---
 
 The Rust and Go programming languages are relatively new programming languages with an emphasis on

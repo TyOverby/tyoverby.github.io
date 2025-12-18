@@ -3,6 +3,7 @@ title: Implicit GPU
 subtitle: A new way to shape
 date: 2018-02-02
 math: true
+tags: ["graphics", "cad"]
 abstract: |
     Implicit-GPU is a new 2d CAD program based on the principals of Constructive
     Solid Geometry (commonly refered to as CSG).  What makes Implicit-GPU

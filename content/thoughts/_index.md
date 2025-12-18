@@ -2,4 +2,4 @@
 title: Daily Thoughts
 ---
 
-Quick thoughts, observations, and musings that don't quite fit the blog post format.
+Quick thoughts, observations, and musings that I'd feel embarrassed to call a "blog post".

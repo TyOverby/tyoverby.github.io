@@ -7,7 +7,7 @@
 <div class="pages-list">
   {{ range .Data.Pages.ByTitle }}
   <article class="page-item">
-    <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+    <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
     {{ if .Params.description }}
     <p class="page-description">{{ .Params.description }}</p>
     {{ else if .Summary }}

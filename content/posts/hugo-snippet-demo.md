@@ -2,6 +2,7 @@
 title: "Demo: Inline Code Snippets in Hugo"
 date: 2025-01-26
 draft: true
+tags: ["hugo", "blog"]
 ---
 
 This post demonstrates how to inline code snippets from external source files using Hugo shortcodes.

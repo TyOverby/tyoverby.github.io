@@ -6,7 +6,7 @@
   <ul>
     {{ range first 5 (where .Site.RegularPages "Type" "posts").ByDate.Reverse }}
     <li>
-      <a href="{{ .Permalink }}">{{ .Title }}</a>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
       {{ if .Date }}
       <span class="date"> - {{ .Date.Format "January 2, 2006" }}</span>
       {{ end }}
@@ -18,7 +18,7 @@
   <ul>
     {{ range first 5 (where .Site.RegularPages "Type" "thoughts").ByDate.Reverse }}
     <li>
-      <a href="{{ .Permalink }}">{{ .Title }}</a>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
       <span class="date"> - {{ .Date.Format "Jan 2, 2006" }}</span>
     </li>
     {{ end }}

@@ -4,8 +4,17 @@
     <h1>{{ .Title }}</h1>
     <div class="meta">
       <span class="date">{{ .Date.Format "January 2, 2006" }}</span>
+
+      {{ if .Params.tags }}
+      <div class="tags">
+        {{ range .Params.tags }}
+        <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="tag">#{{ . }}</a>
+        {{ end }}
+      </div>
+      {{ end }}
     </div>
   </header>
+
 
   <div class="content">
     {{ .Content }}

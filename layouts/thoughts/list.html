@@ -8,7 +8,7 @@
   {{ range .Data.Pages.ByDate.Reverse }}
   <article class="thought-item">
     <div class="thought-header">
-      <a href="{{ .Permalink }}">{{ .Title }}</a>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
       <span class="date">{{ .Date.Format "Jan 2, 2006" }}</span>
     </div>
     <div class="thought-content">

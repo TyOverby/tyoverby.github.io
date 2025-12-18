@@ -1,0 +1,21 @@
+{{ define "main" }}
+<article>
+  <header>
+    <h1>All Tags</h1>
+    <div class="meta">
+      {{ len .Data.Terms }} {{ if eq (len .Data.Terms) 1 }}tag{{ else }}tags{{ end }} total
+    </div>
+  </header>
+
+  <div class="content">
+    <div class="tags-cloud">
+      {{ range .Data.Terms.Alphabetical }}
+      <a href="{{ .Page.RelPermalink }}" class="tag-link">
+        {{ .Page.Title }}
+        <span class="tag-count">({{ .Count }})</span>
+      </a>
+      {{ end }}
+    </div>
+  </div>
+</article>
+{{ end }}
