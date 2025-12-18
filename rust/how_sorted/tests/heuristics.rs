@@ -1,6 +1,6 @@
 use how_sorted::{
     longest_increasing_subsequence_length, score_by_exact_placement, score_by_lis,
-    true_optimal_cost,
+    score_by_num_modifications_slow,
 };
 use quickcheck::{TestResult, quickcheck};
 
@@ -65,7 +65,7 @@ fn test_lis_heuristic_matches_oracle_simple() {
 
     for case in cases {
         let l: im::Vector<i32> = case.iter().cloned().collect();
-        let oracle_cost = true_optimal_cost(l.clone());
+        let oracle_cost = score_by_num_modifications_slow(l.clone());
         let lis_estimate = score_by_lis(&case);
 
         assert_eq!(
@@ -88,7 +88,7 @@ fn test_lis_heuristic_is_admissible() {
         }
 
         let l: im::Vector<i32> = perm.iter().cloned().collect();
-        let oracle_cost = match true_optimal_cost(l) {
+        let oracle_cost = match score_by_num_modifications_slow(l) {
             Some(c) => c,
             None => return TestResult::discard(),
         };
@@ -110,7 +110,7 @@ fn test_lis_heuristic_is_exact() {
         }
 
         let l: im::Vector<i32> = perm.iter().cloned().collect();
-        let oracle_cost = match true_optimal_cost(l) {
+        let oracle_cost = match score_by_num_modifications_slow(l) {
             Some(c) => c,
             None => return TestResult::discard(),
         };
@@ -130,7 +130,7 @@ fn test_exact_placement_is_not_admissible() {
     let case = vec![1, 2, 3, 4, 5, 0];
     let l: im::Vector<i32> = case.iter().cloned().collect();
 
-    let oracle_cost = true_optimal_cost(l).unwrap();
+    let oracle_cost = score_by_num_modifications_slow(l).unwrap();
     let exact_placement_estimate = score_by_exact_placement(case.iter().cloned());
 
     // exact_placement says 6 (all elements are wrong), but true cost is 1
