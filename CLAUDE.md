@@ -168,7 +168,7 @@ fn example() {
 2. In your markdown file, use the shortcode:
 
 ```markdown
-{{</* code-snippet file="static/examples/demo.rs" region="region_name" lang="rust" */>}}
+{{< code-snippet file="static/examples/demo.rs" region="region_name" lang="rust" >}}
 ```
 
 **Parameters:**
