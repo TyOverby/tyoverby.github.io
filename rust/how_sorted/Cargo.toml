@@ -6,6 +6,9 @@ edition = "2024"
 [dependencies]
 astar = "4.0.0"
 im = "15.1.0"
+rand = "0.8"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
 
 [dev-dependencies]
 quickcheck = "1.0"

@@ -7,6 +7,7 @@ draft: true
 Things I like:
 
 - vim keybindings in the file browser
+- AI integration is pretty great, especially the streaming bash
 
 Things I dislike:
 

@@ -1,12 +1,12 @@
-// This library contains several functions that can be used as heuristics for how sorted a list is.
-// For simplicity, the inputs to these functions are lists of integers in the range 0 to 9
-// (inclusive), with no duplicates.  This means that the correctly sorted list is always
-// `[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]`.
+// This library contains several functions that can be used as heuristics for
+// how sorted a list is. For simplicity, the inputs to these functions are lists
+// of integers in the range 0 to 9 (inclusive), with no duplicates. This means
+// that the correctly sorted list is always `[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]`.
 
 // implementation 1 - score by exact placement:
-// This function scores the input list by counting the number of elements that aren't in their
-// correct location.  Because of the simplifying assumptions above, the implementation is quite
-// simple:
+// This function scores the input list by counting the number of elements that
+// aren't in their correct location. Because of the simplifying assumptions
+// above, the implementation is quite simple:
 //
 // ```ocaml
 // let score_by_exact_placement l =
@@ -29,13 +29,15 @@ pub fn score_by_exact_placement(l: impl Iterator<Item = i32>) -> usize {
 // ```
 //
 // A score of 0 is perfect, and larger scores are worse
+// SNIPPET_START: score_by_distance
 pub fn score_by_distance(l: impl Iterator<Item = i32>) -> i32 {
     l.enumerate().map(|(i, v)| (i as i32 - v).abs()).sum()
 }
+// SNIPPET_END: score_by_distance
 
 // implementation 3 - score by relative placement:
-// This version compares each neighboring pair of elements and counts the number of neighbors that
-// are out of order.
+// This version compares each neighboring pair of elements and counts the number
+// of neighbors that are out of order.
 //
 // ```ocaml
 // let score_by_relative_placement l =
@@ -43,13 +45,15 @@ pub fn score_by_distance(l: impl Iterator<Item = i32>) -> i32 {
 // ```
 //
 // A score of 0 is perfect, and larger scores are worse
+// SNIPPET_START: score_by_relative_placement
 pub fn score_by_relative_placement(l: &[i32]) -> usize {
     l.windows(2).filter(|pair| pair[1] < pair[0]).count()
 }
+// SNIPPET_END: score_by_relative_placement
 
 // implementation 3 - score by correct neighbors:
-// This version compares each neighboring pair of elements and counts the number of neighbors that
-// aren't actually next to one another in the sorted list.
+// This version compares each neighboring pair of elements and counts the number
+// of neighbors that aren't actually next to one another in the sorted list.
 //
 // ```ocaml
 // let score_by_relative_placement l =
@@ -57,19 +61,22 @@ pub fn score_by_relative_placement(l: &[i32]) -> usize {
 // ```
 //
 // A score of 0 is perfect, and larger scores are worse
+// SNIPPET_START: score_by_correct_neighbors
 pub fn score_by_correct_neighbors(l: &[i32]) -> usize {
     l.windows(2).filter(|pair| pair[1] - 1 != pair[0]).count()
 }
+// SNIPPET_END: score_by_correct_neighbors
 
 // implementation 4 - score by num modifications:
-// This is a heuristic that would be easy for a human to understand, but could be hard for them to
-// implement.  Imagine that you have a small hand of playing cards laid out on a table in some
-// order.  We can define "how sorted are these cards" as "what is the smallest number of
-// modifications to this list are necessary to get it into sorted order", where a "modification" is
-// defined as picking up any card and putting it anywhere else in the list.
+// This is a heuristic that would be easy for a human to understand, but could
+// be hard for them to implement. Imagine that you have a small hand of playing
+// cards laid out on a table in some order. We can define "how sorted are these
+// cards" as "what is the smallest number of modifications to this list are
+// necessary to get it into sorted order", where a "modification" is defined as
+// picking up any card and putting it anywhere else in the list.
 //
-// I don't know if there's a good algorithm for computing this, so I suggest searching through the
-// space of modifications using A* search.
+// I don't know if there's a good algorithm for computing this, so I suggest
+// searching through the space of modifications using A* search.
 //
 // The two heuristic functions that we can use are
 // 1. The "oracle" heuristic: always return 0. This causes the graph search to
@@ -141,9 +148,10 @@ pub fn score_by_num_modifications_slow(l: im::Vector<i32>) -> Option<usize> {
 }
 
 // Longest Increasing Subsequence (LIS) based heuristic.
-// This computes the exact minimum number of moves needed to sort the list.
-// The insight is that elements in the LIS don't need to move - everything else does.
-// This makes it a perfect heuristic for A* (admissible and maximally informative).
+// This computes the exact minimum number of moves needed to sort the list. The
+// insight is that elements in the LIS don't need to move - everything else
+// does. This makes it a perfect heuristic for A* (admissible and maximally
+// informative).
 pub fn longest_increasing_subsequence_length(l: &[i32]) -> usize {
     if l.is_empty() {
         return 0;
@@ -168,9 +176,11 @@ pub fn longest_increasing_subsequence_length(l: &[i32]) -> usize {
     tails.len()
 }
 
+// SNIPPET_START: score_by_lis
 pub fn score_by_lis(l: &[i32]) -> usize {
     l.len() - longest_increasing_subsequence_length(l)
 }
+// SNIPPET_END: score_by_lis
 
 // Compute the true optimal cost using the `lis` heuristic
 pub fn score_by_num_modifications_fast(l: im::Vector<i32>) -> Option<usize> {

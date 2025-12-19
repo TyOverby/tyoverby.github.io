@@ -132,3 +132,113 @@ item matches the index of that item in the sorted list.
 > which simplifies the implementations of these algorithms a lot!
 
 {{< code-snippet file="rust/how_sorted/src/lib.rs" region="score_by_exact_placement" lang="rust" >}}
+
+As we saw in the Harry Potter example earlier, this method fails catastrophically
+when a list is "almost right" but has one element out of place that throws
+everything else off. Person A's answer was objectively better than Person B's,
+but scored worse because of this flaw.
+
+# Option 2: score by distance
+
+Instead of just checking if each element is in the _exact_ right spot, we could
+measure _how far_ each element is from where it should be. This way, if HP 7
+is in position 0 when it should be in position 6, we count that as a distance
+of 6 rather than just a binary "wrong."
+
+{{< code-snippet file="rust/how_sorted/src/lib.rs" region="score_by_distance" lang="rust" >}}
+
+This is already much better! Person A's answer would score 21 (since every
+element is off by 1, and we have 7 elements, but the first one is off by 6),
+while Person B's reversed list would score much higher. This metric properly
+rewards partial correctness.
+
+# Option 3: score by relative placement
+
+Maybe we don't care about absolute positioning at all. Perhaps what matters is
+whether elements are in the right order _relative to each other_. This approach
+counts how many neighboring pairs are out of order.
+
+{{< code-snippet file="rust/how_sorted/src/lib.rs" region="score_by_relative_placement" lang="rust" >}}
+
+This metric counts "inversions" - pairs of adjacent elements where the second
+one should come before the first. Person A would score 1 (just the HP 7 / HP 1
+inversion at the start), while Person B would score 6 (every single pair is
+inverted). Much better!
+
+# Option 4: score by correct neighbors
+
+Similar to relative placement, but stricter: this counts how many adjacent
+pairs _aren't consecutive in the sorted list_. Even if two elements are in
+the right order relative to each other, if they're not actually neighbors in
+the sorted sequence, it counts against you.
+
+{{< code-snippet file="rust/how_sorted/src/lib.rs" region="score_by_correct_neighbors" lang="rust" >}}
+
+This is even more strict than the previous metric. For Person A's list, HP 1
+through HP 6 are all consecutive, so we'd only penalize the HP 7 at the front
+(1 incorrect neighbor pair). Person B's reversed list would have every pair
+incorrect (6 penalties).
+
+# Option 5: score by minimum modifications (the gold standard)
+
+This is what I consider the "true" measure of sortedness: how many moves would
+it actually take to fix the list? This is the most intuitive metric - it
+directly answers "how much work is needed to sort this?"
+
+The challenge is that computing this optimally is expensive. You can't just
+greedily move elements around; you need to find the _optimal_ sequence of moves.
+I've implemented this using A\* pathfinding with the Longest Increasing
+Subsequence (LIS) as a heuristic.
+
+The insight behind the LIS heuristic is clever: elements that are part of the
+longest increasing subsequence don't need to move at all! They're already in
+the right relative order. Everything else needs to be moved. This makes the
+formula simple:
+
+{{< code-snippet file="rust/how_sorted/src/lib.rs" region="score_by_lis" lang="rust" >}}
+
+For Person A's list `[7, 1, 2, 3, 4, 5, 6]`, the LIS is `[1, 2, 3, 4, 5, 6]`
+with length 6, so the score is `7 - 6 = 1` - just one move needed! For Person
+B's reversed list `[7, 6, 5, 4, 3, 2, 1]`, the LIS has length 1 (any single
+element), so the score is `7 - 1 = 6` moves needed.
+
+This perfectly captures our intuition: Person A's answer needs just one fix,
+while Person B's needs six.
+
+# Comparing the Heuristics
+
+To validate these heuristics, I generated 100,000 pairs of random sequences
+and measured how often each heuristic agrees with the others. The results are
+striking:
+
+![Heuristic Agreement Matrix](/images/heuristic_agreement.png)
+
+This heatmap shows the percentage of time each pair of heuristics agrees on
+which sequence is "more sorted". The key findings:
+
+- **Distance, Relative Placement, Correct Neighbors, and LIS** all show very
+  high agreement with each other (typically 85-95%), suggesting they're
+  measuring fundamentally similar properties
+- **Exact Placement** shows much lower agreement with every other heuristic
+  (around 60-70%), confirming it's measuring something fundamentally different
+- The LIS-based approach agrees most strongly with the other reasonable
+  heuristics while being the most theoretically sound
+
+# Conclusion
+
+The "score by exact placement" method used by Um Actually is fundamentally
+broken. It treats lists as having no internal structure and ignores the notion
+of "closeness" to the correct answer. Any of the alternatives presented here
+would be fairer:
+
+- **Score by distance**: Simple and intuitive, rewards partial correctness
+- **Score by relative placement**: Focuses on pairwise ordering
+- **Score by correct neighbors**: Stricter version of relative placement
+- **Score by minimum modifications**: The most accurate, measures actual work needed
+
+My recommendation? Use the LIS-based approach. It's computationally efficient,
+easy to explain ("count how many items you'd need to move"), and it matches
+human intuition about what "mostly sorted" means.
+
+Until Um Actually fixes their scoring system, I'll be sitting here, arms
+crossed, ready to say: "Um, actually... your scoring algorithm is broken."

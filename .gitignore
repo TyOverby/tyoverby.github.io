@@ -2,6 +2,7 @@
 *.swp
 tmp/
 .claude
+.venv
 
 # Hugo
 public/
