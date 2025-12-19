@@ -2,22 +2,24 @@
 title: "In search of a new text editor: Part 1 - server/client split"
 date: 2025-12-13
 draft: true
+toc: false
 ---
 
-"I want to be cool. People on IRC say that cool people use vim. I'll use vim".
+"Folks on IRC say that cool people use vim. I want to be cool! I'll use vim".
 Not the best logic, but I was 14, and it was only the second worst decision I
-made that day (Arch user btw). Vim and Neovim have been constant companions
-throughout my journey as a programmer, and I'm very glad that I paid down the
-cost of learning a complex editor before I became too busy figuring out how to
-do this whole "programming" thing.
+made that day (Arch user btw). Vim (and later Neovim) have been constant
+companions throughout my journey as a programmer, and I'm very glad that I paid
+down the cost of learning a complex editor at a time where wrestling with my
+development environment was mainly just preventing me from making bad flash
+games.
 
 # So why am I looking for a new editor?
 
 In a word: "responsiveness". In six words: "responsiveness over high latency
 remote connections". Neovim is very fast when you're running it locally, but
 most of my development actually happens on remote machines, so I'm sshing to
-my development box and running `nvim` over there. <!-- talk about js here? -->  
-This works fine when latency is low, but as soon as the round-trip-time for a
+my development box and running `nvim` over there.
+This works fine when latency is low, but as soon as the round-trip time for a
 TCP packet gets up into the milliseconds, keypresses start to feel sluggish
 as they're sent to the remote machine to be interpreted.
 
@@ -27,7 +29,7 @@ situations like this.
 # Splitting the editor in two
 
 The basic architecture that these new editors follow is that of the
-"client / server" split. The "server" half of the editor lives on the
+"client / server" split. The server half of the editor lives on the
 development machine and handles things like:
 
 - Saving files to disk
@@ -35,7 +37,7 @@ development machine and handles things like:
 - Building & running artifacts
 - Collecting diagnostics
 
-while the "client" half runs on the computer that your keyboard is plugged into,
+while the client half runs on the computer that your keyboard is plugged into,
 and manages:
 
 - Buffer state
@@ -43,10 +45,10 @@ and manages:
 - Window management & layout
 - UI and presentation
 
-This separation of responsibilities is commonplace in other disciplines; for
-example, in multiplayer videogames, user-input is handled locally. Imagine how
-bad it would be if you needed a client->server->client round trip in order to
-turn the camera!
+This separation of responsibilities is commonplace in other disciplines; web
+pages work like this, but it's also found in multiplayer videogames so that
+user-input is handled locally. Imagine how bad it would be if you needed a
+`client->server->client` round trip in order to turn the camera!
 
 # The candidates
 

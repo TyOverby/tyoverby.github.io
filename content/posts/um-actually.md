@@ -1,6 +1,6 @@
 ---
 title: Umm... actually... that's not a good heuristic for list sortedness
-date: 2018-11-26
+date: 2025-12-19
 summary: Um Actually has a broken scoring system, but we can fix it!
 draft: true
 ---

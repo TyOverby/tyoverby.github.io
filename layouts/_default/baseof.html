@@ -87,6 +87,7 @@
       font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
       font-weight: normal;
       text-wrap: balance;
+      line-height: 1em;
     }
     
     [data-theme="dark"] h1,
@@ -181,7 +182,6 @@
     article header .meta {
       color: var(--text-secondary);
       font-size: 0.9rem;
-      margin-bottom: 2rem;
     }
     a {
       color: var(--link-color);
@@ -190,9 +190,11 @@
       margin: 0 -5px;
       border-radius: 5px;
     }
-    
-    a:hover {
-      background: color-mix(in srgb, var(--link-color) 25%, transparent);
+   
+    main {
+        a:hover {
+        background: color-mix(in srgb, var(--link-color) 25%, transparent);
+        }
     }
     
     code {
