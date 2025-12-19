@@ -37,6 +37,9 @@
     });
   </script>
   {{ end }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-color: #ffffff;
@@ -48,8 +51,8 @@
     }
 
     [data-theme="dark"] {
-      --bg-color: #1a1a1a;
-      --text-color: #e0e0e0;
+      --bg-color: #040f13;
+      --text-color: #e0e8f3;
       --text-secondary: #a0a0a0;
       --border-color: #404040;
       --code-bg: #2d2d2d;
@@ -57,14 +60,42 @@
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      line-height: 1.6;
+      font-family: "Source Serif 4", "Source Serif 4 Fallback", Georgia, serif;
+      font-size: 18px;
+      line-height: 28px;
       max-width: 800px;
       margin: 0 auto;
       padding: 20px;
       color: var(--text-color);
       background-color: var(--bg-color);
       transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    
+    p {
+      text-align: justify;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      word-spacing: -0.05em; /* tightens spacing slightly */
+      hyphenate-limit-chars: 6 3 3; /* min word length, chars before break, chars after */
+    }
+    
+    ul {
+        margin:0 0 0 -1em;
+    }
+    
+    header, h1, h2, h3, h4, h5, h6 {
+      font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      font-weight: normal;
+      text-wrap: balance;
+    }
+    
+    [data-theme="dark"] h1,
+    [data-theme="dark"] h2,
+    [data-theme="dark"] h3,
+    [data-theme="dark"] h4,
+    [data-theme="dark"] h5,
+    [data-theme="dark"] h6 {
+      color: white;
     }
     header.site-header {
       border-bottom: 1px solid var(--border-color);
@@ -154,10 +185,16 @@
     }
     a {
       color: var(--link-color);
+      text-decoration: none;
+      padding: 0 5px;
+      margin: 0 -5px;
+      border-radius: 5px;
     }
+    
     a:hover {
-      text-decoration: underline;
+      background: color-mix(in srgb, var(--link-color) 25%, transparent);
     }
+    
     code {
       background: var(--code-bg);
       padding: 2px 6px;
