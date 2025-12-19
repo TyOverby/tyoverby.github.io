@@ -65,8 +65,8 @@ pub fn score_by_runs(l: &[i32]) -> usize {
     }
     // Count the number of times we start a new run (when current < previous)
     // Number of runs = 1 + number of "breaks"
-    let breaks = l.windows(2).filter(|pair| pair[1] < pair[0]).count();
-    breaks // This equals runs - 1, so a sorted list scores 0
+    // This equals runs - 1, so a sorted list scores 0
+    l.windows(2).filter(|pair| pair[1] < pair[0]).count()
 }
 // SNIPPET_END: score_by_runs
 
