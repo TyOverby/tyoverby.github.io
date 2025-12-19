@@ -18,8 +18,8 @@ struct ComparisonResult {
     sequence_b: Vec<i32>,
     exact_placement: Outcome,
     distance: Outcome,
-    relative_placement: Outcome,
     correct_neighbors: Outcome,
+    runs: Outcome,
     lis: Outcome,
 }
 
@@ -60,17 +60,17 @@ fn main() {
         let distance_a = score_by_distance(seq_a.iter().copied());
         let distance_b = score_by_distance(seq_b.iter().copied());
 
-        let relative_a = score_by_relative_placement(&seq_a);
-        let relative_b = score_by_relative_placement(&seq_b);
-
         let neighbors_a = score_by_correct_neighbors(&seq_a);
         let neighbors_b = score_by_correct_neighbors(&seq_b);
+
+        let runs_a = score_by_runs(&seq_a);
+        let runs_b = score_by_runs(&seq_b);
 
         let lis_a = score_by_lis(&seq_a);
         let lis_b = score_by_lis(&seq_b);
 
         //if !(lis_a <= 3 || lis_b <= 3) {
-        if lis_a == lis_b {
+        if false {
             continue;
         }
 
@@ -79,8 +79,8 @@ fn main() {
             sequence_b: seq_b,
             exact_placement: compare_scores(exact_a, exact_b),
             distance: compare_scores(distance_a, distance_b),
-            relative_placement: compare_scores(relative_a, relative_b),
             correct_neighbors: compare_scores(neighbors_a, neighbors_b),
+            runs: compare_scores(runs_a, runs_b),
             lis: compare_scores(lis_a, lis_b),
         });
 

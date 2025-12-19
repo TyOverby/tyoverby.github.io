@@ -35,22 +35,6 @@ pub fn score_by_distance(l: impl Iterator<Item = i32>) -> i32 {
 }
 // SNIPPET_END: score_by_distance
 
-// implementation 3 - score by relative placement:
-// This version compares each neighboring pair of elements and counts the number
-// of neighbors that are out of order.
-//
-// ```ocaml
-// let score_by_relative_placement l =
-//    List.count (List.pairs l) ~f:(fun a b -> b < a)
-// ```
-//
-// A score of 0 is perfect, and larger scores are worse
-// SNIPPET_START: score_by_relative_placement
-pub fn score_by_relative_placement(l: &[i32]) -> usize {
-    l.windows(2).filter(|pair| pair[1] < pair[0]).count()
-}
-// SNIPPET_END: score_by_relative_placement
-
 // implementation 3 - score by correct neighbors:
 // This version compares each neighboring pair of elements and counts the number
 // of neighbors that aren't actually next to one another in the sorted list.
@@ -67,7 +51,26 @@ pub fn score_by_correct_neighbors(l: &[i32]) -> usize {
 }
 // SNIPPET_END: score_by_correct_neighbors
 
-// implementation 4 - score by num modifications:
+// implementation 4 - score by runs:
+// This version counts how many "ascending runs" the list has. A perfectly
+// sorted list has exactly 1 run, while a heavily shuffled list has many.
+// For example, [1,2,3,5,4,6,7] has 3 runs: [1,2,3], [5], [4,6,7].
+// We return runs - 1 so that a perfectly sorted list scores 0.
+//
+// A score of 0 is perfect, and larger scores are worse
+// SNIPPET_START: score_by_runs
+pub fn score_by_runs(l: &[i32]) -> usize {
+    if l.is_empty() {
+        return 0;
+    }
+    // Count the number of times we start a new run (when current < previous)
+    // Number of runs = 1 + number of "breaks"
+    let breaks = l.windows(2).filter(|pair| pair[1] < pair[0]).count();
+    breaks // This equals runs - 1, so a sorted list scores 0
+}
+// SNIPPET_END: score_by_runs
+
+// implementation 5 - score by num modifications:
 // This is a heuristic that would be easy for a human to understand, but could
 // be hard for them to implement. Imagine that you have a small hand of playing
 // cards laid out on a table in some order. We can define "how sorted are these

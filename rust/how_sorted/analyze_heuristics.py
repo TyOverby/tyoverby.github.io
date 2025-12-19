@@ -30,8 +30,8 @@ def calculate_agreement_matrix(results):
     heuristics = [
         "exact_placement",
         "distance",
-        "relative_placement",
         "correct_neighbors",
+        "runs",
         "lis",
     ]
     n = len(heuristics)
@@ -59,12 +59,20 @@ def create_triangular_heatmap(
     Create a triangular heatmap showing agreement between heuristics.
 
     Only the lower triangle is shown to avoid redundancy (since agreement is symmetric).
+    The first row and last column are excluded since they contain no data in a
+    lower-triangular layout.
     """
     n = len(heuristics)
 
-    # Create a masked array for the upper triangle
-    mask = np.triu(np.ones_like(agreement_matrix, dtype=bool))
-    masked_data = np.ma.array(agreement_matrix, mask=mask)
+    # Exclude first row and last column (they're always empty in lower triangle)
+    # Row labels: heuristics[1:] (skip first)
+    # Column labels: heuristics[:-1] (skip last)
+    trimmed_matrix = agreement_matrix[1:, :-1]
+    trimmed_n = n - 1
+
+    # Create a masked array for the strictly upper triangle (k=1 excludes diagonal)
+    mask = np.triu(np.ones_like(trimmed_matrix, dtype=bool), k=1)
+    masked_data = np.ma.array(trimmed_matrix, mask=mask)
 
     # Create figure and axis
     fig, ax = plt.subplots(figsize=(10, 8))
@@ -82,32 +90,33 @@ def create_triangular_heatmap(
     cbar.set_label("Agreement (%)", rotation=270, labelpad=20, fontsize=12)
 
     # Set ticks and labels
-    ax.set_xticks(np.arange(n))
-    ax.set_yticks(np.arange(n))
+    ax.set_xticks(np.arange(trimmed_n))
+    ax.set_yticks(np.arange(trimmed_n))
 
     # Shorten labels for display
     short_labels = [
         "Exact\nPlacement",
         "Distance",
-        "Relative\nPlacement",
         "Correct\nNeighbors",
+        "Runs",
         "LIS",
     ]
 
-    ax.set_xticklabels(short_labels, fontsize=10)
-    ax.set_yticklabels(short_labels, fontsize=10)
+    # X-axis: all but last label, Y-axis: all but first label
+    ax.set_xticklabels(short_labels[:-1], fontsize=10)
+    ax.set_yticklabels(short_labels[1:], fontsize=10)
 
     # Rotate x-axis labels
     plt.setp(ax.get_xticklabels(), rotation=45, ha="right", rotation_mode="anchor")
 
     # Add text annotations for each cell
-    for i in range(n):
-        for j in range(n):
-            if i > j:  # Only lower triangle
+    for i in range(trimmed_n):
+        for j in range(trimmed_n):
+            if i >= j:  # Lower triangle including diagonal
                 ax.text(
                     j,
                     i,
-                    f"{agreement_matrix[i, j]:.1f}%",
+                    f"{trimmed_matrix[i, j]:.1f}%",
                     ha="center",
                     va="center",
                     color="black",
@@ -121,8 +130,8 @@ def create_triangular_heatmap(
     )
 
     # Add grid
-    ax.set_xticks(np.arange(n) - 0.5, minor=True)
-    ax.set_yticks(np.arange(n) - 0.5, minor=True)
+    ax.set_xticks(np.arange(trimmed_n) - 0.5, minor=True)
+    ax.set_yticks(np.arange(trimmed_n) - 0.5, minor=True)
     ax.grid(which="minor", color="gray", linestyle="-", linewidth=0.5)
     ax.tick_params(which="minor", size=0)
 

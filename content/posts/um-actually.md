@@ -152,22 +152,9 @@ element is off by 1, and we have 7 elements, but the first one is off by 6),
 while Person B's reversed list would score much higher. This metric properly
 rewards partial correctness.
 
-# Option 3: score by relative placement
+# Option 3: score by correct neighbors
 
-Maybe we don't care about absolute positioning at all. Perhaps what matters is
-whether elements are in the right order _relative to each other_. This approach
-counts how many neighboring pairs are out of order.
-
-{{< code-snippet file="rust/how_sorted/src/lib.rs" region="score_by_relative_placement" lang="rust" >}}
-
-This metric counts "inversions" - pairs of adjacent elements where the second
-one should come before the first. Person A would score 1 (just the HP 7 / HP 1
-inversion at the start), while Person B would score 6 (every single pair is
-inverted). Much better!
-
-# Option 4: score by correct neighbors
-
-Similar to relative placement, but stricter: this counts how many adjacent
+This approach counts how many adjacent
 pairs _aren't consecutive in the sorted list_. Even if two elements are in
 the right order relative to each other, if they're not actually neighbors in
 the sorted sequence, it counts against you.
@@ -178,6 +165,22 @@ This is even more strict than the previous metric. For Person A's list, HP 1
 through HP 6 are all consecutive, so we'd only penalize the HP 7 at the front
 (1 incorrect neighbor pair). Person B's reversed list would have every pair
 incorrect (6 penalties).
+
+# Option 4: score by runs
+
+Another intuitive approach: count how many "ascending runs" exist in the list.
+A perfectly sorted list has exactly one run (the whole thing is ascending),
+while a heavily shuffled list breaks into many separate runs.
+
+For example, `[1, 2, 3, 5, 4, 6, 7]` has 3 runs: `[1, 2, 3]`, then `[5]` (which
+breaks because 4 < 5), then `[4, 6, 7]`.
+
+{{< code-snippet file="rust/how_sorted/src/lib.rs" region="score_by_runs" lang="rust" >}}
+
+For Person A's list `[7, 1, 2, 3, 4, 5, 6]`, we have 2 runs: `[7]` and
+`[1, 2, 3, 4, 5, 6]`, so the score is 1 (one break). For Person B's reversed
+list `[7, 6, 5, 4, 3, 2, 1]`, every adjacent pair is descending, giving us 7
+runs and a score of 6. Person A wins again!
 
 # Option 5: score by minimum modifications (the gold standard)
 
@@ -216,7 +219,7 @@ striking:
 This heatmap shows the percentage of time each pair of heuristics agrees on
 which sequence is "more sorted". The key findings:
 
-- **Distance, Relative Placement, Correct Neighbors, and LIS** all show very
+- **Distance, Correct Neighbors, Runs, and LIS** all show very
   high agreement with each other (typically 85-95%), suggesting they're
   measuring fundamentally similar properties
 - **Exact Placement** shows much lower agreement with every other heuristic
@@ -232,8 +235,8 @@ of "closeness" to the correct answer. Any of the alternatives presented here
 would be fairer:
 
 - **Score by distance**: Simple and intuitive, rewards partial correctness
-- **Score by relative placement**: Focuses on pairwise ordering
-- **Score by correct neighbors**: Stricter version of relative placement
+- **Score by correct neighbors**: Checks if adjacent elements belong together
+- **Score by runs**: Counts ascending subsequences, easy to visualize
 - **Score by minimum modifications**: The most accurate, measures actual work needed
 
 My recommendation? Use the LIS-based approach. It's computationally efficient,
