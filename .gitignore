@@ -11,3 +11,4 @@ resources/_gen/
 
 # Rust
 target/
+heuristic_comparison_results.json
