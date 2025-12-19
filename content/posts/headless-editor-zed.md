@@ -5,9 +5,14 @@ draft: true
 ---
 
 Things I like:
-- vim keybindings in the file browser 
 
-Things I dislike: 
+- vim keybindings in the file browser
+
+Things I dislike:
+
 - `:` brings up the command palette every time you hit it. I habitually save
   files (`:w`) in order to run my code formatter. I really don't like how
   disruptive the command palette is.
+- AI integration
+    - Some bash tasks timed out, but didn't successfully kill the `cargo test`
+      processes
