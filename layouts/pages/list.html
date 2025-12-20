@@ -11,7 +11,7 @@
     {{ if .Params.description }}
     <p class="page-description">{{ .Params.description }}</p>
     {{ else if .Summary }}
-    <p class="page-description">{{ .Summary }}</p>
+    <p class="page-description">{{ .Content }}</p>
     {{ end }}
   </article>
   {{ end }}
