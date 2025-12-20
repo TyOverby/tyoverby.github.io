@@ -1,18 +1,18 @@
 ---
-title: Umm... actually... that's not a good heuristic for list sortedness
+title: Um, actually... that's not a good heuristic for how well a list is sorted
 date: 2025-12-19
 summary: Um Actually has a broken scoring system, but we can fix it!
 draft: true
 ---
 
-Recently I've been watching a lot of [Um Actually](TODO), a show on
-[dropout.tv](https://dropout.tv) that pits comedians and nerd celebreties against one
-another in a trivia gameshow format. The show is really good, but
+Recently I've been watching a lot of [Um, Actually](TODO), a show on
+[dropout.tv](https://dropout.tv) that pits comedians and nerd celebreties
+against one another in a trivia gameshow format. The show is really good, but
 occasionally, they do something that _really_ irks me: a common format for the
 trivia question will have the contestents attempt to put a list in order. For
-example, "sort these books by release date" or "order these movies by box
-office revenue". The prompts are fun, but the way that the results are scored
-is infuritating: They **count all of the items that are in the right slot when
+example, "sort these books by release date" or "order these movies by box office
+revenue". The prompts are fun, but the way that the results are scored is
+infuritating: They **count all of the items that are in the right slot when
 compared to the correctly sorted list**. higher scores are better, and the
 contestent with the highest score wins.
 
