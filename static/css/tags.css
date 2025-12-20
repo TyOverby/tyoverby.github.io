@@ -1,0 +1,54 @@
+/* Tags Styling */
+
+.tags {
+  margin-left: 0.5rem;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  display: inline-block;
+  background-color: var(--code-bg);
+  color: var(--text-color);
+  padding: 0 0.35rem;
+  border-radius: 3px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: background-color 0.2s ease;
+  border: 1px solid var(--border-color);
+}
+
+.tag:hover {
+  background-color: var(--border-color);
+  text-decoration: none;
+}
+
+.tags-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 2rem 0;
+}
+
+.tag-link {
+  display: inline-block;
+  background-color: var(--code-bg);
+  color: var(--link-color);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+  border: 1px solid var(--border-color);
+}
+
+.tag-link:hover {
+  background-color: var(--border-color);
+  text-decoration: none;
+}
+
+.tag-count {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
