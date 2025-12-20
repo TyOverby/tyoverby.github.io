@@ -1,4 +1,6 @@
-html, body, header {
+html,
+body,
+header {
     margin: 0;
     padding: 0;
 }
@@ -21,14 +23,15 @@ header #header-container {
 }
 
 header .title {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: bold;
     font-size: 3em;
     text-transform: uppercase;
 }
 
-header .subtitle, header .author {
-    font-family: 'Raleway', sans-serif;
+header .subtitle,
+header .author {
+    font-family: "Raleway", sans-serif;
     font-weight: bold;
     font-size: 2em;
 }
@@ -45,7 +48,7 @@ header .subtitle, header .author {
 
 section {
     padding: 30px;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: 500;
     width: 800px;
     margin-left: auto;
@@ -62,14 +65,18 @@ section {
     }
 }
 
-h1, h2, h3, h4 {
-    font-family: 'Roboto', sans-serif;
+h1,
+h2,
+h3,
+h4 {
+    font-family: "Roboto", sans-serif;
     font-weight: bold;
     color: rgb(10, 10, 60);
     text-justify: none;
 }
 
-h1, h2 {
+h1,
+h2 {
     font-size: 2em;
 }
 
@@ -78,7 +85,7 @@ h3 {
 }
 
 code {
-    font-family: 'Roboto Mono';
+    font-family: "Roboto Mono";
     font-size: 0.9em;
 }
 
@@ -100,7 +107,7 @@ blockquote {
 div#toc ul {
     list-style: none;
 }
-div#toc>ul {
+div#toc > ul {
     padding-left: 0;
 }
 

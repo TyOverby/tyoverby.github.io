@@ -1,22 +1,22 @@
 /* Theme Variables - Light and Dark Mode */
 
 :root {
-  --bg-color: #ffffff;
-  --text-color: #333333;
-  --text-secondary: #666666;
-  --border-color: #dddddd;
-  --code-bg: #f4f4f4;
-  --link-color: #0066cc;
-  --content-width: 800px;
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --text-secondary: #666666;
+    --border-color: #dddddd;
+    --code-bg: #f4f4f4;
+    --link-color: #0066cc;
+    --content-width: 800px;
 }
 
 [data-theme="dark"] {
-  --bg-color: #040f13;
-  --text-color: #e0e8f3;
-  --text-secondary: #a0a0a0;
-  --border-color: #404040;
-  --code-bg: #2d2d2d;
-  --link-color: #66b3ff;
+    --bg-color: #040f13;
+    --text-color: #e0e8f3;
+    --text-secondary: #a0a0a0;
+    --border-color: #404040;
+    --code-bg: #2d2d2d;
+    --link-color: #66b3ff;
 }
 
 [data-theme="dark"] h1,
@@ -25,46 +25,46 @@
 [data-theme="dark"] h4,
 [data-theme="dark"] h5,
 [data-theme="dark"] h6 {
-  color: white;
+    color: white;
 }
 
 /* Icon buttons for theme toggle */
 .icon-button {
-  background: none;
-  border: 1px solid var(--border-color);
-  border-radius: 5px;
-  padding: 8px 12px;
-  cursor: pointer;
-  font-size: 1.2rem;
-  color: var(--text-color);
-  transition: background-color 0.2s ease;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+    background: none;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--text-color);
+    transition: background-color 0.2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .icon-button:hover {
-  background-color: var(--code-bg);
+    background-color: var(--code-bg);
 }
 
 .icon-button img {
-  width: 20px;
-  height: 20px;
-  filter: brightness(0) saturate(100%);
-  opacity: 0.8;
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) saturate(100%);
+    opacity: 0.8;
 }
 
 [data-theme="dark"] .icon-button img {
-  filter: brightness(0) saturate(100%) invert(100%);
-  opacity: 0.9;
+    filter: brightness(0) saturate(100%) invert(100%);
+    opacity: 0.9;
 }
 
 .theme-icon {
-  display: none;
+    display: none;
 }
 
 [data-theme="light"] .sun-icon,
 [data-theme="dark"] .moon-icon {
-  display: block;
+    display: block;
 }

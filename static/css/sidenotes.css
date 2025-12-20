@@ -1,71 +1,71 @@
 /* Sidenotes - Tufte-style margin notes */
 
 .sidenote-toggle-checkbox {
-  display: none;
+    display: none;
 }
 
 .sidenote-toggle.sidenote-number {
-  counter-increment: sidenote-counter;
-  cursor: pointer;
+    counter-increment: sidenote-counter;
+    cursor: pointer;
 }
 
 .sidenote-toggle.sidenote-number::after {
-  content: counter(sidenote-counter);
-  font-size: 0.75rem;
-  position: relative;
-  top: -0.4rem;
-  left: 0.1rem;
-  color: var(--link-color);
-  font-weight: 500;
+    content: counter(sidenote-counter);
+    font-size: 0.75rem;
+    position: relative;
+    top: -0.4rem;
+    left: 0.1rem;
+    color: var(--link-color);
+    font-weight: 500;
 }
 
 .sidenote {
-  font-size: 0.85rem;
-  line-height: 1.4;
-  color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: var(--text-secondary);
 }
 
 /* Large screens: sidenotes in the margin */
 @media (min-width: 1200px) {
-  .sidenote {
-    float: right;
-    clear: right;
-    
-    --sn-width: calc(min(500px, (100vw - var(--content-width)) / 2 - 20px));
-    
-    margin-right: calc(0px - var(--sn-width) - 10px);
-    
-    width: var(--sn-width);
-    margin-top: 0.2rem;
-    margin-bottom: 0.5rem;
-    text-align: left;
-  }
+    .sidenote {
+        float: right;
+        clear: right;
 
-  /* Hide the toggle on large screens - sidenotes always visible */
-  .sidenote-toggle.sidenote-number {
-      display: none;
-  }
+        --sn-width: calc(min(500px, (100vw - var(--content-width)) / 2 - 20px));
+
+        margin-right: calc(0px - var(--sn-width) - 10px);
+
+        width: var(--sn-width);
+        margin-top: 0.2rem;
+        margin-bottom: 0.5rem;
+        text-align: left;
+    }
+
+    /* Hide the toggle on large screens - sidenotes always visible */
+    .sidenote-toggle.sidenote-number {
+        display: none;
+    }
 }
 
 /* Small screens: sidenotes toggle inline */
 @media (max-width: 1199px) {
-  .sidenote {
-    display: none;
-    float: left;
-    width: 100%;
-    margin: 0.75rem 0;
-    padding: 0.75rem 1rem;
-    background-color: var(--code-bg);
-    border-left: 3px solid var(--link-color);
-    border-radius: 0 5px 5px 0;
-    clear: both;
-  }
+    .sidenote {
+        display: none;
+        float: left;
+        width: 100%;
+        margin: 0.75rem 0;
+        padding: 0.75rem 1rem;
+        background-color: var(--code-bg);
+        border-left: 3px solid var(--link-color);
+        border-radius: 0 5px 5px 0;
+        clear: both;
+    }
 
-  .sidenote-toggle-checkbox:checked + .sidenote {
-    display: block;
-  }
+    .sidenote-toggle-checkbox:checked + .sidenote {
+        display: block;
+    }
 
-  .sidenote-toggle.sidenote-number:hover::after {
-    text-decoration: underline;
-  }
+    .sidenote-toggle.sidenote-number:hover::after {
+        text-decoration: underline;
+    }
 }

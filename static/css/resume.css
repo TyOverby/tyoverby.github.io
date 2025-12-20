@@ -3,7 +3,7 @@ body {
     text-align: justify;
     text-justify: inter-word;
     padding: 0.25in;
-    font-size:0.95em;
+    font-size: 0.95em;
 }
 
 img {
@@ -37,17 +37,17 @@ article {
 }
 
 article#cover {
-    display:flex;
-    flex-wrap:wrap;
-    flex-direction:row;
-    justify-content:space-between;
-    align-items:stretch;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
 }
 
 #left {
     flex-basis: 70%;
 }
-#right{
+#right {
     flex-basis: 25%;
 }
 
@@ -56,7 +56,8 @@ article#cover {
     font-family: sans-serif;
 }
 
-#name, #contact {
+#name,
+#contact {
     margin-bottom: 20px;
 }
 
@@ -69,12 +70,12 @@ article#cover {
     font-family: sans-serif;
 }
 
-#contact > ul >li {
-    margin-bottom:0.4em;
+#contact > ul > li {
+    margin-bottom: 0.4em;
 }
 
 strong {
-    color:#540065;
+    color: #540065;
     font-weight: 900;
 }
 
@@ -85,22 +86,21 @@ strong {
     padding-top: 4px;
 }
 
-
-.detail > .main{
-    font-size: 1.0em;
+.detail > .main {
+    font-size: 1em;
     font-weight: bold;
     color: rgb(127, 0, 34);
 }
 
-.detail > .follow::before{
-    content:"(";
+.detail > .follow::before {
+    content: "(";
 }
 .detail > .follow::after {
-    content:") \2013 ";
+    content: ") \2013 ";
 }
 
-.detail > .last{
-    float:right;
+.detail > .last {
+    float: right;
     font-weight: 500;
 }
 
@@ -114,8 +114,8 @@ strong {
     text-justify: unset;
 }
 
-#education .detail > .last{
-    float:left;
+#education .detail > .last {
+    float: left;
     font-weight: 500;
 }
 
@@ -124,6 +124,7 @@ ul {
     padding-left: 1em;
 }
 
-a, a:link {
+a,
+a:link {
     color: black;
 }
