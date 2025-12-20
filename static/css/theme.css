@@ -1,42 +1,45 @@
-/* Theme Variables - Melange Color Palette */
+/* Theme Variables - Nord Color Palette */
+/* https://www.nordtheme.com/ */
 
 :root {
-    /* Melange Light */
-    --bg-color: #f1f1f1;
-    --bg-float: #e9e1db;
-    --text-color: #54433a;
-    --text-secondary: #7d6658;
-    --border-color: #d9d3ce;
-    --code-bg: #e9e1db;
-    --link-color: #465aa4;
+    /* Nord Light (Snow Storm background) */
+    --bg-color: #eceff4; /* nord6 */
+    --bg-float: #e5e9f0; /* nord5 */
+    --text-color: #2e3440; /* nord0 */
+    --text-secondary: #4c566a; /* nord3 */
+    --border-color: #d8dee9; /* nord4 */
+    --code-bg: #e5e9f0; /* nord5 */
+    --link-color: #5e81ac; /* nord10 */
     --content-width: 800px;
 
-    /* Accent colors */
-    --red: #bf0021;
-    --yellow: #a06d00;
-    --green: #3a684a;
-    --cyan: #3d6568;
-    --blue: #465aa4;
-    --magenta: #904180;
+    /* Accent colors (Aurora + Frost) */
+    --red: #bf616a; /* nord11 */
+    --orange: #d08770; /* nord12 */
+    --yellow: #ebcb8b; /* nord13 */
+    --green: #a3be8c; /* nord14 */
+    --cyan: #88c0d0; /* nord8 */
+    --blue: #5e81ac; /* nord10 */
+    --magenta: #b48ead; /* nord15 */
 }
 
 [data-theme="dark"] {
-    /* Melange Dark */
-    --bg-color: #292522;
-    --bg-float: #34302c;
-    --text-color: #ece1d7;
-    --text-secondary: #c1a78e;
-    --border-color: #403a36;
-    --code-bg: #34302c;
-    --link-color: #a3a9ce;
+    /* Nord Dark (Polar Night background) */
+    --bg-color: #2e3440; /* nord0 */
+    --bg-float: #3b4252; /* nord1 */
+    --text-color: #eceff4; /* nord6 */
+    --text-secondary: #d8dee9; /* nord4 */
+    --border-color: #4c566a; /* nord3 */
+    --code-bg: #3b4252; /* nord1 */
+    --link-color: #88c0d0; /* nord8 */
 
-    /* Accent colors */
-    --red: #d47766;
-    --yellow: #ebc06d;
-    --green: #85b695;
-    --cyan: #89b3b6;
-    --blue: #a3a9ce;
-    --magenta: #cf9bc2;
+    /* Accent colors (Aurora + Frost) */
+    --red: #bf616a; /* nord11 */
+    --orange: #d08770; /* nord12 */
+    --yellow: #ebcb8b; /* nord13 */
+    --green: #a3be8c; /* nord14 */
+    --cyan: #88c0d0; /* nord8 */
+    --blue: #81a1c1; /* nord9 */
+    --magenta: #b48ead; /* nord15 */
 }
 
 [data-theme="dark"] h1,
@@ -45,7 +48,7 @@
 [data-theme="dark"] h4,
 [data-theme="dark"] h5,
 [data-theme="dark"] h6 {
-    color: #ece1d7;
+    color: #eceff4;
 }
 
 /* Icon buttons for theme toggle */
