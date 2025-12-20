@@ -10,9 +10,9 @@ body {
         sans-serif;
     font-size: 14px;
     line-height: 20px;
+    padding: 20px 0;
     max-width: var(--content-width);
     margin: 0 auto;
-    padding: 20px;
     color: var(--text-color);
     background-color: var(--bg-color);
     transition:
@@ -29,6 +29,22 @@ section {
     padding: 1em;
     border-radius: 3px;
     margin: 1em 0;
+}
+
+@media (min-width: 900px) {
+    body {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 900px) {
+    main:not(:has(section)),
+    section {
+        border-radius: 0;
+        border-width: 0;
+        border-top-width: 1px;
+        border-bottom-width: 1px;
+    }
 }
 
 p {
