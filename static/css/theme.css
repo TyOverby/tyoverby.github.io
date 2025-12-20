@@ -1,22 +1,42 @@
-/* Theme Variables - Light and Dark Mode */
+/* Theme Variables - Melange Color Palette */
 
 :root {
-    --bg-color: #ffffff;
-    --text-color: #333333;
-    --text-secondary: #666666;
-    --border-color: #dddddd;
-    --code-bg: #f4f4f4;
-    --link-color: #0066cc;
+    /* Melange Light */
+    --bg-color: #f1f1f1;
+    --bg-float: #e9e1db;
+    --text-color: #54433a;
+    --text-secondary: #7d6658;
+    --border-color: #d9d3ce;
+    --code-bg: #e9e1db;
+    --link-color: #465aa4;
     --content-width: 800px;
+
+    /* Accent colors */
+    --red: #bf0021;
+    --yellow: #a06d00;
+    --green: #3a684a;
+    --cyan: #3d6568;
+    --blue: #465aa4;
+    --magenta: #904180;
 }
 
 [data-theme="dark"] {
-    --bg-color: #040f13;
-    --text-color: #e0e8f3;
-    --text-secondary: #a0a0a0;
-    --border-color: #404040;
-    --code-bg: #2d2d2d;
-    --link-color: #66b3ff;
+    /* Melange Dark */
+    --bg-color: #292522;
+    --bg-float: #34302c;
+    --text-color: #ece1d7;
+    --text-secondary: #c1a78e;
+    --border-color: #403a36;
+    --code-bg: #34302c;
+    --link-color: #a3a9ce;
+
+    /* Accent colors */
+    --red: #d47766;
+    --yellow: #ebc06d;
+    --green: #85b695;
+    --cyan: #89b3b6;
+    --blue: #a3a9ce;
+    --magenta: #cf9bc2;
 }
 
 [data-theme="dark"] h1,
@@ -25,7 +45,7 @@
 [data-theme="dark"] h4,
 [data-theme="dark"] h5,
 [data-theme="dark"] h6 {
-    color: white;
+    color: #ece1d7;
 }
 
 /* Icon buttons for theme toggle */
