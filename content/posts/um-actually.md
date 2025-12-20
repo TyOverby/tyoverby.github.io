@@ -35,39 +35,39 @@ Sort the Harry Potter novels by release date:
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, slateblue 100%, seagreen 0%); color: white;">HP 1</td>
-      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, slateblue 0%, seagreen 100%); color: white;">HP 7 ❌</td>
-      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, slateblue 0%, seagreen 100%); color: white;">HP 7 ❌</td>
+      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, var(--red) 100%, var(--green) 0%); color: white;">HP 1</td>
+      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, var(--red) 0%, var(--green) 100%); color: white;">HP 7 ❌</td>
+      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, var(--red) 0%, var(--green) 100%); color: white;">HP 7 ❌</td>
     </tr>
     <tr>
-      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, slateblue 83.33%, seagreen 16.67%); color: white;">HP 2</td>
-      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, slateblue 100%, seagreen 0%); color: white;">HP 1 ❌</td>
-      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, slateblue 16.67%, seagreen 83.33%); color: white;">HP 6 ❌</td>
+      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, var(--red) 83.33%, var(--green) 16.67%); color: white;">HP 2</td>
+      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, var(--red) 100%, var(--green) 0%); color: white;">HP 1 ❌</td>
+      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, var(--red) 16.67%, var(--green) 83.33%); color: white;">HP 6 ❌</td>
     </tr>
     <tr>
-      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, slateblue 66.67%, seagreen 33.33%); color: white;">HP 3</td>
-      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, slateblue 83.33%, seagreen 16.67%); color: white;">HP 2 ❌</td>
-      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, slateblue 33.33%, seagreen 66.67%); color: white;">HP 5 ❌</td>
+      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, var(--red) 66.67%, var(--green) 33.33%); color: white;">HP 3</td>
+      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, var(--red) 83.33%, var(--green) 16.67%); color: white;">HP 2 ❌</td>
+      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, var(--red) 33.33%, var(--green) 66.67%); color: white;">HP 5 ❌</td>
     </tr>
     <tr>
-      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, slateblue 50%, seagreen 50%); color: white;">HP 4</td>
-      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, slateblue 66.67%, seagreen 33.33%); color: white;">HP 3 ❌</td>
-      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, slateblue 50%, seagreen 50%); color: white;">HP 4 ✅</td>
+      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, var(--red) 50%, var(--green) 50%); color: white;">HP 4</td>
+      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, var(--red) 66.67%, var(--green) 33.33%); color: white;">HP 3 ❌</td>
+      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, var(--red) 50%, var(--green) 50%); color: white;">HP 4 ✅</td>
     </tr>
     <tr>
-      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, slateblue 33.33%, seagreen 66.67%); color: white;">HP 5</td>
-      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, slateblue 50%, seagreen 50%); color: white;">HP 4 ❌</td>
-      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, slateblue 66.67%, seagreen 33.33%); color: white;">HP 3 ❌</td>
+      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, var(--red) 33.33%, var(--green) 66.67%); color: white;">HP 5</td>
+      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, var(--red) 50%, var(--green) 50%); color: white;">HP 4 ❌</td>
+      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, var(--red) 66.67%, var(--green) 33.33%); color: white;">HP 3 ❌</td>
     </tr>
     <tr>
-      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, slateblue 16.67%, seagreen 83.33%); color: white;">HP 6</td>
-      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, slateblue 33.33%, seagreen 66.67%); color: white;">HP 5 ❌</td>
-      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, slateblue 83.33%, seagreen 16.67%); color: white;">HP 2 ❌</td>
+      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, var(--red) 16.67%, var(--green) 83.33%); color: white;">HP 6</td>
+      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, var(--red) 33.33%, var(--green) 66.67%); color: white;">HP 5 ❌</td>
+      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, var(--red) 83.33%, var(--green) 16.67%); color: white;">HP 2 ❌</td>
     </tr>
     <tr>
-      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, slateblue 0%, seagreen 100%); color: white;">HP 7</td>
-      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, slateblue 16.67%, seagreen 83.33%); color: white;">HP 6 ❌</td>
-      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, slateblue 100%, seagreen 0%); color: white;">HP 1 ❌</td>
+      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, var(--red) 0%, var(--green) 100%); color: white;">HP 7</td>
+      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, var(--red) 16.67%, var(--green) 83.33%); color: white;">HP 6 ❌</td>
+      <td style="padding: 8px; border: 1px solid #ddd; background-color: color-mix(in oklab, var(--red) 100%, var(--green) 0%); color: white;">HP 1 ❌</td>
     </tr>
   </tbody>
 </table>
