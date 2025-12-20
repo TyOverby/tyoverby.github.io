@@ -1,5 +1,5 @@
 ---
-title: Daily Thoughts
+title: Thoughts
 ---
 
-Quick thoughts, observations, and musings that I'd feel embarrassed to call a "blog post".
+Short ideas, observations, and musings that I'd feel embarrassed to call a "blog post".

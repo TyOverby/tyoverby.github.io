@@ -12,6 +12,8 @@ title = 'Ty Overby'
   [markup.tableOfContents]
     endLevel = 3
     startLevel = 1
+  [markup.highlight]
+    style = 'nord'
 
 [permalinks]
   posts = '/posts/:filename/'

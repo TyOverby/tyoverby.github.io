@@ -31,9 +31,11 @@
         float: right;
         clear: right;
 
-        --sn-width: calc(min(500px, (100vw - var(--content-width)) / 2 - 20px));
+        color: color-mix(in oklab, var(--text-color) 75%, var(--bg-color) 25%);
 
-        margin-right: calc(0px - var(--sn-width) - 10px);
+        --sn-width: calc(min(500px, (100vw - var(--content-width)) / 2 - 30px));
+
+        margin-right: calc(0px - var(--sn-width) - 30px);
 
         width: var(--sn-width);
         margin-top: 0.2rem;

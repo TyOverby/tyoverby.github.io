@@ -6,14 +6,14 @@
 {{ if .Data.Pages }}
 <div class="pages-list">
   {{ range .Data.Pages.ByTitle }}
-  <article class="page-item">
-    <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+  <section class="page-item">
+    <h1><a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
     {{ if .Params.description }}
     <p class="page-description">{{ .Params.description }}</p>
     {{ else if .Summary }}
     <p class="page-description">{{ .Content }}</p>
     {{ end }}
-  </article>
+  </section>
   {{ end }}
 </div>
 {{ end }}

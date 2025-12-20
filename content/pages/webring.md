@@ -5,7 +5,7 @@ draft: false
 ---
 
 There is still wonder and beauty on the internet. Here are some sites and blogs
-that bring me enough joy that I haven't become a forest hermit yet:
+that bring me joy.
 
 - [eieio.games](https://eieio.games/) Nolen makes multiplayer internet
   experiences and then shares them with us.

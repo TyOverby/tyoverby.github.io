@@ -6,15 +6,15 @@
 {{ if .Data.Pages }}
 <div class="thoughts-list">
   {{ range .Data.Pages.ByDate.Reverse }}
-  <article class="thought-item">
+  <section class="thought-item">
     <div class="thought-header">
-      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        <h2> <a href="{{ .RelPermalink }}">{{ .Title }}</a> </h2>
       <span class="date">{{ .Date.Format "Jan 2, 2006" }}</span>
     </div>
     <div class="thought-content">
       {{ .Content }}
     </div>
-  </article>
+  </section>
   {{ end }}
 </div>
 {{ end }}
