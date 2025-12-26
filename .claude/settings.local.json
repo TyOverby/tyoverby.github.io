@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(hugo version:*)",
+      "Bash(mkdir:*)",
+      "Bash(for file in posts_md/*.md)",
+      "Bash(do echo \"=== $file ===\")",
+      "Bash(git log:*)",
+      "Bash(done)",
+      "Bash(hugo:*)",
+      "Bash(curl:*)",
+      "Bash(cargo new:*)",
+      "Bash(cargo check:*)",
+      "Bash(cat:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(find:*)",
+      "Bash(convert:*)",
+      "Bash(mv:*)",
+      "Bash(ffmpeg:*)",
+      "Bash(git restore:*)",
+      "WebFetch(domain:css-tricks.com)",
+      "WebFetch(domain:codepen.io)",
+      "WebSearch"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
