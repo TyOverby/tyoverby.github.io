@@ -9,6 +9,7 @@ article {
 body,
 html,
 main,
+header,
 div.highlight {
     padding: 0 !important;
     margin: 0 !important;
@@ -16,10 +17,16 @@ div.highlight {
 
 * {
     color: black !important;
+    border: 0 !important;
 }
 
 pre,
 code {
     break-inside: avoid;
     page-break-inside: avoid;
+}
+
+#TableOfContents,
+nav {
+    display: none !important;
 }
