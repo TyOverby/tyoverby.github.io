@@ -3,7 +3,7 @@ title: Ty Overby
 ---
 
 <section style="display:none"> </section>
-<pre>I always feel strange when people tell me that they’ve visited
+<pre class="autosize" data-chars="62">I always feel strange when people tell me that they’ve visited
 this page. What should I put here? What were they expecting?
 Other people appear to have links to
 blog posts, or projects that they’ve

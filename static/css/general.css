@@ -228,13 +228,23 @@ pre code {
         margin: 0 -1em;
     }
 
-    pre:has(> code) {
-        padding: 1em 0;
+    .autosize {
+        --code-chars: attr(data-chars type(<number>), 60);
+        line-height: 1.5em;
+    }
+
+    pre:has(> code),
+    .autosize {
+        padding-left: 0;
+        padding-right: 0;
         border-left: 0;
         border-right: 0;
         border-radius: 0;
         /* Font size = viewport width / (chars * char-ratio) */
-        font-size: calc(100vw / (var(--code-chars) * var(--code-char-ratio)));
+        font-size: min(
+            0.9em,
+            calc(100vw / (var(--code-chars) * var(--code-char-ratio)))
+        );
     }
 
     pre:has(> code) code {
