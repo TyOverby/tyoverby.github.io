@@ -1,5 +1,38 @@
 /* General Layout, Typography, and Components */
 
+/* Berkeley Mono Font */
+@font-face {
+    font-family: "Berkeley Mono";
+    src: url("/fonts/BerkeleyMono-Regular.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Berkeley Mono";
+    src: url("/fonts/BerkeleyMono-Bold.otf") format("opentype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Berkeley Mono";
+    src: url("/fonts/BerkeleyMono-Oblique.otf") format("opentype");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Berkeley Mono";
+    src: url("/fonts/BerkeleyMono-Bold-Oblique.otf") format("opentype");
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
 body {
     font-family:
         "Inter",
@@ -158,6 +191,9 @@ main a:hover {
 
 /* Code */
 code {
+    font-family:
+        "Berkeley Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo,
+        Consolas, "Liberation Mono", monospace;
     background: var(--code-bg);
     padding: 2px 6px;
     border-radius: 3px;
