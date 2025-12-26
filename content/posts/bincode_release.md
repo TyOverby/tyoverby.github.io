@@ -1,6 +1,5 @@
 ---
 title: Bincode 1.0.0
-author: Ty Overby
 date: 2018-02-14
 toc: false
 tags: ["rust", "serialization"]
@@ -149,19 +148,19 @@ analysis below.
 - Fast
 - Small serialized size
 - Configurable options for improving speed and size even further!
-    - Choose between endianness for integers
-    - Set message size limits for Denial Of Service protection
-    - Upcoming configurations
-        - Variable sized integers for lengths and enum variants
-        - Null terminated strings
+  - Choose between endianness for integers
+  - Set message size limits for Denial Of Service protection
+  - Upcoming configurations
+    - Variable sized integers for lengths and enum variants
+    - Null terminated strings
 
 **Cons**
 
 - Not human readable
 - No cross-language support
 - **Serialized data can not be read if structure changes**
-    - No reordering fields
-    - No adding / removing fields
+  - No reordering fields
+  - No adding / removing fields
 
 The "no structure changes" drawback can not be understated. If your program
 requires backwards-compatible data representations, take a look at other

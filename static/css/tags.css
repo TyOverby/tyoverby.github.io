@@ -1,8 +1,7 @@
 /* Tags Styling */
 
 .tags {
-    margin-left: 0.5rem;
-    display: inline-flex;
+    display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
 }
@@ -17,6 +16,7 @@
     font-size: 0.85rem;
     transition: background-color 0.2s ease;
     border: 1px solid var(--border-color);
+    margin: 0;
 }
 
 .tag:hover {
