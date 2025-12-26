@@ -25,6 +25,10 @@
     color: var(--text-secondary);
 }
 
+.sidenote code {
+    padding: 0;
+}
+
 /* Large screens: sidenotes in the margin */
 @media (min-width: 1200px) {
     .sidenote {

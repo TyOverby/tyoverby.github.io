@@ -101,7 +101,6 @@ struct Person {
 }
 
 let person = Person {
-    // hey, making these svgs is hard, I'm reusing values for my own sanity.
     age: 123456789,
     name: String::from("hello!"),
 };

@@ -1,5 +1,9 @@
 /* General Layout, Typography, and Components */
 
+* {
+    -webkit-text-size-adjust: none;
+}
+
 /* Berkeley Mono Font */
 @font-face {
     font-family: "Berkeley Mono";
@@ -115,9 +119,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family:
-        "Averia Serif Libre", "Source Serif 4", "Source Serif 4 Fallback",
-        Georgia, serif;
+    font-family: "Averia Serif Libre", "Source Serif 4", "Source Serif 4 Fallback", Georgia, serif;
     font-weight: bold;
     text-wrap: balance;
     line-height: 1em;
@@ -126,9 +128,7 @@ h6 {
 
 header .site-title {
     line-height: 1em;
-    font-family:
-        "Averia Serif Libre", "Source Serif 4", "Source Serif 4 Fallback",
-        Georgia, serif;
+    font-family: "Averia Serif Libre", "Source Serif 4", "Source Serif 4 Fallback", Georgia, serif;
 }
 
 /* Site Header */
@@ -220,8 +220,8 @@ main a:hover {
 /* Code */
 code {
     font-family:
-        "Berkeley Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo,
-        Consolas, "Liberation Mono", monospace;
+        "Berkeley Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+        "Liberation Mono", monospace;
     background: var(--code-bg);
     padding: 2px 6px;
     border-radius: 3px;
@@ -244,20 +244,12 @@ pre code {
 
 /* Mobile code blocks: full-width with dynamic font sizing */
 @media (max-width: 900px) {
-    :root {
-        /* Number of monospace characters to fit on screen */
-        --code-chars: 60;
-        /* Character width ratio for monospace fonts (typically 0.6) */
-        --code-char-ratio: 0.6;
-    }
-
     div.highlight {
         /* Undo parent padding to go full-width */
         margin: 0 -1em;
     }
 
     .autosize {
-        --code-chars: attr(data-chars type(<number>), 60);
         line-height: 1.5em;
     }
 
@@ -268,16 +260,33 @@ pre code {
         border-left: 0;
         border-right: 0;
         border-radius: 0;
-        /* Font size = viewport width / (chars * char-ratio) */
-        font-size: min(
-            0.9em,
-            calc(100vw / (var(--code-chars) * var(--code-char-ratio)))
-        );
     }
+}
 
-    pre:has(> code) code {
-        font-size: inherit;
-    }
+pre > code,
+.autosize {
+    --code-chars: attr(data-chars type(<number>), 60);
+    --code-char-ratio: 0.615;
+    font-size: clamp(8px, 100vw / (var(--code-chars) * var(--code-char-ratio)), 0.9em);
+}
+
+/* detect paragraphs that only have a single inline code block immedately preceding a styled code block  */
+.filename {
+    position: absolute;
+    margin: 0;
+}
+
+.filename > pre {
+    font-size: 0.8em;
+    margin: 0 0 0 5px;
+    padding: 2px;
+    position: relative;
+    top: calc(-0.5em - 2px);
+    left: 0.5em;
+    line-height: 1em;
+    background: var(--border-color);
+    color: var(--text-secondary);
+    border-radius: 3px;
 }
 
 /* Images */
