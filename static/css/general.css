@@ -211,6 +211,35 @@ pre:has(> code) {
 pre code {
     background: none;
     padding: 0;
+    line-height: 1.5em;
+}
+
+/* Mobile code blocks: full-width with dynamic font sizing */
+@media (max-width: 900px) {
+    :root {
+        /* Number of monospace characters to fit on screen */
+        --code-chars: 60;
+        /* Character width ratio for monospace fonts (typically 0.6) */
+        --code-char-ratio: 0.6;
+    }
+
+    div.highlight {
+        /* Undo parent padding to go full-width */
+        margin: 0 -1em;
+    }
+
+    pre:has(> code) {
+        padding: 1em 0;
+        border-left: 0;
+        border-right: 0;
+        border-radius: 0;
+        /* Font size = viewport width / (chars * char-ratio) */
+        font-size: calc(100vw / (var(--code-chars) * var(--code-char-ratio)));
+    }
+
+    pre:has(> code) code {
+        font-size: inherit;
+    }
 }
 
 /* Images */
