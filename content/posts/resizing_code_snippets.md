@@ -6,9 +6,11 @@ draft: true
 ---
 
 I read a lot of programming blogs on my phone, and code blocks that don't fit width-wise on the
-screen are a major source of irritation. Unlike prose, code blocks won't be dynamically formatted
-based on the available space on the page, so you're stuck with code that is usually 80 characters
-wide, causing horizontal overflow that forces me to scroll left and right to follow the code.
+screen are a major source of irritation. Unlike prose, code blocks won't be dynamically
+formatted{{< sidenote >}} Ok, but maybe it could? Imagine compiling `rustfmt` to wasm, and embedding
+it in the page so that device would have code formatted perfectly?{{< / sidenote >}} based on the
+available space on the page, so you're stuck with code that is usually 80 characters wide, causing
+horizontal overflow that forces me to scroll left and right to follow the code.
 
 I'd usually be fine with shrinking the text so that this doesn't happen, but it would be unfortunate
 to force small text on desktop users.
