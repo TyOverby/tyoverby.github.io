@@ -16,9 +16,9 @@
 // A score of 0 is perfect, larger scores are worse
 // SNIPPET_START: score_by_exact_placement
 pub fn score_by_exact_placement(
-    l: impl Iterator<Item = i32>,
+  l: impl Iterator<Item = i32>,
 ) -> usize {
-    l.enumerate().filter(|&(i, v)| i as i32 != v).count()
+  l.enumerate().filter(|&(i, v)| i as i32 != v).count()
 }
 // SNIPPET_END: score_by_exact_placement
 
@@ -33,9 +33,9 @@ pub fn score_by_exact_placement(
 // A score of 0 is perfect, and larger scores are worse
 // SNIPPET_START: score_by_distance
 pub fn score_by_distance(
-    l: impl Iterator<Item = i32>,
+  l: impl Iterator<Item = i32>,
 ) -> i32 {
-    l.enumerate().map(|(i, v)| (i as i32 - v).abs()).sum()
+  l.enumerate().map(|(i, v)| (i as i32 - v).abs()).sum()
 }
 // SNIPPET_END: score_by_distance
 
@@ -51,9 +51,7 @@ pub fn score_by_distance(
 // A score of 0 is perfect, and larger scores are worse
 // SNIPPET_START: score_by_correct_neighbors
 pub fn score_by_correct_neighbors(l: &[i32]) -> usize {
-    l.windows(2)
-        .filter(|pair| pair[1] - 1 != pair[0])
-        .count()
+  l.windows(2).filter(|pair| pair[1] - 1 != pair[0]).count()
 }
 // SNIPPET_END: score_by_correct_neighbors
 
@@ -66,13 +64,7 @@ pub fn score_by_correct_neighbors(l: &[i32]) -> usize {
 // A score of 0 is perfect, and larger scores are worse
 // SNIPPET_START: score_by_runs
 pub fn score_by_runs(l: &[i32]) -> usize {
-    if l.is_empty() {
-        return 0;
-    }
-    // Count the number of times we start a new run (when current < previous)
-    // Number of runs = 1 + number of "breaks"
-    // This equals runs - 1, so a sorted list scores 0
-    l.windows(2).filter(|pair| pair[1] < pair[0]).count()
+  l.windows(2).filter(|pair| pair[1] < pair[0]).count()
 }
 // SNIPPET_END: score_by_runs
 
@@ -93,88 +85,78 @@ pub fn score_by_runs(l: &[i32]) -> usize {
 // 2. The "longest increasing subsequence" heuristic: use LIS to determine how
 //    fast close we are to a solution
 pub fn score_by_num_modifications_with_heuristic(
-    l: im::Vector<i32>,
-    heuristic_fn: fn(&[i32]) -> usize,
+  l: im::Vector<i32>,
+  heuristic_fn: fn(&[i32]) -> usize,
 ) -> Option<usize> {
-    use astar::SearchProblem;
+  use astar::SearchProblem;
 
-    struct SortProblem {
-        heuristic_fn: fn(&[i32]) -> usize,
+  struct SortProblem {
+    heuristic_fn: fn(&[i32]) -> usize,
+  }
+
+  impl SearchProblem for SortProblem {
+    type Node = im::Vector<i32>;
+    type Cost = usize;
+    type Iter =
+      std::vec::IntoIter<(Self::Node, Self::Cost)>;
+
+    fn heuristic(&self, node: &Self::Node) -> Self::Cost {
+      let slice: Vec<i32> = node.iter().cloned().collect();
+      (self.heuristic_fn)(&slice)
     }
 
-    impl SearchProblem for SortProblem {
-        type Node = im::Vector<i32>;
-        type Cost = usize;
-        type Iter =
-            std::vec::IntoIter<(Self::Node, Self::Cost)>;
-
-        fn heuristic(
-            &self,
-            node: &Self::Node,
-        ) -> Self::Cost {
-            let slice: Vec<i32> =
-                node.iter().cloned().collect();
-            (self.heuristic_fn)(&slice)
-        }
-
-        fn is_end(&self, node: &Self::Node) -> bool {
-            node.iter()
-                .enumerate()
-                .all(|(i, &v)| i as i32 == v)
-        }
-
-        fn neighbors(
-            &self,
-            node: &Self::Node,
-            _cost: &Self::Cost,
-        ) -> Self::Iter {
-            let mut result = Vec::new();
-            let len = node.len();
-
-            for remove_idx in 0..len {
-                let removed_value = node[remove_idx];
-                let mut without = node.clone();
-                without.remove(remove_idx);
-
-                for insert_idx in 0..len {
-                    if insert_idx != remove_idx {
-                        let mut new_list = without.clone();
-                        new_list.insert(
-                            insert_idx,
-                            removed_value,
-                        );
-                        result.push((new_list, 1));
-                    }
-                }
-            }
-
-            result.into_iter()
-        }
+    fn is_end(&self, node: &Self::Node) -> bool {
+      node.iter().enumerate().all(|(i, &v)| i as i32 == v)
     }
 
-    let problem = SortProblem { heuristic_fn };
+    fn neighbors(
+      &self,
+      node: &Self::Node,
+      _cost: &Self::Cost,
+    ) -> Self::Iter {
+      let mut result = Vec::new();
+      let len = node.len();
 
-    // path.len() includes the start state, so subtract 1 to get the number of moves
-    astar::astar(&problem, l).map(|(path, _total_cost)| {
-        path.len().saturating_sub(1)
-    })
+      for remove_idx in 0..len {
+        let removed_value = node[remove_idx];
+        let mut without = node.clone();
+        without.remove(remove_idx);
+
+        for insert_idx in 0..len {
+          if insert_idx != remove_idx {
+            let mut new_list = without.clone();
+            new_list.insert(insert_idx, removed_value);
+            result.push((new_list, 1));
+          }
+        }
+      }
+
+      result.into_iter()
+    }
+  }
+
+  let problem = SortProblem { heuristic_fn };
+
+  // path.len() includes the start state, so subtract 1 to get the number of moves
+  astar::astar(&problem, l)
+    .map(|(path, _total_cost)| path.len().saturating_sub(1))
 }
 
 // Oracle heuristic that always returns 0.
 // This is trivially admissible and can be used to compute the true optimal cost
 // for testing that other heuristics are admissible.
 pub fn oracle_heuristic(_l: &[i32]) -> usize {
-    0
+  0
 }
 
 // Compute the true optimal cost using the oracle (h=0) heuristic
 pub fn score_by_num_modifications_slow(
-    l: im::Vector<i32>,
+  l: im::Vector<i32>,
 ) -> Option<usize> {
-    score_by_num_modifications_with_heuristic(
-        l,
-        oracle_heuristic,
-    )
+  score_by_num_modifications_with_heuristic(
+    l,
+    oracle_heuristic,
+  )
 }
 
 // Longest Increasing Subsequence (LIS) based heuristic.
@@ -183,43 +165,40 @@ pub fn score_by_num_modifications_slow(
 // does. This makes it a perfect heuristic for A* (admissible and maximally
 // informative).
 pub fn longest_increasing_subsequence_length(
-    l: &[i32],
+  l: &[i32],
 ) -> usize {
-    if l.is_empty() {
-        return 0;
-    }
+  if l.is_empty() {
+    return 0;
+  }
 
-    // tails[i] holds the smallest tail element for an increasing subsequence of length i+1
-    let mut tails: Vec<i32> = Vec::new();
+  // tails[i] holds the smallest tail element for an increasing subsequence of length i+1
+  let mut tails: Vec<i32> = Vec::new();
 
-    for &x in l {
-        match tails.binary_search(&x) {
-            Ok(_) => {} // x already exists, skip (we need strictly increasing for unique elements)
-            Err(pos) => {
-                if pos == tails.len() {
-                    tails.push(x);
-                } else {
-                    tails[pos] = x;
-                }
-            }
+  for &x in l {
+    match tails.binary_search(&x) {
+      Ok(_) => {} // x already exists, skip (we need strictly increasing for unique elements)
+      Err(pos) => {
+        if pos == tails.len() {
+          tails.push(x);
+        } else {
+          tails[pos] = x;
         }
+      }
     }
+  }
 
-    tails.len()
+  tails.len()
 }
 
 // SNIPPET_START: score_by_lis
 pub fn score_by_lis(l: &[i32]) -> usize {
-    l.len() - longest_increasing_subsequence_length(l)
+  l.len() - longest_increasing_subsequence_length(l)
 }
 // SNIPPET_END: score_by_lis
 
 // Compute the true optimal cost using the `lis` heuristic
 pub fn score_by_num_modifications_fast(
-    l: im::Vector<i32>,
+  l: im::Vector<i32>,
 ) -> Option<usize> {
-    score_by_num_modifications_with_heuristic(
-        l,
-        score_by_lis,
-    )
+  score_by_num_modifications_with_heuristic(l, score_by_lis)
 }
