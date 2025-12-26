@@ -87,7 +87,7 @@ because the expression is inside of `clamp` the `calc` function is no longer nee
 ```
 <!-- prettier-ignore-end -->
 
-# Dynamic `--code-chars`?
+# Dynamic `--code-chars`
 
 If the goal is to only shrink the content when necessary, why not dynamically set `--code-chars` to
 the length of the longest line in a code block? You can absolutely do this:
