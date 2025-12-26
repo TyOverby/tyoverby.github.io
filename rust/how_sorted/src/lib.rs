@@ -34,8 +34,10 @@ pub fn score_by_exact_placement(
 // SNIPPET_START: score_by_distance
 pub fn score_by_distance(
   l: impl Iterator<Item = i32>,
-) -> i32 {
-  l.enumerate().map(|(i, v)| (i as i32 - v).abs()).sum()
+) -> usize {
+  l.enumerate()
+    .map(|(i, v)| (i as i32 - v).abs() as usize)
+    .sum()
 }
 // SNIPPET_END: score_by_distance
 
