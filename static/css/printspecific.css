@@ -7,7 +7,19 @@ article {
     page-break-after: always;
 }
 body,
-html {
-    padding: 0;
-    margin: 0;
+html,
+main,
+div.highlight {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+* {
+    color: black !important;
+}
+
+pre,
+code {
+    break-inside: avoid;
+    page-break-inside: avoid;
 }

@@ -6,10 +6,7 @@
         <title>{{ if .Title }}{{ .Title }} - {{ end }}{{ .Site.Title }}</title>
 
         <!-- Open Graph / Facebook -->
-        <meta
-            property="og:type"
-            content="{{ if .IsPage }}article{{ else }}website{{ end }}"
-        />
+        <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
         <meta property="og:url" content="{{ .Permalink }}" />
         <meta
             property="og:title"
@@ -42,10 +39,7 @@
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
         />
-        <script
-            defer
-            src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
-        ></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
         <script
             defer
             src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
@@ -79,13 +73,12 @@
         <link rel="stylesheet" href="/css/tags.css" />
         <link rel="stylesheet" href="/css/sidenotes.css" />
         <link rel="stylesheet" href="/css/math.css" />
+        <link rel="stylesheet" media="print" href="/css/printspecific.css" />
         <script>
             // Initialize theme before page renders to avoid flash
             (function () {
                 const savedTheme = localStorage.getItem("theme");
-                const prefersDark = window.matchMedia(
-                    "(prefers-color-scheme: dark)",
-                ).matches;
+                const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
                 const theme = savedTheme || (prefersDark ? "dark" : "light");
                 document.documentElement.setAttribute("data-theme", theme);
             })();
@@ -103,29 +96,12 @@
                 </nav>
             </div>
             <div class="header-right">
-                <a
-                    href="/index.xml"
-                    class="icon-button"
-                    aria-label="RSS Feed"
-                    title="RSS Feed"
-                >
+                <a href="/index.xml" class="icon-button" aria-label="RSS Feed" title="RSS Feed">
                     <img src="/icons/rss.svg" alt="RSS" />
                 </a>
-                <button
-                    class="icon-button"
-                    id="theme-toggle"
-                    aria-label="Toggle theme"
-                >
-                    <img
-                        class="theme-icon sun-icon"
-                        src="/icons/sun.svg"
-                        alt="Light mode"
-                    />
-                    <img
-                        class="theme-icon moon-icon"
-                        src="/icons/moon.svg"
-                        alt="Dark mode"
-                    />
+                <button class="icon-button" id="theme-toggle" aria-label="Toggle theme">
+                    <img class="theme-icon sun-icon" src="/icons/sun.svg" alt="Light mode" />
+                    <img class="theme-icon moon-icon" src="/icons/moon.svg" alt="Dark mode" />
                 </button>
             </div>
         </header>
@@ -135,8 +111,7 @@
             const themeToggle = document.getElementById("theme-toggle");
 
             themeToggle.addEventListener("click", () => {
-                const current =
-                    document.documentElement.getAttribute("data-theme");
+                const current = document.documentElement.getAttribute("data-theme");
                 const next = current === "dark" ? "light" : "dark";
 
                 document.documentElement.setAttribute("data-theme", next);
