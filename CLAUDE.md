@@ -262,9 +262,7 @@ The workflow:
 
 ## Styling
 
-The site uses minimal, clean default styling defined in `layouts/_default/baseof.html`. Customize styling by:
-1. Editing the `<style>` block in `baseof.html`, or
-2. Adding CSS files to `static/css/` and linking them in the template
+Styles are defined in the css files in `static/css`
 
 ## Custom Domain
 
