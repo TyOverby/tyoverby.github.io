@@ -8,13 +8,13 @@ draft: true
 I read a lot of programming blogs on my phone, and code blocks that don't fit width-wise on the
 screen are a major source of irritation. Unlike prose, code blocks won't be dynamically formatted
 based on the available space on the page, so you're stuck with code that is usually 80 characters
-wide, causing an overflow that has me scrolling left and right to follow the code.
+wide, causing horizontal overflow that forces me to scroll left and right to follow the code.
 
 I'd usually be fine with shrinking the text so that this doesn't happen, but it would be unfortunate
 to force small text on desktop users.
 
-_With my own blog I wanted to play around with dynamically resizing the font size for code based on
-the width of the screen,_ here's what it looks like:
+With my own blog I wanted to play around with dynamically resizing the font size for code based on
+the width of the screen, here's what it looks like:
 
 <video style="width:100%;" src="/videos/resize_text_to_fit.mp4" muted autoplay loop playsinline></video>
 
@@ -47,12 +47,12 @@ module.exports = { printWidth: 60 };
 
 In order to exactly fit 60 characters on the screen, we want
 $character\ width =
-\frac{screen\ width}{60}$ so you might assume that `font-size: calc(100vw / 60);`
-{{< sidenote >}} `100vw` is a dimensional value that measures "100% of the viewport width"
-{{< / sidenote >}} would do the trick, but `font-size` sets the _height_ of the font, not the width,
-so we'll have to scale it by the $\frac{character\ width}{character\ height}$ ratio, like so:
-{{< sidenote >}} This ratio is font-dependent, so you'll need to find the values for your font
-{{< / sidenote >}}
+\frac{screen\ width}{60}$ so you might assume that
+`font-size: calc(100vw / 60);`{{< sidenote >}} `100vw` is a dimensional value that measures "100% of
+the viewport width" {{< / sidenote >}} would do the trick, but `font-size` sets the _height_ of the
+font, not the width, so we'll have to scale it by the $\frac{character\ width}{character\ height}$
+ratio{{< sidenote >}} This ratio is font-dependent, so you'll need to find the values for your font
+{{< / sidenote >}}, like so:
 
 <!-- prettier-ignore-start -->
 ```css
@@ -85,7 +85,7 @@ because the expression is inside of `clamp` the `calc` function is no longer nee
 ```
 <!-- prettier-ignore-end -->
 
-# Why hardcode `--code-chars`?
+# Dynamic `--code-chars`?
 
 If the goal is to only shrink the content when necessary, why not dynamically set `--code-chars` to
 the length of the longest line in a code block? You can absolutely do this:
@@ -93,13 +93,13 @@ the length of the longest line in a code block? You can absolutely do this:
 <!-- prettier-ignore-start -->
 ```js
 for (let block of document.querySelectorAll(".autosize")) {
-  let max_line_length = 0;
+  let max_line_length = 0
 
   for (let line of block.innerText.split("\n")) {
     max_line_length = Math.max(max_line_length, line.length)
   }
 
-  max_line_length = Math.min(max_line_length, 60);
+  max_line_length = Math.min(max_line_length, 60)
 
   if (max_line_length > 0) {
     block.style.setProperty("--code-chars", max_line_length)
@@ -115,8 +115,8 @@ like so:
 
 <!-- prettier-ignore-start -->
 ```js
-let max_line_length = 0;
-const codeblocks = document.querySelectorAll("pre > code");
+let max_line_length = 0
+const codeblocks = document.querySelectorAll(".autosize")
 
 for (let block of codeblocks) {
   for (let line of block.innerText.split("\n")) {
@@ -124,7 +124,7 @@ for (let block of codeblocks) {
   }
 }
 
-max_line_length = Math.min(max_line_length, 60);
+max_line_length = Math.min(max_line_length, 60)
 
 if (max_line_length > 0) {
   for (let block of codeblocks) {

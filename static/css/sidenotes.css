@@ -9,14 +9,18 @@
     cursor: pointer;
 }
 
+.sidenote-toggle.sidenote-number::after,
+.sidenote::before {
+    color: var(--link-color);
+    font-weight: 500;
+}
+
 .sidenote-toggle.sidenote-number::after {
     content: counter(sidenote-counter);
     font-size: 0.75rem;
     position: relative;
     top: -0.4rem;
-    left: 0.1rem;
-    color: var(--link-color);
-    font-weight: 500;
+    /* left: 0.1rem; */
 }
 
 .sidenote {
@@ -42,14 +46,15 @@
         margin-right: calc(0px - var(--sn-width) - 30px);
 
         width: var(--sn-width);
+        /*
         margin-top: 0.2rem;
         margin-bottom: 0.5rem;
+        */
         text-align: left;
     }
 
-    /* Hide the toggle on large screens - sidenotes always visible */
-    .sidenote-toggle.sidenote-number {
-        display: none;
+    .sidenote::before {
+        content: counter(sidenote-counter) ". ";
     }
 }
 
@@ -65,6 +70,10 @@
         border-left: 3px solid var(--link-color);
         border-radius: 0 5px 5px 0;
         clear: both;
+    }
+
+    .sidenote::before {
+        display: none;
     }
 
     .sidenote-toggle-checkbox:checked + .sidenote {
