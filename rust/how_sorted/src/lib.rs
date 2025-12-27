@@ -36,7 +36,7 @@ pub fn score_by_distance(
   l: impl Iterator<Item = i32>,
 ) -> usize {
   l.enumerate()
-    .map(|(i, v)| (i as i32 - v).abs() as usize)
+    .map(|(i, v)| (i as i32 - v).unsigned_abs() as usize)
     .sum()
 }
 // SNIPPET_END: score_by_distance
