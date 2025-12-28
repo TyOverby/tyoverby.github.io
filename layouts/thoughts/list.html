@@ -1,21 +1,19 @@
 {{ define "main" }}
+
+<!--
 <h1>{{ .Title }}</h1>
+-->
 
-{{ .Content }}
-
-{{ if .Data.Pages }}
+{{ .Content }} {{ if .Data.Pages }}
 <div class="thoughts-list">
-  {{ range .Data.Pages.ByDate.Reverse }}
-  <section class="thought-item">
-    <div class="thought-header">
-        <h2> <a href="{{ .RelPermalink }}">{{ .Title }}</a> </h2>
-      <span class="date">{{ .Date.Format "Jan 2, 2006" }}</span>
-    </div>
-    <div class="thought-content">
-      {{ .Content }}
-    </div>
-  </section>
-  {{ end }}
+    {{ range .Data.Pages.ByDate.Reverse }}
+    <section class="thought-item">
+        <div class="thought-header">
+            <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+            <span class="date">{{ .Date.Format "Jan 2, 2006" }}</span>
+        </div>
+        <div class="thought-content">{{ .Content }}</div>
+    </section>
+    {{ end }}
 </div>
-{{ end }}
-{{ end }}
+{{ end }} {{ end }}

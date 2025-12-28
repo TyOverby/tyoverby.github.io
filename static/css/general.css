@@ -126,6 +126,15 @@ h6 {
     margin: 1em 0 0 0;
 }
 
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h5:first-child,
+h6:first-child {
+    margin-top: 0;
+}
+
 header .site-title {
     line-height: 1em;
     font-family: "Averia Serif Libre", "Source Serif 4", "Source Serif 4 Fallback", Georgia, serif;
@@ -133,8 +142,8 @@ header .site-title {
 
 /* Site Header */
 header.site-header {
-    border-bottom: 1px solid var(--border-color);
-    margin-bottom: 2rem;
+    /* border-bottom: 1px solid var(--border-color); */
+    margin-bottom: 1rem;
     padding-bottom: 1rem;
     display: flex;
     justify-content: space-between;
