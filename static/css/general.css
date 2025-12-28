@@ -39,7 +39,7 @@
 
 body {
     font-size: 14px;
-    line-height: 20px;
+    line-height: 1.7em;
     padding: 20px 0;
     max-width: var(--content-width);
     margin: 0 auto;
@@ -92,7 +92,7 @@ p {
     text-align: justify;
     hyphens: auto;
     -webkit-hyphens: auto;
-    word-spacing: -0.05em;
+    /* word-spacing: -0.05em; */
     hyphenate-limit-chars: 6 3 3;
     margin-top: 0.5em;
 }
