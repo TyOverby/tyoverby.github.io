@@ -1,27 +1,27 @@
 {{ define "main" }}
 <div class="home">
-  {{ .Content }}
+    {{ .Content }}
 
-  <h2>Recent Posts</h2>
-  <ul>
-    {{ range first 5 (where .Site.RegularPages "Type" "posts").ByDate.Reverse }}
-    <li>
-      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-      {{ if .Date }}
-      <span class="date"> - {{ .Date.Format "January 2, 2006" }}</span>
-      {{ end }}
-    </li>
-    {{ end }}
-  </ul>
+    <h2>Recent Posts</h2>
+    <ul>
+        {{ range first 5 (where .Site.RegularPages "Type" "posts").ByDate.Reverse }}
+        <li>
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            {{ if .Date }}
+            <span class="date"> - {{ .Date.Format "2006-01-02" }}</span>
+            {{ end }}
+        </li>
+        {{ end }}
+    </ul>
 
-  <h2>Recent Thoughts</h2>
-  <ul>
-    {{ range first 5 (where .Site.RegularPages "Type" "thoughts").ByDate.Reverse }}
-    <li>
-      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-      <span class="date"> - {{ .Date.Format "Jan 2, 2006" }}</span>
-    </li>
-    {{ end }}
-  </ul>
+    <h2>Recent Thoughts</h2>
+    <ul>
+        {{ range first 5 (where .Site.RegularPages "Type" "thoughts").ByDate.Reverse }}
+        <li>
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            <span class="date"> - {{ .Date.Format "2006-01-02" }}</span>
+        </li>
+        {{ end }}
+    </ul>
 </div>
 {{ end }}
