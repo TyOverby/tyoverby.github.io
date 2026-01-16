@@ -132,10 +132,12 @@ Links to external articles and blog posts. Items link directly to external URLs 
 title: "Article Title"
 date: 2025-01-16
 link: "https://example.com/article"
-description: "Brief summary of the article"
+description: "Brief summary of the article goes in this field, not in the body"
 tags: ["graphics", "rust"]  # optional
 ---
 ```
+
+**Important:** The description/summary must go in the `description` front matter field. The body of the file should be empty (nothing after the closing `---`).
 
 **URL structure:** `/reading/filename/` (redirects to external link)
 
@@ -150,15 +152,16 @@ tags: ["graphics", "rust"]  # optional
 
 1. Fetch the URL and read the page content
 2. Generate a good title from the article (or from URL if page can't be loaded)
-3. Write a short summary (3 sentences max) that:
+3. Write a short summary (3 sentences max) in the `description` front matter field that:
    - Does NOT editorialize or add opinions
    - Does NOT repeat claims made in the post
    - Optimizes for searchability and finding references later
-   - If the page can't be loaded, omit the summary entirely
+   - If the page can't be loaded, omit the description field entirely
 4. Use the provided "date added" if given, otherwise use current date
 5. Create the file in `content/reading/` with a slug derived from the title
-6. Unless specifically requested, these new files should NOT be marked as a "draft"
-7. Add relevant tags from the existing tag set (see below), or create new lowercase tags if needed
+6. Leave the body empty (nothing after the closing `---`)
+7. Unless specifically requested, these new files should NOT be marked as a "draft"
+8. Add relevant tags from the existing tag set (see below), or create new lowercase tags if needed
 
 **Tagging guidelines:**
 - Search existing content for tags before creating new ones: `grep -r "^tags:" content/`
