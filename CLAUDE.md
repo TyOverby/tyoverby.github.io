@@ -13,7 +13,8 @@ tyoverby.github.io/
 │   ├── _index.md               # Homepage content
 │   ├── posts/                  # Blog posts (markdown files)
 │   ├── thoughts/               # Daily thoughts (shorter, casual posts)
-│   └── pages/                  # Timeless pages (resources, documentation)
+│   ├── pages/                  # Timeless pages (resources, documentation)
+│   └── reading/                # Reading list (links to external articles)
 ├── layouts/                    # Hugo templates
 │   ├── _default/
 │   │   ├── baseof.html       # Base template (includes KaTeX for math)
@@ -25,6 +26,9 @@ tyoverby.github.io/
 │   ├── pages/
 │   │   ├── single.html       # Individual page template
 │   │   └── list.html         # Pages index template
+│   ├── reading/
+│   │   ├── single.html       # Redirect to external URL
+│   │   └── list.html         # Reading list index template
 │   └── index.html            # Homepage template
 ├── static/                    # Static assets (served at site root)
 │   ├── css/                   # Stylesheets
@@ -35,7 +39,7 @@ tyoverby.github.io/
 
 ## Content Types
 
-The site has three types of content, each with its own purpose and style:
+The site has four types of content, each with its own purpose and style:
 
 ### 1. Blog Posts (`/posts/`)
 
@@ -117,6 +121,42 @@ Your content here...
 - Optional description field
 - Table of contents support for longer pages
 - Sorted by title (not date)
+
+### 4. Reading List (`/reading/`)
+
+Links to external articles and blog posts. Items link directly to external URLs (no individual pages on this site). Has its own RSS feed separate from the main feed.
+
+**Front matter:**
+```yaml
+---
+title: "Article Title"
+date: 2025-01-16
+link: "https://example.com/article"
+description: "Brief summary of the article"
+---
+```
+
+**URL structure:** `/reading/filename/` (redirects to external link)
+
+**Features:**
+- Titles link directly to external URLs
+- External link icon displayed after title
+- "added" prefix on dates to clarify it's when the link was saved
+- Separate RSS feed at `/reading/index.xml`
+- Excluded from main RSS feed
+
+**When the user asks to add a link to the reading list:**
+
+1. Fetch the URL and read the page content
+2. Generate a good title from the article (or from URL if page can't be loaded)
+3. Write a short summary (3 sentences max) that:
+   - Does NOT editorialize or add opinions
+   - Does NOT repeat claims made in the post
+   - Optimizes for searchability and finding references later
+   - If the page can't be loaded, omit the summary entirely
+4. Use the provided "date added" if given, otherwise use current date
+5. Create the file in `content/reading/` with a slug derived from the title
+6. Unless specifically requested, these new files should NOT be marked as a "draft"
 
 ## Content Formatting
 

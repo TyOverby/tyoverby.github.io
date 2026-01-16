@@ -1,10 +1,8 @@
 {{ define "main" }}
 
-<!--
-<h1>{{ .Title }}</h1>
--->
+{{ .Content }}
 
-{{ .Content }} {{ if .Data.Pages }}
+{{ if .Data.Pages }}
 <div class="thoughts-list">
     {{ range .Data.Pages.ByDate.Reverse }}
     <section class="thought-item">
@@ -16,4 +14,6 @@
     </section>
     {{ end }}
 </div>
-{{ end }} {{ end }}
+{{ end }}
+
+{{ end }}

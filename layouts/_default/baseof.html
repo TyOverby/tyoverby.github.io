@@ -91,14 +91,21 @@
                 <nav>
                     <a href="/posts/">Blog</a>
                     <a href="/thoughts/">Thoughts</a>
+                    <a href="/reading/">Reading</a>
                     <a href="/pages/">Pages</a>
                     <a href="/tags/">Tags</a>
                 </nav>
             </div>
             <div class="header-right">
-                <a href="/index.xml" class="icon-button" aria-label="RSS Feed" title="RSS Feed">
-                    <img src="/icons/rss.svg" alt="RSS" />
-                </a>
+                <div class="rss-dropdown">
+                    <button class="icon-button" id="rss-toggle" aria-label="RSS Feeds" title="RSS Feeds">
+                        <img src="/icons/rss.svg" alt="RSS" />
+                    </button>
+                    <div class="rss-dropdown-menu" id="rss-menu">
+                        <a href="/index.xml">Blog Posts</a>
+                        <a href="/reading/index.xml">Reading List</a>
+                    </div>
+                </div>
                 <button class="icon-button" id="theme-toggle" aria-label="Toggle theme">
                     <img class="theme-icon sun-icon" src="/icons/sun.svg" alt="Light mode" />
                     <img class="theme-icon moon-icon" src="/icons/moon.svg" alt="Dark mode" />
@@ -116,6 +123,19 @@
 
                 document.documentElement.setAttribute("data-theme", next);
                 localStorage.setItem("theme", next);
+            });
+
+            // RSS dropdown functionality
+            const rssToggle = document.getElementById("rss-toggle");
+            const rssMenu = document.getElementById("rss-menu");
+
+            rssToggle.addEventListener("click", (e) => {
+                e.stopPropagation();
+                rssMenu.classList.toggle("show");
+            });
+
+            document.addEventListener("click", () => {
+                rssMenu.classList.remove("show");
             });
         </script>
     </body>

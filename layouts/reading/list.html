@@ -1,0 +1,25 @@
+{{ define "main" }}
+
+{{ .Content }}
+
+{{ if .Data.Pages }}
+<div class="reading-list">
+    {{ range .Data.Pages.ByDate.Reverse }}
+    <section class="reading-item">
+        <div class="reading-header">
+            <h2><a href="{{ .Params.link }}" rel="noopener" target="_blank">{{ .Title }} <span class="external-link-icon">{{ readFile "static/icons/external-link.svg" | safeHTML }}</span></a></h2>
+            <span class="date">added {{ .Date.Format "2006-01-02" }}</span>
+        </div>
+        {{ with .Params.description }}
+        <p class="reading-description">{{ . }}</p>
+        {{ end }}
+    </section>
+    {{ end }}
+</div>
+{{ end }}
+
+<p class="rss-link">
+    <a href="/reading/index.xml">RSS feed for reading list</a>
+</p>
+
+{{ end }}

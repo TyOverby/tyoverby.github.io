@@ -2,6 +2,7 @@
 
 * {
     -webkit-text-size-adjust: none;
+    box-sizing: border-box;
 }
 
 /* Berkeley Mono Font */
@@ -350,4 +351,80 @@ table th {
     color: var(--text-secondary);
     margin-top: 0.25rem;
     font-size: 0.9rem;
+}
+
+/* Thought and Reading List Headers */
+.thought-header,
+.reading-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+}
+
+.thought-header h2,
+.reading-header h2 {
+    margin: 0;
+    flex: 1;
+}
+
+.thought-header .date,
+.reading-header .date {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.reading-description {
+    margin-top: 0.5em;
+    color: var(--text-secondary);
+}
+
+.external-link-icon {
+    display: inline-block;
+    width: 0.75em;
+    height: 0.75em;
+    vertical-align: baseline;
+}
+
+.external-link-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* RSS Dropdown */
+.rss-dropdown {
+    position: relative;
+}
+
+.rss-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 0.5rem;
+    background: var(--bg-float);
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+    min-width: 150px;
+    padding: 0.25rem;
+    z-index: 100;
+}
+
+.rss-dropdown-menu.show {
+    display: block;
+}
+
+.rss-dropdown-menu a {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    margin: 0px 1px;
+    color: var(--text-color);
+    text-decoration: none;
+    white-space: nowrap;
+    border-radius: 2px;
+}
+
+.rss-dropdown-menu a:hover {
+    background: var(--code-bg);
 }
