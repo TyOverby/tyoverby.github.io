@@ -22,7 +22,18 @@
       "WebFetch(domain:css-tricks.com)",
       "WebFetch(domain:codepen.io)",
       "WebSearch",
-      "Bash(head:*)"
+      "Bash(head:*)",
+      "WebFetch(domain:fonts.google.com)",
+      "WebFetch(domain:www.sebastianaaltonen.com)",
+      "WebFetch(domain:writethatblog.substack.com)",
+      "WebFetch(domain:voiceink.app)",
+      "WebFetch(domain:www.amazon.com)",
+      "WebFetch(domain:vulkan-tutorial.com)",
+      "WebFetch(domain:vkguide.dev)",
+      "WebFetch(domain:refactoringenglish.com)",
+      "WebFetch(domain:lalitm.com)",
+      "WebFetch(domain:www.cs.ubc.ca)",
+      "WebFetch(domain:tryvoiceink.com)"
     ],
     "deny": [],
     "ask": []

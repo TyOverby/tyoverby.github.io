@@ -133,6 +133,7 @@ title: "Article Title"
 date: 2025-01-16
 link: "https://example.com/article"
 description: "Brief summary of the article"
+tags: ["graphics", "rust"]  # optional
 ---
 ```
 
@@ -157,6 +158,14 @@ description: "Brief summary of the article"
 4. Use the provided "date added" if given, otherwise use current date
 5. Create the file in `content/reading/` with a slug derived from the title
 6. Unless specifically requested, these new files should NOT be marked as a "draft"
+7. Add relevant tags from the existing tag set (see below), or create new lowercase tags if needed
+
+**Tagging guidelines:**
+- Search existing content for tags before creating new ones: `grep -r "^tags:" content/`
+- Reuse existing tags when applicable for consistency
+- Tags should be lowercase, single words or hyphenated (e.g., `type-systems`)
+- Use 1-3 tags per item; don't over-tag
+- Common tags: `graphics`, `rust`, `performance`, `ai`, `blog`, `writing`, `gpu`, `vulkan`, `books`, `tutorial`, `career`, `design`, `typography`, `algorithms`
 
 ## Content Formatting
 

@@ -378,6 +378,11 @@ table th {
 .reading-description {
     margin-top: 0.5em;
     color: var(--text-secondary);
+    overflow: hidden;
+}
+
+.reading-tags {
+    float: right;
 }
 
 .external-link-icon {

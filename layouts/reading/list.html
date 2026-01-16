@@ -10,8 +10,18 @@
             <h2><a href="{{ .Params.link }}" rel="noopener" target="_blank">{{ .Title }} <span class="external-link-icon">{{ readFile "static/icons/external-link.svg" | safeHTML }}</span></a></h2>
             <span class="date">added {{ .Date.Format "2006-01-02" }}</span>
         </div>
-        {{ with .Params.description }}
-        <p class="reading-description">{{ . }}</p>
+        {{ if or .Params.description .Params.tags }}
+        <p class="reading-description">
+            {{- with .Params.description }}{{ . }} {{ end -}}
+            {{- with .Params.tags }}
+            <span class="reading-tags">
+                {{- range $i, $tag := . -}}
+                {{- if $i }} {{ end -}}
+                <a href="{{ "/tags/" | relURL }}{{ $tag | urlize }}/" class="tag">{{ $tag }}</a>
+                {{- end -}}
+            </span>
+            {{- end -}}
+        </p>
         {{ end }}
     </section>
     {{ end }}
