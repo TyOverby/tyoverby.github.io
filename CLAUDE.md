@@ -162,6 +162,8 @@ tags: ["graphics", "rust"]  # optional
 6. Leave the body empty (nothing after the closing `---`)
 7. Unless specifically requested, these new files should NOT be marked as a "draft"
 8. Add relevant tags from the existing tag set (see below), or create new lowercase tags if needed
+9. Commit the new file with a message like "add [title] to reading list"
+10. Push to origin to trigger deployment
 
 **Tagging guidelines:**
 - Search existing content for tags before creating new ones: `grep -r "^tags:" content/`
