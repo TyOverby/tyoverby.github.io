@@ -40,10 +40,10 @@ let's say we're concerned with the following systems:
 6. slack (read)
 
 and you're interested in using an LLM to find places where some information hasn't made its way from
-one service to another (e.g. update an issue with new information after an email conversation). This
-task is hard in isolation (though I think that today's LLMs could do it) but _the biggest issue is
-that none of these services have built-in mechanisms that would allow the LLM to propose an action
-to be reviewed by a human._
+one service to another{{<sidenote>}}update an issue with new information after an email
+conversation{{</sidenote>}}. This task is hard in isolation {{<sidenote>}}though I think that
+today's LLMs could do it{{</sidenote>}} but _the biggest issue is that none of these services have
+built-in mechanisms that would allow the LLM to propose an action to be reviewed by a human._
 
 ### Option 1: a proxy layer
 
