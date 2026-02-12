@@ -12,9 +12,10 @@ and I believe that the main reason for this is that they're lacking version cont
 Imagine using claude-code outside of a git repository. Even for small things like refactors, using
 AI would be very stressful:
 
-- It would be near-impossible to track the changes that the LLM made. Auditing the LLM generated
-  code is useful in the moment to ensure that changes are reasonable before moving on to another
-  task, and in the future when you want to understand why some code was written
+- It would be near-impossible to track the changes that the LLM made. {{< sidenote >}} Auditing the
+  LLM generated code is useful in the moment to ensure that changes are reasonable before moving on
+  to another task, and in the future when you want to understand why some code was written
+  {{< /sidenote >}}
 - The LLM could put the codebase in a bad state and you'd have no way of reverting
 - Without extra work, there's no split between the "development branch" and "prod"
 - You can't parallelize work by having multiple LLMs work on different branches
@@ -40,9 +41,9 @@ let's say we're concerned with the following systems:
 
 and you're interested in using an LLM to find places where some information hasn't made its way from
 one service to another (e.g. update an issue with new information after an email conversation). This
-task is hard in isolation (though I think that today's LLMs could do it) but **the biggest issue is
+task is hard in isolation (though I think that today's LLMs could do it) but _the biggest issue is
 that none of these services have built-in mechanisms that would allow the LLM to propose an action
-to be reviewed by a human.**
+to be reviewed by a human._
 
 ### Option 1: a proxy layer
 
