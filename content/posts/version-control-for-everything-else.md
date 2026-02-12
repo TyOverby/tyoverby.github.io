@@ -5,22 +5,25 @@ draft: true
 toc: false
 ---
 
-AI assisted agentic coding has reached escape velocity, but non-programming use cases haven't been
-adopted to the same degree. I believe that the main reason for this is the lack of version control.
+AI assisted agentic coding has reached escape velocity, but non-programming use cases haven't seen
+the same degree of adoption. I believe that the main reason for this is the lack of version control.
 
 Imagine using claude-code outside of a git repository. Even for small things like refactors, using
-AI would be very stressful:
+AI would be very stressful and error prone:
 
 - It would be near-impossible to track the changes that the LLM made. {{< sidenote >}} Auditing the
   LLM generated code is useful in the moment to ensure that changes are reasonable before moving on
   to another task, and in the future when you want to understand why some code was written
   {{< /sidenote >}}
 - The LLM could put the codebase in a bad state and you'd have no way of reverting
-- Without extra work, there's no split between the "development branch" and "prod"
-- You can't parallelize work by having multiple LLMs work on different branches
+  {{<sidenote>}}This is true even if the LLM is incredibly smart and didn't make any "mistakes" -
+  the human prompter forgetting to tell it about a design constraint could be bad
+  enough{{</sidenote>}}
+- There's no split between the "development branch" and "prod"
+- You can't parallelize development by having multiple LLMs work on different branches
 
-Even when I'm paying Claude to work on a small script, I always create a new git repo just to make
-my life easier. But outside of coding, it's nearly impossible to find tooling that has the same
+Even when I pay Claude to work on a small script, I always create a new git repo just to make my
+life easier. But outside of coding, it's nearly impossible to find tooling that has the same
 guardrails and affordances.
 
 ## Case study: software development outer loop
@@ -94,7 +97,7 @@ It can be hard to get management to invest in developer productivity tooling, bu
 years I think it'd be easier to justify spending on "AI Infrastructure" that happens to be a better
 experience for devs as well. Maybe you could use this to your advantage :D
 
-## Read more
+## Extra reading
 
 Here are some links that you might find interesting:
 
