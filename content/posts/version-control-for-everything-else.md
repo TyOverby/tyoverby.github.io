@@ -1,7 +1,6 @@
 ---
 title: Version control for everything
 date: 2026-02-12
-draft: true
 toc: false
 ---
 
