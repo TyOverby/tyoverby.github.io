@@ -89,3 +89,18 @@ programming", you could just as easily replace "LLM" with "Junior Developer" {{<
 "Senior developer"{{</sidenote>}} and all of the points would hold. It's not just agent-style LLMs
 that would benefit from this integration, _I_ would be more productive if all of my tools had
 branches, version history, and atomic changes.
+
+It can be hard to get management to invest in developer productivity tooling, but for the next few
+years I think it'd be easier to justify spending on "AI Infrastructure" that happens to be a better
+experience for devs as well. Maybe you could use this to your advantage :D
+
+## Read more
+
+Here are some links that you might find interesting:
+
+- The
+  [Local-First Software movement](https://www.inkandswitch.com/essay/local-first/local-first.pdf)
+  has been championing merge-based and conflict-free techniques for synchronizing data and
+  documents.
+- [Irmin](https://irmin.org/) is an OCaml library for building git-like databases with branches,
+  merges, etc.
