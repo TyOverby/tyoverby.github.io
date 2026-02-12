@@ -24,7 +24,7 @@ my life easier. But outside of coding, there are few services or products that o
 functionality and I think that this is seriously hurting AI adoption in these sectors. Let's look at
 an example:
 
-## Case study
+## Case study: software development outer loop
 
 Managing the software development process is complex. We use issue trackers and pull requests to
 manage work, people use email, instant messaging, and scheduled meetings. Keeping all of the
@@ -65,17 +65,17 @@ This is challenging for a few reasons:
    reason, all the previous changes to other services are already out in the world, and some of them
    can't be reverted.
 
-### Option 2: use more git
+### Option 2: put everything else in git
 
 If you're ok with leaving the services entirely, you could move as much as possible into git.
 {{< sidenote >}} Jane Street famously
 [does code review by embedding code review comments directly in the source code as code comments](https://www.janestreet.com/tech-talks/janestreet-code-review/),
 and this workflow decision makes it trivial to involve LLMs in code review because everything in the
 process is tracked with version control. {{< /sidenote >}} Why not put issues alongside the
-codebase? Pull request metadata in source control? Move design docs from Google Docs to checked-in
-markdown? It would be ideal if all of these were stored in the same repository as the code itself so
-that changes to code, issues, and docs could be made in a single atomic update instead of having to
-coordinate across services.
+codebase? Pull request and code-review metadata in source control? Move design docs from Google Docs
+to checked-in markdown? It would be ideal if all of these were stored in the same repository as the
+code itself so that changes to code, issues, and docs could be made in a single atomic update
+instead of having to coordinate across services.
 
 In my view, the main obstacle here is that without serious dedication, the user experience for
 humans would be massively hurt. This isn't insurmountable, but it would be a lot of work.
