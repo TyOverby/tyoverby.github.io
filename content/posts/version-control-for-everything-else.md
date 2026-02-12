@@ -84,7 +84,7 @@ humans would be massively hurt. This isn't insurmountable, but it would be a lot
 ## A better world for LLMs is a better world for me
 
 Although I've framed this blog post as "things that would make LLMs more useful outside of
-programming", you could just as easily replace "LLM" with "Junior Developer" (or "Senior developer")
-and all of the points would hold. It's not just agent-style LLMs that would benefit from this
-integration, _I_ would be more productive if all of my tools had branches, version history, and
-atomic changes.
+programming", you could just as easily replace "LLM" with "Junior Developer" {{<sidenote>}}or
+"Senior developer"{{</sidenote>}} and all of the points would hold. It's not just agent-style LLMs
+that would benefit from this integration, _I_ would be more productive if all of my tools had
+branches, version history, and atomic changes.
