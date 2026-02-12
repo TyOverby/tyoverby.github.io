@@ -2,6 +2,7 @@
 title: Version control for everything
 date: 2026-02-12
 draft: true
+toc: false
 ---
 
 AI assisted agentic coding is everywhere. Skepticism of its value in programming contexts has
