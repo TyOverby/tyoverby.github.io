@@ -51,7 +51,15 @@
       "WebFetch(domain:colah.github.io)",
       "WebFetch(domain:anil.recoil.org)",
       "WebFetch(domain:ar5iv.labs.arxiv.org)",
-      "WebFetch(domain:tarides.com)"
+      "WebFetch(domain:tarides.com)",
+      "Bash(git push:*)",
+      "Bash(git -C /home/tyoverby/workspace/tyoverby.github.io status)",
+      "Bash(git -C /home/tyoverby/workspace/tyoverby.github.io diff)",
+      "Bash(git -C /home/tyoverby/workspace/tyoverby.github.io log --oneline -5)",
+      "Bash(git -C /home/tyoverby/workspace/tyoverby.github.io add layouts/reading/rss.xml)",
+      "Bash(git -C /home/tyoverby/workspace/tyoverby.github.io commit -m \"$\\(cat <<''EOF''\nAdd custom RSS template for reading list\n\nThe reading list RSS feed had empty descriptions because Hugo''s\ndefault template uses .Summary \\(body content\\), but reading list\nitems store descriptions in front matter with empty bodies.\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git -C /home/tyoverby/workspace/tyoverby.github.io push origin master)",
+      "WebFetch(domain:bsky.app)"
     ],
     "deny": [],
     "ask": []

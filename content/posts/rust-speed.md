@@ -7,12 +7,14 @@ tags: ["rust", "performance"]
 ---
 
 # Problem
+
 As a totally contrived example, I will be computing the expression
 
-$$ \sum_{i=0}^{1,000,000,000} \begin{cases} i/2 + 2 & \text{if } i \% 2 = 0 \\\\ 0 & \text{otherwise} \end{cases} $$
+$$ \sum\_{i=0}^{1,000,000,000} \begin{cases} i/2 + 2 & \text{if } i \% 2 = 0 \\\\ 0 &
+\text{otherwise} \end{cases} $$
 
-in both C and Rust to see how close in performance Rust can get to C while still being written in
-an idiomatic pure-functional style.
+in both C and Rust to see how close in performance Rust can get to C while still being written in an
+idiomatic pure-functional style.
 
 ## Rust
 
@@ -51,8 +53,8 @@ void main(void) {
 Both of these implementations are flawed in various ways:
 
 1. Using 32-bit integers means that the computation overflows very quickly
-2. Finding the even numbers doesn't require a filter or if statement when you
-   could only look at every other number to begin with.
+2. Finding the even numbers doesn't require a filter or if statement when you could only look at
+   every other number to begin with.
 3. The rust implementation should do both map steps at once.
 
 These issues were kept despite their flaws:
@@ -61,8 +63,7 @@ These issues were kept despite their flaws:
 2. To test how well the compilers handle branching at the CPU level; and
 3. To see if Rust is able to optimize away the additional map.
 
-I was incredibly surprised to see that on my machine, Rust was able to
-outperform C reliably.
+I was incredibly surprised to see that on my machine, Rust was able to outperform C reliably.
 
 ## Rust
 
@@ -88,6 +89,6 @@ user    0m1.388s
 sys     0m0.004s
 ```
 
-I'm sure that there are ways to get the C version faster, but the only
-important takeaway from this 5 second experiment is that the Rust compiler does
-a damn good job of providing abstractions that hit really close to the metal.
+I'm sure that there are ways to get the C version faster, but the only important takeaway from this
+5 second experiment is that the Rust compiler does a damn good job of providing abstractions that
+hit really close to the metal.

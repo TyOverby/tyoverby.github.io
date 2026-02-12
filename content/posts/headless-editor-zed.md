@@ -11,9 +11,7 @@ Things I like:
 
 Things I dislike:
 
-- `:` brings up the command palette every time you hit it. I habitually save
-  files (`:w`) in order to run my code formatter. I really don't like how
-  disruptive the command palette is.
+- `:` brings up the whole command palette. I habitually save files (`:w`) in order to run my code
+  formatter. I really don't like how disruptive the command palette is.
 - AI integration
-    - Some bash tasks timed out, but didn't successfully kill the `cargo test`
-      processes
+    - Some bash tasks timed out, but didn't successfully kill the `cargo test` processes

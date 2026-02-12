@@ -9,7 +9,9 @@ This post demonstrates how to inline code snippets from external source files us
 
 ## Overview
 
-Instead of copying code into markdown files, we can maintain source code separately and pull specific regions into our posts. This keeps code DRY and ensures examples stay in sync with actual source files.
+Instead of copying code into markdown files, we can maintain source code separately and pull
+specific regions into our posts. This keeps code DRY and ensures examples stay in sync with actual
+source files.
 
 ## Example: A Simple Parser
 

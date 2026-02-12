@@ -4,8 +4,8 @@ date: 2016-10-05
 tags: ["rust", "type-systems"]
 ---
 
-In object-oriented languages, it is common to have collections containing
-objects that implement a certain interface.
+In object-oriented languages, it is common to have collections containing objects that implement a
+certain interface.
 
 ```cs
 interface Animal { ... }
@@ -25,23 +25,19 @@ let list_of_animals: Vec<&Animal> = ...;
 let list_of_animals: Vec<Box<Animal>> = ...;
 ```
 
-it is frowned upon due for stylistic as well as performance reasons:
-each method call from here-on-out will be invoked via interface dispatch.
+it is frowned upon due for stylistic as well as performance reasons: each method call from
+here-on-out will be invoked via interface dispatch.
 
-I recently encountered a problem that *could* be solved by using a vec of
-trait objects, but due to performance concerns, I couldn't afford the
-performance penalty.
+I recently encountered a problem that _could_ be solved by using a vec of trait objects, but due to
+performance concerns, I couldn't afford the performance penalty.
 
-Fortunately, the types of the objects in my list are known at compile-time,
-and the number of the items in the list stays constant, so I thought I'd try
-to work my way around this by way of a heterogeneous queue that constructs
-a specialized type for each instance of the list.
+Fortunately, the types of the objects in my list are known at compile-time, and the number of the
+items in the list stays constant, so I thought I'd try to work my way around this by way of a
+heterogeneous queue that constructs a specialized type for each instance of the list.
 
 ## The bad approach
 
-For comparisons sake, here's a rough outline of what I had *before* using
-trait objects.
-
+For comparisons sake, here's a rough outline of what I had _before_ using trait objects.
 
 ```rust
 trait Shape { .. }
