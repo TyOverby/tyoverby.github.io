@@ -165,6 +165,9 @@ tags: ["graphics", "rust"]  # optional
 9. Commit the new file with a message like "add [title] to reading list"
 10. Push to origin to trigger deployment
 
+If unable to fetch the content, still generate the page, but leave the title,
+description, and tags empty.
+
 **Tagging guidelines:**
 - Search existing content for tags before creating new ones: `grep -r "^tags:" content/`
 - Reuse existing tags when applicable for consistency
