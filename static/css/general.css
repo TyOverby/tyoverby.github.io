@@ -353,6 +353,23 @@ table th {
     font-size: 0.9rem;
 }
 
+/* Unified blog/thoughts feed */
+.feed-item {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.feed-item:last-child {
+    border-bottom: none;
+}
+
+.post-preview .read-more {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+}
+
 /* Thought and Reading List Headers */
 .thought-header,
 .reading-header {

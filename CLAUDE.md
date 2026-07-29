@@ -20,9 +20,10 @@ tyoverby.github.io/
 │   │   ├── baseof.html       # Base template (includes KaTeX for math)
 │   │   ├── single.html       # Individual post template
 │   │   └── list.html         # List page template
+│   ├── posts/
+│   │   └── list.html         # Unified blog+thoughts feed template
 │   ├── thoughts/
-│   │   ├── single.html       # Individual thought template
-│   │   └── list.html         # Thoughts index template
+│   │   └── single.html       # Individual thought template
 │   ├── pages/
 │   │   ├── single.html       # Individual page template
 │   │   └── list.html         # Pages index template
@@ -40,6 +41,8 @@ tyoverby.github.io/
 ## Content Types
 
 The site has four types of content, each with its own purpose and style:
+
+Blog posts and thoughts share a single unified feed at `/posts/` (nav label "Blog"). The feed interleaves both types by date: thoughts appear with their full content inline, while posts show a preview (the `abstract` front matter field if present, otherwise Hugo's auto `.Summary` — the first ~70 words or up to a `<!--more-->` marker) with a "read more" link. The feed template is `layouts/posts/list.html`.
 
 ### 1. Blog Posts (`/posts/`)
 
@@ -70,7 +73,7 @@ Your content here...
 
 ### 2. Daily Thoughts (`/thoughts/`)
 
-Shorter, more casual observations and quick notes. These appear with full content on the thoughts index page.
+Shorter, more casual observations and quick notes. These appear with full content on the unified feed at `/posts/`.
 
 **Creating a new thought:**
 ```bash
@@ -91,8 +94,8 @@ Quick thought or observation...
 
 **Features:**
 - Simpler layout without table of contents
-- Full content displayed on index page with proper markdown rendering
-- Date displayed in shorter format (e.g., "Jan 15, 2025")
+- Full content displayed on the unified `/posts/` feed with proper markdown rendering
+- There is no `/thoughts/` index page — that URL redirects to `/posts/` (via an alias in `content/posts/_index.md`; `content/thoughts/_index.md` has `build.render: never`)
 
 ### 3. Pages (`/pages/`)
 

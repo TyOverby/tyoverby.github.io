@@ -2,6 +2,9 @@ baseURL = 'https://tyoverby.com/'
 languageCode = 'en-us'
 title = 'Ty Overby'
 
+[params]
+  mainSections = ['posts', 'thoughts']
+
 [taxonomies]
   tag = 'tags'
 

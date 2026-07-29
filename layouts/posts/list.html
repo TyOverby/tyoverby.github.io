@@ -1,0 +1,38 @@
+{{ define "main" }}
+
+{{ .Content }}
+
+{{ $feed := where .Site.RegularPages "Type" "in" (slice "posts" "thoughts") }}
+<div class="feed-list">
+    {{ range $feed.ByDate.Reverse }}
+    {{ if eq .Type "thoughts" }}
+    <section class="feed-item thought-item">
+        <div class="thought-header">
+            <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+            <span class="date">{{ .Date.Format "2006-01-02" }}</span>
+        </div>
+        <div class="thought-content">{{ .Content }}</div>
+    </section>
+    {{ else }}
+    <section class="feed-item post-preview">
+        <div class="thought-header">
+            <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+            <span class="date">{{ .Date.Format "2006-01-02" }}</span>
+        </div>
+        {{ with .Params.subtitle }}
+        <div class="post-subtitle">{{ . }}</div>
+        {{ end }}
+        <div class="post-preview-content">
+            {{ if .Params.abstract }}
+            {{ .Params.abstract | safeHTML }}
+            {{ else }}
+            {{ .Summary }}
+            {{ end }}
+        </div>
+        <a class="read-more" href="{{ .RelPermalink }}">read more →</a>
+    </section>
+    {{ end }}
+    {{ end }}
+</div>
+
+{{ end }}

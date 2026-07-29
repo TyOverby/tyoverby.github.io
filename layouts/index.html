@@ -2,24 +2,14 @@
 <div class="home">
     {{ .Content }}
 
-    <h2>Recent Posts</h2>
+    <h2>Recent Writing</h2>
     <ul>
-        {{ range first 5 (where .Site.RegularPages "Type" "posts").ByDate.Reverse }}
+        {{ range first 8 (where .Site.RegularPages "Type" "in" (slice "posts" "thoughts")).ByDate.Reverse }}
         <li>
             <a href="{{ .RelPermalink }}">{{ .Title }}</a>
             {{ if .Date }}
             <span class="date"> - {{ .Date.Format "2006-01-02" }}</span>
             {{ end }}
-        </li>
-        {{ end }}
-    </ul>
-
-    <h2>Recent Thoughts</h2>
-    <ul>
-        {{ range first 5 (where .Site.RegularPages "Type" "thoughts").ByDate.Reverse }}
-        <li>
-            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-            <span class="date"> - {{ .Date.Format "2006-01-02" }}</span>
         </li>
         {{ end }}
     </ul>

@@ -1,5 +1,6 @@
 ---
 title: Thoughts
+build:
+  render: never
+  list: local
 ---
-
-Short ideas, observations, and musings that I'd feel embarrassed to call a "blog post".
