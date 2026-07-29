@@ -373,6 +373,8 @@ table th {
 .feed-divider {
     display: flex;
     align-items: center;
+    justify-content: center;
+    text-align: center;
     gap: 1rem;
     margin: 2.5rem 0;
     color: var(--text-secondary);
@@ -385,6 +387,13 @@ table th {
     content: "";
     flex: 1;
     border-top: 1px solid var(--border-color);
+}
+
+/* The divider acts as the separator, so drop the border and padding
+   the preceding item would otherwise stack on top of it */
+.feed-item:has(+ .feed-divider) {
+    border-bottom: none;
+    padding-bottom: 0;
 }
 
 /* Thought and Reading List Headers */
