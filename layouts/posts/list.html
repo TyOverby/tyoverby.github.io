@@ -3,8 +3,12 @@
 {{ .Content }}
 
 {{ $feed := where .Site.RegularPages "Type" "in" (slice "posts" "thoughts") }}
+{{ $sorted := $feed.ByDate.Reverse }}
 <div class="feed-list">
-    {{ range $feed.ByDate.Reverse }}
+    {{ range $i, $page := $sorted }}
+    {{ if and (lt .Date.Year 2025) (or (eq $i 0) (ge (index $sorted (sub $i 1)).Date.Year 2025)) }}
+    <div class="feed-divider">warning: the posts below this point are pretty old!</div>
+    {{ end }}
     {{ if eq .Type "thoughts" }}
     <section class="feed-item thought-item">
         <div class="thought-header">

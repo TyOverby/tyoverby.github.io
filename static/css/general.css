@@ -370,6 +370,23 @@ table th {
     font-size: 0.9rem;
 }
 
+.feed-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2.5rem 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+.feed-divider::before,
+.feed-divider::after {
+    content: "";
+    flex: 1;
+    border-top: 1px solid var(--border-color);
+}
+
 /* Thought and Reading List Headers */
 .thought-header,
 .reading-header {
