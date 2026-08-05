@@ -37,9 +37,10 @@ takes ages to show up on my screen.
 In the machine learning community{{< sidenote >}}where programming on powerful
 computers far away from your laptop is common{{< /sidenote >}}, many
 practitioners use notebooks like [JupyterLab](https://jupyter.org).  Much like
-`Ed`, with a notebook, you type out a full command locally and then send it to
-the remote machine to be evaluated.  Now I don't think that
-notebook-programming was developed solely to save programmers from typing
+`Ed`, with a notebook, you type out a full command locally {{< sidenote >}}
+instead of "editing" commands, these are repl-style script{{< /sidenote >}} and
+then send it to the remote machine to be evaluated.  Now I don't think
+that notebook-programming was developed solely to save programmers from typing
 latency,{{< sidenote >}}similarly, I think that Ed's design was mostly
 constrained by typewriter hardware and not round-trip-timing for keypresses{{<
 /sidenote >}} but I do believe that development with a notebook is what made
