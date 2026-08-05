@@ -44,6 +44,7 @@
         --sn-width: calc(min(500px, (100vw - var(--content-width)) / 2 - 30px));
 
         margin-right: calc(0px - var(--sn-width) - 30px);
+        margin-bottom: 0.75em;
 
         width: var(--sn-width);
         /*
