@@ -28,12 +28,12 @@ editor UI is running on the same machine that is storing the files, hosting
 language tooling, has your built executables, etc.
 
 But nowadays I rarely edit files on the physical machine that I'm typing into!
-Lots of my work is happening on machines in the cloud{{< sidenote >}}because that's
-where the beefy GPUs are{{< /sidenote >}}.  I'm running vim over ssh{{< sidenote >}}because one
-of my vim plugins runs executables that need to be on the machine with the
-GPU{{< /sidenote >}}, and the experience sucks; with round trip latency that
-can reach into the hundreds of milliseconds, every keypress takes ages to show
-up on my screen.
+Lots of my work is happening on machines in the cloud{{< sidenote >}}that's
+where the beefy GPUs are{{< /sidenote >}}.  I'm running vim over ssh{{<
+sidenote >}}one of my vim plugins runs executables that need to be on the
+machine with the GPU{{< /sidenote >}}, and the experience sucks; with round
+trip latency that can reach into the hundreds of milliseconds, every keypress
+takes ages to show up on my screen.
 
 In the machine learning community{{< sidenote >}}where programming on powerful
 computers far away from your laptop is common{{< /sidenote >}}, many
