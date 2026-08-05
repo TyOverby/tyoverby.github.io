@@ -2,7 +2,6 @@
 title: Text editor architecture from ed to jupyterlab
 date: 2026-08-05
 toc: false
-draft: true
 ---
 
 In the early days, computers were machines that could take up an entire wall,
