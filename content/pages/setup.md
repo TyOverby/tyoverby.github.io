@@ -31,7 +31,7 @@ the version that uses micro-usb to charge, which is annoying.
 ## Keyboard
 
 I've been rocking the [ZSA Moonlander](https://www.zsa.io/moonlander) for several years now, and I'm
-really happy with it. [Here's my config](https://configure.zsa.io/moonlander/layouts/zeejM/latest/0)
+really happy with it. [Here's my config](https://configure.zsa.io/moonlander/layouts/ZGyw5/latest/1)
 
 When the [ZSA Voyager](https://www.zsa.io/voyager) came out, I gave it a shot and although the short
 travel distance on the switches were great, I couldn't deal with the "missing" row of keys
