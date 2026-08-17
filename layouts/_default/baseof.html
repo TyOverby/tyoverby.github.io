@@ -112,6 +112,9 @@
             </div>
         </header>
         <main>{{ block "main" . }}{{ end }}</main>
+        {{ if and .IsPage (eq .Section "posts") }}
+        <footer class="post-footer">{{ partial "rc-footer.html" . }}</footer>
+        {{ end }}
         <script>
             // Theme toggle functionality
             const themeToggle = document.getElementById("theme-toggle");
