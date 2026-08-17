@@ -27,6 +27,7 @@ code {
 }
 
 #TableOfContents,
-nav {
+nav,
+footer.post-footer {
     display: none !important;
 }
