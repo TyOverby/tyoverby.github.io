@@ -227,6 +227,20 @@ footer.post-footer {
     font-size: 0.9rem;
 }
 
+/* The rc-scout partial ships its own <style> block that hard-codes a green
+   link color; these selectors outrank it so the link matches the site. */
+footer.post-footer .rc-scout__link:link,
+footer.post-footer .rc-scout__link:visited {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+footer.post-footer .rc-scout__link:hover,
+footer.post-footer .rc-scout__link:active {
+    color: var(--link-color);
+    background: color-mix(in srgb, var(--link-color) 25%, transparent);
+}
+
 /* Links */
 a {
     color: var(--link-color);
